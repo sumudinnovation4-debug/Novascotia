@@ -1,1 +1,162 @@
 
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0"/>
+  <title>Projects — MAISON NOVA</title>
+  <link rel="stylesheet" href="styles.css" />
+  <link href="https://fonts.googleapis.com/css2?family=Cormorant+Garamond:ital,wght@0,300;0,400;0,500;0,600;1,300;1,400&family=Outfit:wght@200;300;400;500&display=swap" rel="stylesheet">
+</head>
+<body>
+
+  <nav class="nav scrolled" id="nav">
+    <a href="index.html" class="nav-logo" style="color:var(--charcoal)">MAISON NOVA</a>
+    <ul class="nav-links" style="--link-color:var(--muted)">
+      <li><a href="projects.html" style="color:var(--gold)">Projects</a></li>
+      <li><a href="about.html">About</a></li>
+      <li><a href="services.html">Services</a></li>
+      <li><a href="contact.html" class="nav-cta" style="border-color:var(--gold);color:var(--gold)">Get in Touch</a></li>
+    </ul>
+    <button class="nav-burger" id="burger"><span style="background:var(--charcoal)"></span><span style="background:var(--charcoal)"></span></button>
+  </nav>
+
+  <div class="mobile-menu" id="mobileMenu">
+    <a href="projects.html">Projects</a>
+    <a href="about.html">About</a>
+    <a href="services.html">Services</a>
+    <a href="contact.html">Get in Touch</a>
+  </div>
+
+  <!-- PAGE HERO -->
+  <div class="page-hero">
+    <span class="eyebrow">Our Portfolio</span>
+    <h1>Every Space<br/><em>Tells a Story</em></h1>
+    <p>From private residences to landmark hospitality projects — each commission is a singular journey toward beauty and function.</p>
+  </div>
+
+  <!-- FILTER -->
+  <div class="filter-bar">
+    <button class="filter-btn active" data-category="All">All Projects</button>
+    <button class="filter-btn" data-category="Residential">Residential</button>
+    <button class="filter-btn" data-category="Commercial">Commercial</button>
+    <button class="filter-btn" data-category="Hospitality">Hospitality</button>
+  </div>
+
+  <!-- PROJECTS GRID -->
+  <section class="section" style="padding-top:3rem">
+    <div class="projects-grid-full" id="projectsGrid">
+      <!-- Loaded by JS -->
+      <div class="project-card-full">
+        <img src="https://images.unsplash.com/photo-1600585154340-be6161a56a0c?w=700&q=80" alt="Lumé Studio" loading="eager" />
+        <div class="card-meta"><h3>Lumé Studio</h3><span>Residential · 2024</span></div>
+      </div>
+      <div class="project-card-full">
+        <img src="https://images.unsplash.com/photo-1598928506311-c55ded91a20c?w=700&q=80" alt="Horizon Residence" loading="lazy" />
+        <div class="card-meta"><h3>The Horizon Residence</h3><span>Residential · 2024</span></div>
+      </div>
+      <div class="project-card-full">
+        <img src="https://images.unsplash.com/photo-1505691938895-1758d7feb511?w=700&q=80" alt="Verena Penthouse" loading="lazy" />
+        <div class="card-meta"><h3>Verena Penthouse</h3><span>Residential · 2023</span></div>
+      </div>
+      <div class="project-card-full">
+        <img src="https://images.unsplash.com/photo-1631049307264-da0ec9d70304?w=700&q=80" alt="Arden Hotel" loading="lazy" />
+        <div class="card-meta"><h3>Arden Boutique Hotel</h3><span>Hospitality · 2023</span></div>
+      </div>
+      <div class="project-card-full">
+        <img src="https://images.unsplash.com/photo-1497366216548-37526070297c?w=700&q=80" alt="Knox Office" loading="lazy" />
+        <div class="card-meta"><h3>The Knox Office</h3><span>Commercial · 2023</span></div>
+      </div>
+      <div class="project-card-full">
+        <img src="https://images.unsplash.com/photo-1502005229762-cf1b2da7c5d6?w=700&q=80" alt="Casa Blanche" loading="lazy" />
+        <div class="card-meta"><h3>Casa Blanche</h3><span>Residential · 2022</span></div>
+      </div>
+      <div class="project-card-full">
+        <img src="https://images.unsplash.com/photo-1414235077428-338989a2e8c0?w=700&q=80" alt="Meridian Restaurant" loading="lazy" />
+        <div class="card-meta"><h3>Meridian Restaurant</h3><span>Hospitality · 2022</span></div>
+      </div>
+      <div class="project-card-full">
+        <img src="https://images.unsplash.com/photo-1540555700478-4be289fbecef?w=700&q=80" alt="Elara Spa" loading="lazy" />
+        <div class="card-meta"><h3>Elara Wellness Spa</h3><span>Commercial · 2022</span></div>
+      </div>
+      <div class="project-card-full">
+        <img src="https://images.unsplash.com/photo-1567538096630-e0c55bd6374c?w=700&q=80" alt="Park View Loft" loading="lazy" />
+        <div class="card-meta"><h3>Park View Loft</h3><span>Residential · 2021</span></div>
+      </div>
+    </div>
+  </section>
+
+  <!-- PROCESS STRIP -->
+  <section style="background:var(--cream);padding:5rem 3rem">
+    <div class="section-header centered">
+      <span class="label">(our process)</span>
+      <h2 class="section-title">How We Work</h2>
+    </div>
+    <div style="display:grid;grid-template-columns:repeat(4,1fr);gap:2rem;margin-top:1rem">
+      <div style="text-align:center;padding:2rem 1rem">
+        <div style="font-family:var(--font-display);font-size:3rem;font-weight:300;color:rgba(26,25,23,.1);margin-bottom:.5rem">01</div>
+        <h3 style="font-family:var(--font-display);font-size:1.2rem;font-weight:400;margin-bottom:.7rem">Discovery</h3>
+        <p style="font-size:.85rem;line-height:1.7;color:var(--muted)">We listen deeply to understand your vision, lifestyle, and the story you want your space to tell.</p>
+      </div>
+      <div style="text-align:center;padding:2rem 1rem">
+        <div style="font-family:var(--font-display);font-size:3rem;font-weight:300;color:rgba(26,25,23,.1);margin-bottom:.5rem">02</div>
+        <h3 style="font-family:var(--font-display);font-size:1.2rem;font-weight:400;margin-bottom:.7rem">Concept</h3>
+        <p style="font-size:.85rem;line-height:1.7;color:var(--muted)">Mood boards, spatial plans, and material palettes come together into a cohesive design direction.</p>
+      </div>
+      <div style="text-align:center;padding:2rem 1rem">
+        <div style="font-family:var(--font-display);font-size:3rem;font-weight:300;color:rgba(26,25,23,.1);margin-bottom:.5rem">03</div>
+        <h3 style="font-family:var(--font-display);font-size:1.2rem;font-weight:400;margin-bottom:.7rem">Design</h3>
+        <p style="font-size:.85rem;line-height:1.7;color:var(--muted)">Detailed drawings, 3D visualisations, and specification documents bring every detail to life.</p>
+      </div>
+      <div style="text-align:center;padding:2rem 1rem">
+        <div style="font-family:var(--font-display);font-size:3rem;font-weight:300;color:rgba(26,25,23,.1);margin-bottom:.5rem">04</div>
+        <h3 style="font-family:var(--font-display);font-size:1.2rem;font-weight:400;margin-bottom:.7rem">Delivery</h3>
+        <p style="font-size:.85rem;line-height:1.7;color:var(--muted)">We manage every contractor and supplier to ensure flawless execution on time and on budget.</p>
+      </div>
+    </div>
+  </section>
+
+  <!-- CTA -->
+  <section class="cta-banner">
+    <div class="cta-content">
+      <h2>Start Your<br/><em>Next Chapter</em></h2>
+      <p>Tell us about your project and let's explore what's possible.</p>
+      <a href="contact.html" class="btn btn-light">Book a Consultation</a>
+    </div>
+    <div class="cta-img">
+      <img src="https://images.unsplash.com/photo-1616137466211-f939a420be84?w=900&q=80" alt="Luxury interior" />
+    </div>
+  </section>
+
+  <footer class="footer">
+    <div class="footer-top">
+      <div class="footer-brand">
+        <span class="footer-logo">MAISON NOVA</span>
+        <p>Interior design studio crafting<br/>timeless spaces since 2012.</p>
+      </div>
+      <div class="footer-links">
+        <div>
+          <h4>Navigate</h4>
+          <a href="index.html">Home</a>
+          <a href="projects.html">Projects</a>
+          <a href="about.html">About</a>
+          <a href="services.html">Services</a>
+        </div>
+        <div>
+          <h4>Connect</h4>
+          <a href="contact.html">Contact</a>
+          <a href="#">Instagram</a>
+          <a href="#">Pinterest</a>
+          <a href="#">Houzz</a>
+        </div>
+      </div>
+    </div>
+    <div class="footer-bottom">
+      <span>© 2026 Maison Nova. All rights reserved.</span>
+      <span>New York · London · Paris</span>
+    </div>
+  </footer>
+
+  <script src="main.js"></script>
+</body>
+</html>
