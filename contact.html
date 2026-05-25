@@ -1,0 +1,237 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0"/>
+  <title>Contact — MAISON NOVA</title>
+  <link rel="stylesheet" href="styles.css" />
+  <link href="https://fonts.googleapis.com/css2?family=Cormorant+Garamond:ital,wght@0,300;0,400;0,500;0,600;1,300;1,400&family=Outfit:wght@200;300;400;500&display=swap" rel="stylesheet">
+  <style>
+    .contact-layout{display:grid;grid-template-columns:1fr 1.4fr;min-height:80vh}
+    .contact-info{background:var(--charcoal);padding:5rem 4rem;display:flex;flex-direction:column;gap:2rem}
+    .contact-info h2{font-family:var(--font-display);font-size:clamp(2rem,3.5vw,3rem);font-weight:300;color:var(--cream);line-height:1.15}
+    .contact-info h2 em{font-style:italic;color:var(--gold-light)}
+    .contact-info p{font-size:.9rem;line-height:1.8;color:var(--stone)}
+    .contact-detail{display:flex;flex-direction:column;gap:0.3rem}
+    .contact-detail span:first-child{font-size:.7rem;letter-spacing:.2em;text-transform:uppercase;color:var(--stone)}
+    .contact-detail a, .contact-detail span:last-child{font-size:.95rem;color:var(--cream);transition:color .2s}
+    .contact-detail a:hover{color:var(--gold-light)}
+    .contact-details-grid{display:flex;flex-direction:column;gap:1.5rem;margin-top:.5rem}
+    .contact-divider{width:40px;height:1px;background:rgba(245,240,232,.15)}
+    .contact-form-wrap{padding:5rem 4rem;background:var(--warm-white)}
+    .contact-form{display:flex;flex-direction:column;gap:1.4rem}
+    .office-cards{display:grid;grid-template-columns:repeat(3,1fr);gap:1rem;padding:4rem 3rem;background:var(--cream)}
+    .office-card{padding:2rem;background:white;border:1px solid var(--border);border-radius:2px}
+    .office-card h4{font-family:var(--font-display);font-size:1.1rem;font-weight:400;margin-bottom:.8rem}
+    .office-card p{font-size:.82rem;line-height:1.7;color:var(--muted)}
+    .office-card .office-city{font-size:.68rem;letter-spacing:.15em;text-transform:uppercase;color:var(--gold);margin-bottom:.4rem}
+    @media(max-width:768px){
+      .contact-layout{grid-template-columns:1fr}
+      .contact-info{padding:3rem 1.5rem}
+      .contact-form-wrap{padding:3rem 1.5rem}
+      .office-cards{grid-template-columns:1fr;padding:3rem 1.5rem}
+    }
+  </style>
+</head>
+<body>
+
+  <nav class="nav scrolled" id="nav">
+    <a href="index.html" class="nav-logo" style="color:var(--charcoal)">MAISON NOVA</a>
+    <ul class="nav-links">
+      <li><a href="projects.html">Projects</a></li>
+      <li><a href="about.html">About</a></li>
+      <li><a href="services.html">Services</a></li>
+      <li><a href="contact.html" style="color:var(--gold)" class="nav-cta" style="border-color:var(--gold);color:var(--gold)">Get in Touch</a></li>
+    </ul>
+    <button class="nav-burger" id="burger"><span style="background:var(--charcoal)"></span><span style="background:var(--charcoal)"></span></button>
+  </nav>
+
+  <div class="mobile-menu" id="mobileMenu">
+    <a href="projects.html">Projects</a>
+    <a href="about.html">About</a>
+    <a href="services.html">Services</a>
+    <a href="contact.html">Get in Touch</a>
+  </div>
+
+  <!-- HERO IMAGE -->
+  <div style="height:40vh;overflow:hidden;position:relative;margin-top:0">
+    <img src="https://images.unsplash.com/photo-1600566753376-12c8ab7fb75b?w=1800&q=80" alt="Contact" style="width:100%;height:100%;object-fit:cover;object-position:center 40%" />
+    <div style="position:absolute;inset:0;background:linear-gradient(to bottom,rgba(15,13,11,.5),rgba(15,13,11,.3))"></div>
+    <div style="position:absolute;bottom:2.5rem;left:3rem">
+      <span class="eyebrow">Let's Talk</span>
+      <h1 style="font-family:var(--font-display);font-size:clamp(2.5rem,5vw,4rem);font-weight:300;color:var(--cream);line-height:1.1;margin-top:.5rem">Begin Your<br/><em style="color:var(--gold-light);font-style:italic">Project</em></h1>
+    </div>
+  </div>
+
+  <!-- CONTACT LAYOUT -->
+  <div class="contact-layout">
+    <!-- Info panel -->
+    <div class="contact-info">
+      <div>
+        <span class="label" style="color:var(--stone)">Studio Contact</span>
+        <h2 style="margin-top:.8rem">We'd love to<br/><em>hear from you</em></h2>
+        <p style="margin-top:1rem">Whether you have a clear vision or just a feeling about how you want your space to make you feel — we'd love to begin the conversation.</p>
+      </div>
+
+      <div class="contact-divider"></div>
+
+      <div class="contact-details-grid">
+        <div class="contact-detail">
+          <span>New York Studio</span>
+          <span>142 Grand Street, SoHo, NY 10013</span>
+        </div>
+        <div class="contact-detail">
+          <span>Phone</span>
+          <a href="tel:+12125550180">+1 (212) 555-0180</a>
+        </div>
+        <div class="contact-detail">
+          <span>Email</span>
+          <a href="mailto:hello@maisonnova.com">hello@maisonnova.com</a>
+        </div>
+        <div class="contact-detail">
+          <span>Studio Hours</span>
+          <span>Mon – Fri, 9am – 6pm EST</span>
+        </div>
+      </div>
+
+      <div class="contact-divider"></div>
+
+      <div>
+        <p style="margin-bottom:1rem">Follow our work and find daily inspiration</p>
+        <div style="display:flex;gap:1rem">
+          <a href="#" style="color:rgba(245,240,232,.5);font-size:.8rem;letter-spacing:.08em;transition:color .2s" onmouseover="this.style.color='var(--gold-light)'" onmouseout="this.style.color='rgba(245,240,232,.5)'">Instagram →</a>
+          <a href="#" style="color:rgba(245,240,232,.5);font-size:.8rem;letter-spacing:.08em;transition:color .2s" onmouseover="this.style.color='var(--gold-light)'" onmouseout="this.style.color='rgba(245,240,232,.5)'">Pinterest →</a>
+          <a href="#" style="color:rgba(245,240,232,.5);font-size:.8rem;letter-spacing:.08em;transition:color .2s" onmouseover="this.style.color='var(--gold-light)'" onmouseout="this.style.color='rgba(245,240,232,.5)'">Houzz →</a>
+        </div>
+      </div>
+
+      <!-- Small image -->
+      <div style="overflow:hidden;border-radius:2px;flex:1;min-height:160px;margin-top:auto">
+        <img src="https://images.unsplash.com/photo-1616048056617-93b94a339009?w=600&q=80" alt="Studio" style="width:100%;height:100%;object-fit:cover" />
+      </div>
+    </div>
+
+    <!-- Form panel -->
+    <div class="contact-form-wrap">
+      <span class="label">New Project Enquiry</span>
+      <h3 style="font-family:var(--font-display);font-size:1.8rem;font-weight:300;margin:.6rem 0 2rem">Tell us about your project</h3>
+
+      <form class="contact-form" id="contactForm" novalidate>
+        <div class="form-row">
+          <div class="form-group">
+            <label for="name">Full Name *</label>
+            <input type="text" id="name" name="name" placeholder="Your name" required />
+          </div>
+          <div class="form-group">
+            <label for="email">Email Address *</label>
+            <input type="email" id="email" name="email" placeholder="your@email.com" required />
+          </div>
+        </div>
+
+        <div class="form-row">
+          <div class="form-group">
+            <label for="phone">Phone Number</label>
+            <input type="tel" id="phone" name="phone" placeholder="+1 (000) 000-0000" />
+          </div>
+          <div class="form-group">
+            <label for="service">Service of Interest</label>
+            <select id="service" name="service">
+              <option value="">Select a service…</option>
+              <option value="residential">Residential Design</option>
+              <option value="commercial">Commercial Design</option>
+              <option value="hospitality">Hospitality Design</option>
+              <option value="curation">Furniture Curation</option>
+              <option value="consultation">Consultation Only</option>
+            </select>
+          </div>
+        </div>
+
+        <div class="form-group">
+          <label for="budget">Estimated Budget</label>
+          <select id="budget" name="budget">
+            <option value="">Select a range…</option>
+            <option value="under-15k">Under $15,000</option>
+            <option value="15k-40k">$15,000 – $40,000</option>
+            <option value="40k-100k">$40,000 – $100,000</option>
+            <option value="100k-250k">$100,000 – $250,000</option>
+            <option value="250k+">$250,000+</option>
+          </select>
+        </div>
+
+        <div class="form-group">
+          <label for="message">Project Brief *</label>
+          <textarea id="message" name="message" rows="5" placeholder="Tell us about your space, your vision, your timeline, and anything else that feels important…" required></textarea>
+        </div>
+
+        <button type="submit" class="btn btn-dark" style="align-self:flex-start;padding:1rem 2.5rem">Send Message</button>
+
+        <p style="font-size:.75rem;color:var(--stone);line-height:1.6">We aim to respond within one business day. By submitting, you agree to our <a href="#" style="color:var(--gold)">privacy policy</a>.</p>
+      </form>
+    </div>
+  </div>
+
+  <!-- OFFICES -->
+  <div class="office-cards">
+    <div class="office-card">
+      <div class="office-city">New York</div>
+      <h4>Studio HQ</h4>
+      <p>142 Grand Street<br/>SoHo, New York<br/>NY 10013<br/>United States</p>
+      <p style="margin-top:.8rem;color:var(--gold);font-size:.8rem">Mon – Fri · 9am – 6pm</p>
+    </div>
+    <div class="office-card">
+      <div class="office-city">London</div>
+      <h4>European Studio</h4>
+      <p>34 Westbourne Grove<br/>Notting Hill, London<br/>W2 5SH<br/>United Kingdom</p>
+      <p style="margin-top:.8rem;color:var(--gold);font-size:.8rem">Mon – Fri · 9am – 5:30pm</p>
+    </div>
+    <div class="office-card">
+      <div class="office-city">Paris</div>
+      <h4>Paris Atelier</h4>
+      <p>18 Rue de Bretagne<br/>Le Marais, Paris<br/>75003<br/>France</p>
+      <p style="margin-top:.8rem;color:var(--gold);font-size:.8rem">Mon – Fri · 9am – 6pm</p>
+    </div>
+  </div>
+
+  <!-- NEWSLETTER -->
+  <section style="background:var(--charcoal);padding:4rem 3rem;text-align:center">
+    <span class="label" style="color:var(--stone);display:block;margin-bottom:.8rem">(stay connected)</span>
+    <h3 style="font-family:var(--font-display);font-size:1.8rem;font-weight:300;color:var(--cream);margin-bottom:.6rem">Design Stories & Studio News</h3>
+    <p style="font-size:.88rem;color:var(--stone);margin-bottom:1.8rem">Subscribe to our occasional newsletter for project reveals, insights, and inspiration.</p>
+    <form id="newsletterForm" style="display:flex;gap:.5rem;justify-content:center;max-width:420px;margin:0 auto" novalidate>
+      <input type="email" placeholder="your@email.com" required style="flex:1;background:rgba(245,240,232,.07);border:1px solid rgba(245,240,232,.15);border-radius:2px;padding:.85rem 1rem;font-family:var(--font-body);font-size:.88rem;color:var(--cream);outline:none" />
+      <button type="submit" class="btn btn-gold">Subscribe</button>
+    </form>
+  </section>
+
+  <footer class="footer">
+    <div class="footer-top">
+      <div class="footer-brand">
+        <span class="footer-logo">MAISON NOVA</span>
+        <p>Interior design studio crafting<br/>timeless spaces since 2012.</p>
+      </div>
+      <div class="footer-links">
+        <div>
+          <h4>Navigate</h4>
+          <a href="index.html">Home</a>
+          <a href="projects.html">Projects</a>
+          <a href="about.html">About</a>
+          <a href="services.html">Services</a>
+        </div>
+        <div>
+          <h4>Connect</h4>
+          <a href="contact.html">Contact</a>
+          <a href="#">Instagram</a>
+          <a href="#">Pinterest</a>
+          <a href="#">Houzz</a>
+        </div>
+      </div>
+    </div>
+    <div class="footer-bottom">
+      <span>© 2026 Maison Nova. All rights reserved.</span>
+      <span>New York · London · Paris</span>
+    </div>
+  </footer>
+
+  <script src="main.js"></script>
+</body>
+</html>
