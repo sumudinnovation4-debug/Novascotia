@@ -11,7 +11,7 @@
         body { font-family:'Inter',sans-serif; background:#fff; color:#1E1E1E; line-height:1.5; transition:background 0.2s,color 0.2s; }
         body.dark { background:#121212; color:#E5E5E5; }
         body.dark .navbar, body.dark footer { background:#0F0F0F; border-color:#2C2C2C; }
-        body.dark .contact-form form input, body.dark .contact-form form textarea { background:#1E1E1E; border-color:#2C2C2C; color:#E5E5E5; }
+        body.dark .contact-form input, body.dark .contact-form textarea { background:#1E1E1E; border-color:#2C2C2C; color:#E5E5E5; }
         .container { max-width:1280px; margin:0 auto; padding:0 2rem; }
         h1,h2,h3,.logo { font-family:'Playfair Display',serif; font-weight:500; }
         h1 { font-size:3.5rem; letter-spacing:-0.02em; }
@@ -31,23 +31,23 @@
         .page-hero { background:#F5F3F0; padding:8rem 0 4rem; text-align:center; margin-top:70px; }
         body.dark .page-hero { background:#1E1E1E; }
         .contact-grid { display:grid; grid-template-columns:1fr 1fr; gap:4rem; margin:4rem 0; }
-        .contact-form form input, .contact-form form textarea { width:100%; padding:1rem; margin-bottom:1rem; border:1px solid #E2E2E2; background:#fff; font-family:'Inter',sans-serif; }
-        .contact-info i { width:30px; color:#C8A86A; }
+        .contact-form input, .contact-form textarea { width:100%; padding:1rem; margin-bottom:1rem; border:1px solid #E2E2E2; background:#fff; font-family:'Inter',sans-serif; border-radius:8px; }
         .btn-primary { display:inline-block; padding:0.8rem 2rem; background:#1E1E1E; color:#fff; border:none; cursor:pointer; font-weight:500; }
-        body.dark .btn-primary { background:#E5E5E5; color:#121212; }
-        .btn-primary:hover { background:#C8A86A; color:#1E1E1E; }
+        .office-gallery { display:grid; grid-template-columns:repeat(3,1fr); gap:1.5rem; margin:3rem 0; }
+        .office-gallery img { width:100%; height:200px; object-fit:cover; border-radius:12px; }
+        .team-contact-grid { display:grid; grid-template-columns:repeat(2,1fr); gap:2rem; margin:3rem 0; }
+        .contact-person { display:flex; gap:1rem; align-items:center; padding:1rem; border:1px solid #E2E2E2; border-radius:12px; }
+        .contact-person img { width:60px; height:60px; border-radius:50%; object-fit:cover; }
+        .map-placeholder { background:#E2E2E2; height:300px; border-radius:16px; display:flex; align-items:center; justify-content:center; margin:2rem 0; }
         footer { background:#F5F3F0; padding:3rem 2rem 1rem; margin-top:4rem; border-top:1px solid #E2E2E2; }
-        body.dark footer { background:#0F0F0F; }
         .footer-container { display:grid; grid-template-columns:repeat(auto-fit, minmax(200px,1fr)); gap:2rem; max-width:1200px; margin:auto; }
         .theme-toggle { position:fixed; bottom:2rem; right:2rem; background:#1E1E1E; color:#fff; width:48px; height:48px; border-radius:50%; display:flex; align-items:center; justify-content:center; cursor:pointer; z-index:1000; }
-        body.dark .theme-toggle { background:#E5E5E5; color:#121212; }
-        .feedback { margin-top:1rem; padding:0.5rem; color:#C8A86A; }
         @media (max-width:768px) {
-            .nav-links { display:none; flex-direction:column; background:rgba(255,255,255,0.98); position:absolute; top:70px; left:0; width:100%; padding:1rem; text-align:center; gap:1rem; border-bottom:1px solid #E2E2E2; }
+            .nav-links { display:none; flex-direction:column; background:rgba(255,255,255,0.98); position:absolute; top:70px; left:0; width:100%; padding:1rem; text-align:center; }
             body.dark .nav-links { background:rgba(18,18,18,0.98); }
             .nav-links.active { display:flex; }
             .hamburger { display:flex; }
-            .contact-grid { grid-template-columns:1fr; gap:2rem; }
+            .contact-grid, .team-contact-grid, .office-gallery { grid-template-columns:1fr; }
             h1 { font-size:2.5rem; }
         }
     </style>
@@ -69,14 +69,9 @@
     </nav>
 
     <main>
-        <section class="page-hero">
-            <div class="container">
-                <h1>Let's work together</h1>
-                <p>Reach out for new projects, collaborations or press inquiries.</p>
-            </div>
-        </section>
+        <section class="page-hero"><div class="container"><h1>Let's work together</h1><p>Reach out for new projects, collaborations or press inquiries.</p></div></section>
 
-        <section class="contact-section container">
+        <section class="container">
             <div class="contact-grid">
                 <div class="contact-form">
                     <h2>Send a message</h2>
@@ -87,69 +82,62 @@
                         <textarea id="message" rows="5" placeholder="Tell us about your project..." required></textarea>
                         <button type="submit" class="btn-primary">Submit inquiry</button>
                     </form>
-                    <div id="formFeedback" class="feedback"></div>
+                    <div id="formFeedback" style="margin-top:1rem; color:#C8A86A;"></div>
                 </div>
                 <div class="contact-info">
                     <h3>Studio Nova</h3>
                     <p><i class="fas fa-map-marker-alt"></i> 410 W 13th St, New York, NY 10014</p>
                     <p><i class="fas fa-phone"></i> +1 (212) 555-0987</p>
                     <p><i class="fas fa-envelope"></i> hello@studionova.com</p>
+                    <p><i class="fas fa-clock"></i> Mon–Fri: 9am–6pm EST</p>
                 </div>
+            </div>
+        </section>
+
+        <section class="container">
+            <div style="text-align:center;"><h2>Our studio</h2></div>
+            <div class="office-gallery">
+                <img src="https://images.unsplash.com/photo-1497366811353-6870744d04b2?w=600">
+                <img src="https://images.unsplash.com/photo-1497366412874-3415097a27e7?w=600">
+                <img src="https://images.unsplash.com/photo-1497366754035-f200968a6e72?w=600">
+            </div>
+        </section>
+
+        <section class="container">
+            <div class="map-placeholder">
+                <p><i class="fas fa-map-marked-alt" style="font-size:3rem;"></i><br>Interactive map – 410 W 13th St, NYC</p>
+            </div>
+        </section>
+
+        <section class="container">
+            <div style="text-align:center;"><h2>Meet our team</h2></div>
+            <div class="team-contact-grid">
+                <div class="contact-person"><img src="https://images.unsplash.com/photo-1580489944761-15a19d654956?w=100"><div><h3>Elena Vasquez</h3><p>Creative Director</p><a href="mailto:elena@studionova.com">elena@studionova.com</a></div></div>
+                <div class="contact-person"><img src="https://images.unsplash.com/photo-1507003211169-0a1dd7228f2d?w=100"><div><h3>Marcus Chen</h3><p>Lead Architect</p><a href="mailto:marcus@studionova.com">marcus@studionova.com</a></div></div>
+                <div class="contact-person"><img src="https://images.unsplash.com/photo-1573496359142-b8d87734a5a2?w=100"><div><h3>Sophia Laurent</h3><p>Project Director</p><a href="mailto:sophia@studionova.com">sophia@studionova.com</a></div></div>
+                <div class="contact-person"><img src="https://images.unsplash.com/photo-1560250097-0b93528c311a?w=100"><div><h3>David Okafor</h3><p>Head of Materials</p><a href="mailto:david@studionova.com">david@studionova.com</a></div></div>
+            </div>
+        </section>
+
+        <section class="container">
+            <div style="background:#F5F3F0; padding:2rem; border-radius:24px; text-align:center;">
+                <h3>Press & media inquiries</h3>
+                <p>For press kits, interviews, or image requests, contact our comms team at <strong>press@studionova.com</strong></p>
+                <p>We typically respond within 24 hours.</p>
             </div>
         </section>
     </main>
 
     <footer>
         <div class="footer-container">
-            <div class="footer-col"><h3>STUDIO NOVA</h3><p>Interior architecture & design</p></div>
-            <div class="footer-col"><h4>Contact</h4><p>hello@studionova.com<br>+1 (212) 555-0987</p></div>
-            <div class="footer-col"><h4>Studio</h4><p>410 W 13th St, New York, NY 10014</p></div>
-            <div class="footer-col"><h4>Social</h4><div class="social-icons"><a href="#"><i class="fab fa-instagram"></i></a> <a href="#"><i class="fab fa-linkedin-in"></i></a> <a href="#"><i class="fab fa-pinterest-p"></i></a></div></div>
+            <div><h3>STUDIO NOVA</h3><p>Interior architecture & design</p></div>
+            <div><h4>Contact</h4><p>hello@studionova.com<br>+1 (212) 555-0987</p></div>
+            <div><h4>Studio</h4><p>410 W 13th St, New York, NY 10014</p></div>
+            <div><h4>Social</h4><div class="social-icons"><a href="#"><i class="fab fa-instagram"></i></a> <a href="#"><i class="fab fa-linkedin-in"></i></a> <a href="#"><i class="fab fa-pinterest-p"></i></a></div></div>
         </div>
-        <div class="footer-bottom" style="text-align:center; margin-top:2rem; padding-top:1rem; border-top:1px solid #ddd;"><p>&copy; 2026 Studio Nova — All rights reserved</p></div>
+        <div style="text-align:center; margin-top:2rem; padding-top:1rem; border-top:1px solid #ddd;">&copy; 2026 Studio Nova — All rights reserved</div>
     </footer>
 
-    <script>
-        // Dark mode
-        const themeToggle = document.getElementById('themeToggle');
-        if (localStorage.getItem('theme') === 'dark') document.body.classList.add('dark');
-        themeToggle?.addEventListener('click', () => {
-            document.body.classList.toggle('dark');
-            localStorage.setItem('theme', document.body.classList.contains('dark') ? 'dark' : 'light');
-        });
-
-        // Hamburger
-        const hamburger = document.getElementById('hamburger');
-        const navLinks = document.getElementById('navLinks');
-        hamburger?.addEventListener('click', () => navLinks.classList.toggle('active'));
-        document.querySelectorAll('.nav-links a').forEach(link => {
-            link.addEventListener('click', () => navLinks?.classList.remove('active'));
-        });
-
-        // Contact form – store in localStorage (no admin panel, but messages saved)
-        const form = document.getElementById('contactForm');
-        const feedback = document.getElementById('formFeedback');
-
-        form.addEventListener('submit', (e) => {
-            e.preventDefault();
-            const name = document.getElementById('name').value;
-            const email = document.getElementById('email').value;
-            const phone = document.getElementById('phone').value;
-            const message = document.getElementById('message').value;
-
-            const messages = JSON.parse(localStorage.getItem('studioNovaMessages')) || [];
-            const newMsg = {
-                id: Date.now(),
-                name, email, phone, message,
-                date: new Date().toLocaleString(),
-                read: false
-            };
-            messages.push(newMsg);
-            localStorage.setItem('studioNovaMessages', JSON.stringify(messages));
-            feedback.innerHTML = '<p>✓ Thank you! We’ll respond within 48 hours.</p>';
-            form.reset();
-            setTimeout(() => feedback.innerHTML = '', 5000);
-        });
-    </script>
+    <script src="script.js"></script>
 </body>
 </html>
