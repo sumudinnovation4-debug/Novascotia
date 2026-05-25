@@ -1,0 +1,139 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Portfolio – Studio Nova</title>
+    <link href="https://fonts.googleapis.com/css2?family=Inter:opsz,wght@14..32,300;400;500;600;700&family=Playfair+Display:wght@400;500;600;700&display=swap" rel="stylesheet">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0-beta3/css/all.min.css">
+    <style>
+        /* Same base styles */
+        * { margin:0; padding:0; box-sizing:border-box; }
+        body { font-family:'Inter',sans-serif; background:#fff; color:#1E1E1E; line-height:1.5; transition:background 0.2s,color 0.2s; }
+        body.dark { background:#121212; color:#E5E5E5; }
+        body.dark .navbar, body.dark footer { background:#0F0F0F; border-color:#2C2C2C; }
+        body.dark .portfolio-item { background:#1E1E1E; border-color:#2C2C2C; }
+        .container { max-width:1280px; margin:0 auto; padding:0 2rem; }
+        h1,h2,h3,.logo { font-family:'Playfair Display',serif; font-weight:500; }
+        h1 { font-size:3.5rem; letter-spacing:-0.02em; }
+        h2 { font-size:2.2rem; margin-bottom:1rem; }
+        .navbar { position:fixed; top:0; width:100%; background:rgba(255,255,255,0.96); backdrop-filter:blur(10px); z-index:1000; border-bottom:1px solid #E2E2E2; }
+        body.dark .navbar { background:rgba(18,18,18,0.96); border-color:#2C2C2C; }
+        .nav-container { display:flex; justify-content:space-between; align-items:center; padding:1.2rem 2rem; max-width:1400px; margin:0 auto; }
+        .logo { font-size:1.5rem; font-weight:600; letter-spacing:2px; text-decoration:none; color:#1E1E1E; }
+        body.dark .logo { color:#E5E5E5; }
+        .nav-links { display:flex; gap:2rem; list-style:none; }
+        .nav-links a { text-decoration:none; color:#1E1E1E; font-weight:500; }
+        body.dark .nav-links a { color:#E5E5E5; }
+        .nav-links a.active { color:#C8A86A; }
+        .hamburger { display:none; flex-direction:column; cursor:pointer; gap:5px; }
+        .hamburger span { width:25px; height:2px; background:#1E1E1E; }
+        body.dark .hamburger span { background:#E5E5E5; }
+        .page-hero { background:#F5F3F0; padding:8rem 0 4rem; text-align:center; margin-top:70px; }
+        body.dark .page-hero { background:#1E1E1E; }
+        .portfolio-grid { display:grid; grid-template-columns:repeat(auto-fill, minmax(320px,1fr)); gap:2rem; margin:3rem 0; }
+        .portfolio-item { overflow:hidden; border-radius:12px; border:1px solid #E2E2E2; background:#fff; }
+        .portfolio-item img { width:100%; height:260px; object-fit:cover; transition:0.3s; }
+        .portfolio-item:hover img { transform:scale(1.03); }
+        .portfolio-item h3 { padding:1rem 1rem 0.5rem; }
+        .portfolio-item p { padding:0 1rem 1rem; text-transform:capitalize; color:#C8A86A; }
+        footer { background:#F5F3F0; padding:3rem 2rem 1rem; margin-top:4rem; border-top:1px solid #E2E2E2; }
+        body.dark footer { background:#0F0F0F; }
+        .footer-container { display:grid; grid-template-columns:repeat(auto-fit, minmax(200px,1fr)); gap:2rem; max-width:1200px; margin:auto; }
+        .theme-toggle { position:fixed; bottom:2rem; right:2rem; background:#1E1E1E; color:#fff; width:48px; height:48px; border-radius:50%; display:flex; align-items:center; justify-content:center; cursor:pointer; z-index:1000; }
+        body.dark .theme-toggle { background:#E5E5E5; color:#121212; }
+        @media (max-width:768px) {
+            .nav-links { display:none; flex-direction:column; background:rgba(255,255,255,0.98); position:absolute; top:70px; left:0; width:100%; padding:1rem; text-align:center; gap:1rem; border-bottom:1px solid #E2E2E2; }
+            body.dark .nav-links { background:rgba(18,18,18,0.98); }
+            .nav-links.active { display:flex; }
+            .hamburger { display:flex; }
+            h1 { font-size:2.5rem; }
+        }
+    </style>
+</head>
+<body>
+    <div class="theme-toggle" id="themeToggle"><i class="fas fa-moon"></i></div>
+    <nav class="navbar">
+        <div class="nav-container">
+            <a href="index.html" class="logo">STUDIO NOVA</a>
+            <ul class="nav-links" id="navLinks">
+                <li><a href="index.html">Home</a></li>
+                <li><a href="about.html">About</a></li>
+                <li><a href="services.html">Services</a></li>
+                <li><a href="portfolio.html" class="active">Portfolio</a></li>
+                <li><a href="contact.html">Contact</a></li>
+            </ul>
+            <div class="hamburger" id="hamburger"><span></span><span></span><span></span></div>
+        </div>
+    </nav>
+
+    <main>
+        <section class="page-hero">
+            <div class="container">
+                <h1>Selected works</h1>
+                <p>Residential · Commercial · Consultation</p>
+            </div>
+        </section>
+
+        <section class="portfolio-section container">
+            <div class="portfolio-grid">
+                <div class="portfolio-item">
+                    <img src="https://images.unsplash.com/photo-1600210492486-724fe5c67fb0?w=600&auto=format" alt="Tribeca Loft">
+                    <h3>Tribeca Loft</h3>
+                    <p>Residential</p>
+                </div>
+                <div class="portfolio-item">
+                    <img src="https://images.unsplash.com/photo-1551882547-ff40c63fe5fa?w=600&auto=format" alt="The Soho Hotel">
+                    <h3>The Soho Hotel</h3>
+                    <p>Commercial</p>
+                </div>
+                <div class="portfolio-item">
+                    <img src="https://images.unsplash.com/photo-1560185009-dddeb820c7c1?w=600&auto=format" alt="Art Advisory">
+                    <h3>Art Advisory</h3>
+                    <p>Consultation</p>
+                </div>
+                <div class="portfolio-item">
+                    <img src="https://images.unsplash.com/photo-1600607687920-4e2a5a7f3b5f?w=600&auto=format" alt="Greenwich Penthouse">
+                    <h3>Greenwich Penthouse</h3>
+                    <p>Residential</p>
+                </div>
+                <div class="portfolio-item">
+                    <img src="https://images.unsplash.com/photo-1497366754035-f200968a6e72?w=600&auto=format" alt="Nomad Office">
+                    <h3>Nomad Office</h3>
+                    <p>Commercial</p>
+                </div>
+                <div class="portfolio-item">
+                    <img src="https://images.unsplash.com/photo-1581091226033-d5c48150dbaa?w=600&auto=format" alt="Material Library">
+                    <h3>Material Library</h3>
+                    <p>Consultation</p>
+                </div>
+            </div>
+        </section>
+    </main>
+
+    <footer>
+        <div class="footer-container">
+            <div class="footer-col"><h3>STUDIO NOVA</h3><p>Interior architecture & design</p></div>
+            <div class="footer-col"><h4>Contact</h4><p>hello@studionova.com<br>+1 (212) 555-0987</p></div>
+            <div class="footer-col"><h4>Studio</h4><p>410 W 13th St, New York, NY 10014</p></div>
+            <div class="footer-col"><h4>Social</h4><div class="social-icons"><a href="#"><i class="fab fa-instagram"></i></a> <a href="#"><i class="fab fa-linkedin-in"></i></a> <a href="#"><i class="fab fa-pinterest-p"></i></a></div></div>
+        </div>
+        <div class="footer-bottom" style="text-align:center; margin-top:2rem; padding-top:1rem; border-top:1px solid #ddd;"><p>&copy; 2026 Studio Nova — All rights reserved</p></div>
+    </footer>
+
+    <script>
+        const themeToggle = document.getElementById('themeToggle');
+        if (localStorage.getItem('theme') === 'dark') document.body.classList.add('dark');
+        themeToggle?.addEventListener('click', () => {
+            document.body.classList.toggle('dark');
+            localStorage.setItem('theme', document.body.classList.contains('dark') ? 'dark' : 'light');
+        });
+        const hamburger = document.getElementById('hamburger');
+        const navLinks = document.getElementById('navLinks');
+        hamburger?.addEventListener('click', () => navLinks.classList.toggle('active'));
+        document.querySelectorAll('.nav-links a').forEach(link => {
+            link.addEventListener('click', () => navLinks?.classList.remove('active'));
+        });
+    </script>
+</body>
+</html>
