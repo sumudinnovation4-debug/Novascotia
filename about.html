@@ -4,9 +4,60 @@
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>About – Studio Nova</title>
-    <link href="https://fonts.googleapis.com/css2?family=Inter:opsz,wght@14..32,300;400;500;600;700&family=Playfair+Display:wght@400;500;600&display=swap" rel="stylesheet">
+    <link href="https://fonts.googleapis.com/css2?family=Inter:opsz,wght@14..32,300;400;500;600;700&family=Playfair+Display:wght@400;500;600;700&display=swap" rel="stylesheet">
     <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0-beta3/css/all.min.css">
-    <link rel="stylesheet" href="css/style.css">
+    <style>
+        /* Same base styles as index.html – include all reset, colors, navbar, footer, dark mode */
+        * { margin:0; padding:0; box-sizing:border-box; }
+        body { font-family:'Inter',sans-serif; background:#fff; color:#1E1E1E; line-height:1.5; transition:background 0.2s,color 0.2s; }
+        body.dark { background:#121212; color:#E5E5E5; }
+        body.dark .navbar, body.dark footer { background:#0F0F0F; border-color:#2C2C2C; }
+        body.dark .team-card { background:#1E1E1E; border-color:#2C2C2C; }
+        .container { max-width:1280px; margin:0 auto; padding:0 2rem; }
+        h1,h2,h3,.logo { font-family:'Playfair Display',serif; font-weight:500; }
+        h1 { font-size:3.5rem; letter-spacing:-0.02em; }
+        h2 { font-size:2.2rem; margin-bottom:1rem; }
+        .section-tag { text-transform:uppercase; letter-spacing:3px; font-size:0.8rem; color:#C8A86A; font-weight:600; }
+        .btn-primary,.btn-outline { display:inline-block; padding:0.8rem 2rem; border-radius:0; font-weight:500; text-decoration:none; transition:0.2s; cursor:pointer; }
+        .btn-primary { background:#1E1E1E; color:#fff; border:1px solid #1E1E1E; }
+        body.dark .btn-primary { background:#E5E5E5; color:#121212; border-color:#E5E5E5; }
+        .btn-primary:hover { background:#C8A86A; border-color:#C8A86A; color:#1E1E1E; }
+        .btn-outline { border:1px solid #1E1E1E; color:#1E1E1E; background:transparent; }
+        body.dark .btn-outline { border-color:#E5E5E5; color:#E5E5E5; }
+        .btn-outline:hover { background:#1E1E1E; color:#fff; }
+        .navbar { position:fixed; top:0; width:100%; background:rgba(255,255,255,0.96); backdrop-filter:blur(10px); z-index:1000; border-bottom:1px solid #E2E2E2; }
+        body.dark .navbar { background:rgba(18,18,18,0.96); border-color:#2C2C2C; }
+        .nav-container { display:flex; justify-content:space-between; align-items:center; padding:1.2rem 2rem; max-width:1400px; margin:0 auto; }
+        .logo { font-size:1.5rem; font-weight:600; letter-spacing:2px; text-decoration:none; color:#1E1E1E; }
+        body.dark .logo { color:#E5E5E5; }
+        .nav-links { display:flex; gap:2rem; list-style:none; }
+        .nav-links a { text-decoration:none; color:#1E1E1E; font-weight:500; }
+        body.dark .nav-links a { color:#E5E5E5; }
+        .nav-links a.active { color:#C8A86A; }
+        .hamburger { display:none; flex-direction:column; cursor:pointer; gap:5px; }
+        .hamburger span { width:25px; height:2px; background:#1E1E1E; }
+        body.dark .hamburger span { background:#E5E5E5; }
+        .page-hero { background:#F5F3F0; padding:8rem 0 4rem; text-align:center; margin-top:70px; }
+        body.dark .page-hero { background:#1E1E1E; }
+        .about-grid { display:grid; grid-template-columns:1fr 1fr; gap:4rem; align-items:center; margin:5rem 0; }
+        .team-grid { display:grid; grid-template-columns:repeat(auto-fit, minmax(280px,1fr)); gap:2rem; margin:3rem 0; }
+        .team-card { text-align:center; padding:1rem; background:#fff; border:1px solid #E2E2E2; border-radius:12px; }
+        .team-card img { width:100%; border-radius:12px; aspect-ratio:1/1; object-fit:cover; }
+        .press-grid { display:flex; justify-content:space-between; flex-wrap:wrap; gap:1rem; margin:2rem 0; font-weight:600; }
+        footer { background:#F5F3F0; padding:3rem 2rem 1rem; margin-top:4rem; border-top:1px solid #E2E2E2; }
+        body.dark footer { background:#0F0F0F; }
+        .footer-container { display:grid; grid-template-columns:repeat(auto-fit, minmax(200px,1fr)); gap:2rem; max-width:1200px; margin:auto; }
+        .theme-toggle { position:fixed; bottom:2rem; right:2rem; background:#1E1E1E; color:#fff; width:48px; height:48px; border-radius:50%; display:flex; align-items:center; justify-content:center; cursor:pointer; z-index:1000; }
+        body.dark .theme-toggle { background:#E5E5E5; color:#121212; }
+        @media (max-width:768px) {
+            .nav-links { display:none; flex-direction:column; background:rgba(255,255,255,0.98); position:absolute; top:70px; left:0; width:100%; padding:1rem; text-align:center; gap:1rem; border-bottom:1px solid #E2E2E2; }
+            body.dark .nav-links { background:rgba(18,18,18,0.98); }
+            .nav-links.active { display:flex; }
+            .hamburger { display:flex; }
+            .about-grid { grid-template-columns:1fr; gap:2rem; }
+            h1 { font-size:2.5rem; }
+        }
+    </style>
 </head>
 <body>
     <div class="theme-toggle" id="themeToggle"><i class="fas fa-moon"></i></div>
@@ -19,7 +70,6 @@
                 <li><a href="services.html">Services</a></li>
                 <li><a href="portfolio.html">Portfolio</a></li>
                 <li><a href="contact.html">Contact</a></li>
-                <li><a href="admin.html" class="admin-link"><i class="fas fa-lock"></i> Admin</a></li>
             </ul>
             <div class="hamburger" id="hamburger"><span></span><span></span><span></span></div>
         </div>
@@ -41,7 +91,7 @@
                     <p>Our approach balances timeless proportions with contemporary sensitivity. Every project begins with listening — to the architecture, to the light, to you.</p>
                 </div>
                 <div class="about-image">
-                    <img src="https://images.unsplash.com/photo-1618221195710-dd6b41faaea6?w=800&auto=format" alt="Studio team">
+                    <img src="https://images.unsplash.com/photo-1618221195710-dd6b41faaea6?w=800&auto=format" alt="Studio team" style="width:100%; border-radius:12px;">
                 </div>
             </div>
         </section>
@@ -87,10 +137,24 @@
             <div class="footer-col"><h3>STUDIO NOVA</h3><p>Interior architecture & design</p></div>
             <div class="footer-col"><h4>Contact</h4><p>hello@studionova.com<br>+1 (212) 555-0987</p></div>
             <div class="footer-col"><h4>Studio</h4><p>410 W 13th St, New York, NY 10014</p></div>
-            <div class="footer-col"><h4>Social</h4><div class="social-icons"><a href="#"><i class="fab fa-instagram"></i></a><a href="#"><i class="fab fa-linkedin-in"></i></a><a href="#"><i class="fab fa-pinterest-p"></i></a></div></div>
+            <div class="footer-col"><h4>Social</h4><div class="social-icons"><a href="#"><i class="fab fa-instagram"></i></a> <a href="#"><i class="fab fa-linkedin-in"></i></a> <a href="#"><i class="fab fa-pinterest-p"></i></a></div></div>
         </div>
-        <div class="footer-bottom"><p>&copy; 2026 Studio Nova — All rights reserved</p></div>
+        <div class="footer-bottom" style="text-align:center; margin-top:2rem; padding-top:1rem; border-top:1px solid #ddd;"><p>&copy; 2026 Studio Nova — All rights reserved</p></div>
     </footer>
-    <script src="js/main.js"></script>
+
+    <script>
+        const themeToggle = document.getElementById('themeToggle');
+        if (localStorage.getItem('theme') === 'dark') document.body.classList.add('dark');
+        themeToggle?.addEventListener('click', () => {
+            document.body.classList.toggle('dark');
+            localStorage.setItem('theme', document.body.classList.contains('dark') ? 'dark' : 'light');
+        });
+        const hamburger = document.getElementById('hamburger');
+        const navLinks = document.getElementById('navLinks');
+        hamburger?.addEventListener('click', () => navLinks.classList.toggle('active'));
+        document.querySelectorAll('.nav-links a').forEach(link => {
+            link.addEventListener('click', () => navLinks?.classList.remove('active'));
+        });
+    </script>
 </body>
 </html>
