@@ -7,7 +7,7 @@
     <link href="https://fonts.googleapis.com/css2?family=Inter:opsz,wght@14..32,300;400;500;600;700&family=Playfair+Display:wght@400;500;600;700&display=swap" rel="stylesheet">
     <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0-beta3/css/all.min.css">
     <style>
-        /* Same base styles as index – copy exactly for consistency */
+        /* same base styles as index */
         * { margin:0; padding:0; box-sizing:border-box; }
         body { font-family:'Inter',sans-serif; background:#fff; color:#1E1E1E; line-height:1.5; transition:background 0.2s,color 0.2s; }
         body.dark { background:#121212; color:#E5E5E5; }
@@ -76,7 +76,6 @@
             <div class="container"><h1>About Studio Nova</h1><p>Founded in 2025, we are a collective of designers, architects, and thinkers.</p></div>
         </section>
 
-        <!-- Story -->
         <section class="container">
             <div class="grid-2col">
                 <div><h2>Design as a narrative</h2><p>We believe spaces shape behaviour, mood, and connection. Studio Nova was born from a desire to move beyond trends and create interiors with emotional resonance.</p><p>Our approach balances timeless proportions with contemporary sensitivity. Every project begins with listening — to the architecture, to the light, to you.</p><p>Over the last year, we've completed over 150 projects across residential, commercial, and cultural sectors, earning international recognition for our thoughtful, human-centered designs.</p></div>
@@ -84,7 +83,6 @@
             </div>
         </section>
 
-        <!-- Timeline -->
         <section class="container">
             <div style="text-align:center;"><span class="section-tag">Milestones</span><h2>Our journey</h2></div>
             <div class="timeline">
@@ -95,7 +93,6 @@
             </div>
         </section>
 
-        <!-- Team -->
         <section class="container">
             <div style="text-align:center;"><h2>Core team</h2></div>
             <div class="team-grid">
@@ -106,7 +103,6 @@
             </div>
         </section>
 
-        <!-- Press -->
         <section class="container">
             <div style="text-align:center;"><h2>Featured in</h2></div>
             <div class="press-logos">
@@ -114,17 +110,15 @@
             </div>
         </section>
 
-        <!-- Values -->
         <section class="container">
             <div style="text-align:center;"><span class="section-tag">Values</span><h2>What guides us</h2></div>
-            <div class="services-grid" style="grid-template-columns:repeat(3,1fr);">
+            <div class="services-grid" style="display:grid; grid-template-columns:repeat(3,1fr); gap:2rem;">
                 <div class="service-card"><i class="fas fa-leaf"></i><h3>Sustainability</h3><p>We prioritize eco-friendly materials and local craftsmanship.</p></div>
                 <div class="service-card"><i class="fas fa-hand-holding-heart"></i><h3>Collaboration</h3><p>Your input is essential at every stage.</p></div>
                 <div class="service-card"><i class="fas fa-chart-line"></i><h3>Timelessness</h3><p>Design that outlasts trends.</p></div>
             </div>
         </section>
 
-        <!-- Extra gallery -->
         <section class="container">
             <div class="image-gallery">
                 <img src="https://images.unsplash.com/photo-1600566752355-35792bedcfea?w=600">
@@ -134,7 +128,16 @@
         </section>
     </main>
 
-    <footer>...</footer>
-    <script>/* same dark/hamburger script as index */</script>
+    <footer>
+        <div class="footer-container">
+            <div><h3>STUDIO NOVA</h3><p>Interior architecture & design</p></div>
+            <div><h4>Contact</h4><p>hello@studionova.com<br>+1 (212) 555-0987</p></div>
+            <div><h4>Studio</h4><p>410 W 13th St, New York, NY 10014</p></div>
+            <div><h4>Social</h4><div class="social-icons"><a href="#"><i class="fab fa-instagram"></i></a> <a href="#"><i class="fab fa-linkedin-in"></i></a> <a href="#"><i class="fab fa-pinterest-p"></i></a></div></div>
+        </div>
+        <div style="text-align:center; margin-top:2rem; padding-top:1rem; border-top:1px solid #ddd;">&copy; 2026 Studio Nova — All rights reserved</div>
+    </footer>
+
+    <script src="script.js"></script>
 </body>
 </html>
