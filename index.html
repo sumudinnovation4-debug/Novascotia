@@ -3,191 +3,131 @@
 <head>
   <meta charset="UTF-8" />
   <meta name="viewport" content="width=device-width, initial-scale=1.0"/>
-  <title>MAISON NOVA — Interior Design</title>
-  <link rel="stylesheet" href="styles.css" />
-  <link rel="preconnect" href="https://fonts.googleapis.com">
-  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
-  <link href="https://fonts.googleapis.com/css2?family=Cormorant+Garamond:ital,wght@0,300;0,400;0,500;0,600;1,300;1,400&family=Outfit:wght@200;300;400;500&display=swap" rel="stylesheet">
+  <title>Noir Interior Studio</title>
+  <link rel="stylesheet" href="css/style.css"/>
 </head>
 <body>
 
-  <!-- NAV -->
-  <nav class="nav" id="nav">
-    <a href="index.html" class="nav-logo">MAISON NOVA</a>
-    <ul class="nav-links">
-      <li><a href="projects.html">Projects</a></li>
-      <li><a href="about.html">About</a></li>
-      <li><a href="services.html">Services</a></li>
-      <li><a href="contact.html" class="nav-cta">Get in Touch</a></li>
-    </ul>
-    <button class="nav-burger" id="burger" aria-label="Menu">
-      <span></span><span></span>
-    </button>
-  </nav>
-
-  <div class="mobile-menu" id="mobileMenu">
+<header class="nav">
+  <h2>Noir</h2>
+  <nav>
+    <a href="index.html">Home</a>
     <a href="projects.html">Projects</a>
-    <a href="about.html">About</a>
     <a href="services.html">Services</a>
-    <a href="contact.html">Get in Touch</a>
+    <a href="about.html">About</a>
+    <a href="contact.html">Contact</a>
+  </nav>
+</header>
+
+<!-- HERO -->
+<section class="hero">
+  <img src="https://images.unsplash.com/photo-1618221195710-dd6b41faaea6">
+  <div class="hero-text">
+    <h1>We Design Spaces That Define How You Live</h1>
+    <p>
+      Noir Interior Studio is a full-service interior design company focused on 
+      creating timeless, functional, and visually striking environments. 
+      We don’t just decorate — we design experiences.
+    </p>
+    <a href="contact.html" class="btn">Start Your Project</a>
+  </div>
+</section>
+
+<!-- INTRO -->
+<section class="intro">
+  <div class="intro-text">
+    <h2>Design That Goes Beyond Aesthetics</h2>
+    <p>
+      Every space tells a story — and we make sure yours speaks with clarity, 
+      elegance, and purpose. From private residences to commercial interiors, 
+      our work is driven by a deep understanding of architecture, materials, 
+      lighting, and human behavior.
+    </p>
+    <p>
+      With a process rooted in collaboration, we work closely with our clients 
+      to transform ideas into refined, functional environments that feel as 
+      good as they look.
+    </p>
+  </div>
+</section>
+
+<!-- PROJECT PREVIEW -->
+<section class="projects">
+  <h2 class="section-title">Selected Projects</h2>
+
+  <div class="grid">
+    <div class="card">
+      <img src="https://images.unsplash.com/photo-1600585154340-be6161a56a0c">
+      <div class="overlay">
+        <h3>Modern Residence</h3>
+        <p>Lagos, Nigeria</p>
+      </div>
+    </div>
+
+    <div class="card">
+      <img src="https://images.unsplash.com/photo-1600607687644-c7171b42498f">
+      <div class="overlay">
+        <h3>Luxury Apartment</h3>
+        <p>Abuja</p>
+      </div>
+    </div>
+
+    <div class="card">
+      <img src="https://images.unsplash.com/photo-1600566753190-17f0baa2a6c3">
+      <div class="overlay">
+        <h3>Boutique Office</h3>
+        <p>Ibadan</p>
+      </div>
+    </div>
   </div>
 
-  <!-- HERO -->
-  <section class="hero">
-    <div class="hero-media">
-      <img
-        src="https://images.unsplash.com/photo-1618221195710-dd6b41faaea6?w=1800&q=85"
-        alt="Luxury interior living room"
-        class="hero-img"
-      />
-      <div class="hero-overlay"></div>
-    </div>
-    <div class="hero-content">
-      <span class="eyebrow">Based in New York, USA</span>
-      <h1 class="hero-title">Timeless<br/><em>Interiors.</em><br/>Crafted for You.</h1>
-      <p class="hero-sub">We create refined spaces that blend comfort, beauty, and lasting design — tailored to the way you live.</p>
-      <div class="hero-actions">
-        <a href="projects.html" class="btn btn-light">Explore Projects</a>
-        <a href="contact.html" class="btn btn-ghost">Work With Us</a>
-      </div>
-    </div>
-    <div class="hero-scroll-hint">
-      <span>Scroll</span>
-      <div class="scroll-line"></div>
-    </div>
-  </section>
+  <a href="projects.html" class="btn center">View All Projects</a>
+</section>
 
-  <!-- MARQUEE -->
-  <div class="marquee-wrap">
-    <div class="marquee-track">
-      <span>Residential Design</span><span class="dot">✦</span>
-      <span>Commercial Spaces</span><span class="dot">✦</span>
-      <span>Hospitality</span><span class="dot">✦</span>
-      <span>Furniture Curation</span><span class="dot">✦</span>
-      <span>Project Management</span><span class="dot">✦</span>
-      <span>Residential Design</span><span class="dot">✦</span>
-      <span>Commercial Spaces</span><span class="dot">✦</span>
-      <span>Hospitality</span><span class="dot">✦</span>
-      <span>Furniture Curation</span><span class="dot">✦</span>
-      <span>Project Management</span><span class="dot">✦</span>
+<!-- SERVICES -->
+<section class="services">
+  <h2 class="section-title">What We Do</h2>
+
+  <div class="service-grid">
+    <div class="service">
+      <h3>Residential Design</h3>
+      <p>
+        We design homes that reflect your lifestyle — balancing comfort, 
+        elegance, and functionality in every detail.
+      </p>
+    </div>
+
+    <div class="service">
+      <h3>Commercial Interiors</h3>
+      <p>
+        From offices to retail spaces, we create environments that elevate 
+        brand identity and enhance user experience.
+      </p>
+    </div>
+
+    <div class="service">
+      <h3>Design Consultation</h3>
+      <p>
+        Need direction? We provide expert guidance on layout, materials, 
+        furniture, and styling.
+      </p>
     </div>
   </div>
+</section>
 
-  <!-- FEATURED WORKS -->
-  <section class="section works-section">
-    <div class="section-header">
-      <span class="label">(works)</span>
-      <h2 class="section-title">Featured Works</h2>
-      <a href="projects.html" class="view-all">View All →</a>
-    </div>
-    <div class="projects-grid" id="featuredProjects">
-      <!-- Loaded by JS -->
-    </div>
-  </section>
+<!-- CTA -->
+<section class="cta">
+  <h2>Let’s Build Something Exceptional</h2>
+  <p>
+    Whether you're starting from scratch or redesigning an existing space, 
+    our team is ready to bring your vision to life.
+  </p>
+  <a href="contact.html" class="btn">Get in Touch</a>
+</section>
 
-  <!-- ABOUT STRIP -->
-  <section class="about-strip">
-    <div class="about-strip-img">
-      <img src="https://images.unsplash.com/photo-1600210492493-0946911123ea?w=900&q=80" alt="Studio interior" />
-    </div>
-    <div class="about-strip-content">
-      <span class="label">(about)</span>
-      <h2>Designing Interiors<br/><em>with Purpose</em><br/>and Precision</h2>
-      <p>We approach every space as a balance of function, form, and feeling. Through thoughtful materials, light, and texture, we create interiors that reflect individuality while standing the test of time.</p>
-      <div class="stats-row">
-        <div class="stat"><span class="stat-num" data-target="140">0</span><span class="stat-label">Projects Completed</span></div>
-        <div class="stat"><span class="stat-num" data-target="12">0</span><span class="stat-label">Years Experience</span></div>
-        <div class="stat"><span class="stat-num" data-target="28">0</span><span class="stat-label">Awards</span></div>
-      </div>
-      <a href="about.html" class="btn btn-dark">Our Story</a>
-    </div>
-  </section>
+<footer>
+  <p>© 2026 Noir Interior Studio. All rights reserved.</p>
+</footer>
 
-  <!-- SERVICES PREVIEW -->
-  <section class="section services-preview">
-    <div class="section-header centered">
-      <span class="label">(services)</span>
-      <h2 class="section-title">What We Offer</h2>
-    </div>
-    <div class="services-grid">
-      <div class="service-card" style="--delay:0s">
-        <div class="service-icon">◎</div>
-        <h3>Residential Design</h3>
-        <p>Bespoke interiors crafted around your lifestyle, personality, and daily rhythms.</p>
-        <a href="services.html" class="link-arrow">Learn more →</a>
-      </div>
-      <div class="service-card" style="--delay:.1s">
-        <div class="service-icon">◈</div>
-        <h3>Commercial Spaces</h3>
-        <p>Environments that strengthen brand identity and elevate how people work and connect.</p>
-        <a href="services.html" class="link-arrow">Learn more →</a>
-      </div>
-      <div class="service-card" style="--delay:.2s">
-        <div class="service-icon">◇</div>
-        <h3>Hospitality Design</h3>
-        <p>Memorable guest experiences through layered materials, warmth, and timeless elegance.</p>
-        <a href="services.html" class="link-arrow">Learn more →</a>
-      </div>
-      <div class="service-card" style="--delay:.3s">
-        <div class="service-icon">○</div>
-        <h3>Furniture Curation</h3>
-        <p>Sourcing and styling exceptional pieces that anchor a space with character and soul.</p>
-        <a href="services.html" class="link-arrow">Learn more →</a>
-      </div>
-    </div>
-  </section>
-
-  <!-- TESTIMONIAL -->
-  <section class="testimonial-section">
-    <div class="testimonial-inner">
-      <span class="quote-mark">"</span>
-      <blockquote>Maison Nova transformed our home into something we never dared to imagine. Every corner tells our story.</blockquote>
-      <cite>— Elara & James Morrison, Manhattan Residence</cite>
-    </div>
-  </section>
-
-  <!-- CTA BANNER -->
-  <section class="cta-banner">
-    <div class="cta-content">
-      <h2>Ready to Begin<br/><em>Your Project?</em></h2>
-      <p>Let's create something remarkable together.</p>
-      <a href="contact.html" class="btn btn-light">Start a Conversation</a>
-    </div>
-    <div class="cta-img">
-      <img src="https://images.unsplash.com/photo-1556909114-f6e7ad7d3136?w=900&q=80" alt="Design studio" />
-    </div>
-  </section>
-
-  <!-- FOOTER -->
-  <footer class="footer">
-    <div class="footer-top">
-      <div class="footer-brand">
-        <span class="footer-logo">MAISON NOVA</span>
-        <p>Interior design studio crafting<br/>timeless spaces since 2012.</p>
-      </div>
-      <div class="footer-links">
-        <div>
-          <h4>Navigate</h4>
-          <a href="index.html">Home</a>
-          <a href="projects.html">Projects</a>
-          <a href="about.html">About</a>
-          <a href="services.html">Services</a>
-        </div>
-        <div>
-          <h4>Connect</h4>
-          <a href="contact.html">Contact</a>
-          <a href="#">Instagram</a>
-          <a href="#">Pinterest</a>
-          <a href="#">Houzz</a>
-        </div>
-      </div>
-    </div>
-    <div class="footer-bottom">
-      <span>© 2026 Maison Nova. All rights reserved.</span>
-      <span>New York · London · Paris</span>
-    </div>
-  </footer>
-
-  <script src="main.js"></script>
 </body>
 </html>
