@@ -2,374 +2,73 @@
 <html lang="en">
 <head>
     <meta charset="UTF-8">
-    <meta name="viewport" content="width=device-width, initial-scale=1.0, viewport-fit=cover">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Studio Nova | Interior Design</title>
-    <!-- Fonts & Icons -->
     <link href="https://fonts.googleapis.com/css2?family=Inter:opsz,wght@14..32,300;400;500;600;700&family=Playfair+Display:wght@400;500;600;700&display=swap" rel="stylesheet">
     <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0-beta3/css/all.min.css">
     <style>
-        * {
-            margin: 0;
-            padding: 0;
-            box-sizing: border-box;
-        }
-
-        body {
-            font-family: 'Inter', sans-serif;
-            background: #FFFFFF;
-            color: #1E1E1E;
-            line-height: 1.5;
-            transition: background 0.2s, color 0.2s;
-        }
-
-        /* Dark mode variables */
-        body.dark {
-            background: #121212;
-            color: #E5E5E5;
-        }
-
-        body.dark .navbar,
-        body.dark footer {
-            background: #0F0F0F;
-            border-color: #2C2C2C;
-        }
-
-        body.dark .service-card,
-        body.dark .portfolio-item {
-            background: #1E1E1E;
-            border-color: #2C2C2C;
-        }
-
-        .container {
-            max-width: 1280px;
-            margin: 0 auto;
-            padding: 0 2rem;
-        }
-
-        h1, h2, h3, .logo {
-            font-family: 'Playfair Display', serif;
-            font-weight: 500;
-        }
-
-        h1 {
-            font-size: 3.5rem;
-            letter-spacing: -0.02em;
-        }
-
-        h2 {
-            font-size: 2.2rem;
-            margin-bottom: 1rem;
-        }
-
-        .section-tag {
-            text-transform: uppercase;
-            letter-spacing: 3px;
-            font-size: 0.8rem;
-            color: #C8A86A;
-            font-weight: 600;
-        }
-
-        .btn-primary, .btn-outline {
-            display: inline-block;
-            padding: 0.8rem 2rem;
-            border-radius: 0;
-            font-weight: 500;
-            text-decoration: none;
-            transition: 0.2s;
-            cursor: pointer;
-        }
-
-        .btn-primary {
-            background: #1E1E1E;
-            color: #FFFFFF;
-            border: 1px solid #1E1E1E;
-        }
-
-        body.dark .btn-primary {
-            background: #E5E5E5;
-            color: #121212;
-            border-color: #E5E5E5;
-        }
-
-        .btn-primary:hover {
-            background: #C8A86A;
-            border-color: #C8A86A;
-            color: #1E1E1E;
-        }
-
-        .btn-outline {
-            border: 1px solid #1E1E1E;
-            color: #1E1E1E;
-            background: transparent;
-        }
-
-        body.dark .btn-outline {
-            border-color: #E5E5E5;
-            color: #E5E5E5;
-        }
-
-        .btn-outline:hover {
-            background: #1E1E1E;
-            color: #FFFFFF;
-        }
-
-        /* Navbar */
-        .navbar {
-            position: fixed;
-            top: 0;
-            width: 100%;
-            background: rgba(255,255,255,0.96);
-            backdrop-filter: blur(10px);
-            z-index: 1000;
-            border-bottom: 1px solid #E2E2E2;
-        }
-
-        body.dark .navbar {
-            background: rgba(18,18,18,0.96);
-            border-color: #2C2C2C;
-        }
-
-        .nav-container {
-            display: flex;
-            justify-content: space-between;
-            align-items: center;
-            padding: 1.2rem 2rem;
-            max-width: 1400px;
-            margin: 0 auto;
-        }
-
-        .logo {
-            font-size: 1.5rem;
-            font-weight: 600;
-            letter-spacing: 2px;
-            text-decoration: none;
-            color: #1E1E1E;
-        }
-
-        body.dark .logo {
-            color: #E5E5E5;
-        }
-
-        .nav-links {
-            display: flex;
-            gap: 2rem;
-            list-style: none;
-        }
-
-        .nav-links a {
-            text-decoration: none;
-            color: #1E1E1E;
-            font-weight: 500;
-        }
-
-        body.dark .nav-links a {
-            color: #E5E5E5;
-        }
-
-        .nav-links a.active {
-            color: #C8A86A;
-        }
-
-        .hamburger {
-            display: none;
-            flex-direction: column;
-            cursor: pointer;
-            gap: 5px;
-        }
-
-        .hamburger span {
-            width: 25px;
-            height: 2px;
-            background: #1E1E1E;
-        }
-
-        body.dark .hamburger span {
-            background: #E5E5E5;
-        }
-
-        /* Hero */
-        .hero {
-            height: 90vh;
-            background: linear-gradient(rgba(0,0,0,0.35), rgba(0,0,0,0.35)), url('https://images.unsplash.com/photo-1600607687939-ce8a6c25118c?w=1600&auto=format') center/cover;
-            display: flex;
-            align-items: center;
-            margin-top: 70px;
-        }
-
-        .hero-content {
-            max-width: 700px;
-            margin-left: 10%;
-            color: white;
-        }
-
-        .hero-content h1 {
-            font-size: 4rem;
-            margin: 1rem 0;
-        }
-
-        /* Sections */
-        .philosophy-grid, .about-grid, .contact-grid {
-            display: grid;
-            grid-template-columns: 1fr 1fr;
-            gap: 4rem;
-            align-items: center;
-            margin: 5rem 0;
-        }
-
-        .services-grid {
-            display: grid;
-            grid-template-columns: repeat(3,1fr);
-            gap: 2rem;
-            margin: 3rem 0;
-        }
-
-        .service-card {
-            padding: 2rem;
-            background: #FFFFFF;
-            border: 1px solid #E2E2E2;
-            text-align: center;
-        }
-
-        .service-card i {
-            font-size: 2.5rem;
-            color: #C8A86A;
-            margin-bottom: 1rem;
-        }
-
-        .portfolio-grid {
-            display: grid;
-            grid-template-columns: repeat(auto-fill, minmax(320px,1fr));
-            gap: 2rem;
-            margin: 3rem 0;
-        }
-
-        .portfolio-item {
-            overflow: hidden;
-            border-radius: 12px;
-            transition: 0.2s;
-            border: 1px solid #E2E2E2;
-            background: #FFFFFF;
-        }
-
-        .portfolio-item img {
-            width: 100%;
-            height: 260px;
-            object-fit: cover;
-            transition: 0.3s;
-        }
-
-        .portfolio-item:hover img {
-            transform: scale(1.03);
-        }
-
-        .portfolio-item h3 {
-            padding: 1rem 1rem 0.5rem;
-        }
-
-        .portfolio-item p {
-            padding: 0 1rem 1rem;
-            text-transform: capitalize;
-        }
-
-        .cta-section {
-            background: #F5F3F0;
-            text-align: center;
-            padding: 5rem 2rem;
-            margin: 4rem 0;
-        }
-
-        body.dark .cta-section {
-            background: #1E1E1E;
-        }
-
-        footer {
-            background: #F5F3F0;
-            padding: 3rem 2rem 1rem;
-            margin-top: 4rem;
-            border-top: 1px solid #E2E2E2;
-        }
-
-        body.dark footer {
-            background: #0F0F0F;
-        }
-
-        .footer-container {
-            display: grid;
-            grid-template-columns: repeat(auto-fit, minmax(200px,1fr));
-            gap: 2rem;
-            max-width: 1200px;
-            margin: auto;
-        }
-
-        .theme-toggle {
-            position: fixed;
-            bottom: 2rem;
-            right: 2rem;
-            background: #1E1E1E;
-            color: #FFFFFF;
-            width: 48px;
-            height: 48px;
-            border-radius: 50%;
-            display: flex;
-            align-items: center;
-            justify-content: center;
-            cursor: pointer;
-            z-index: 1000;
-        }
-
-        body.dark .theme-toggle {
-            background: #E5E5E5;
-            color: #121212;
-        }
-
-        @media (max-width: 768px) {
-            .nav-links {
-                display: none;
-                flex-direction: column;
-                background: rgba(255,255,255,0.98);
-                position: absolute;
-                top: 70px;
-                left: 0;
-                width: 100%;
-                padding: 1rem;
-                text-align: center;
-                gap: 1rem;
-                border-bottom: 1px solid #E2E2E2;
-            }
-            body.dark .nav-links {
-                background: rgba(18,18,18,0.98);
-            }
-            .nav-links.active {
-                display: flex;
-            }
-            .hamburger {
-                display: flex;
-            }
-            .philosophy-grid, .about-grid, .contact-grid {
-                grid-template-columns: 1fr;
-                gap: 2rem;
-            }
-            .services-grid {
-                grid-template-columns: 1fr;
-            }
-            h1 {
-                font-size: 2.5rem;
-            }
-            .hero-content {
-                margin: 0 1rem;
-                text-align: center;
-            }
-            .hero-content h1 {
-                font-size: 2.8rem;
-            }
+        * { margin:0; padding:0; box-sizing:border-box; }
+        body { font-family:'Inter',sans-serif; background:#fff; color:#1E1E1E; line-height:1.5; transition:background 0.2s,color 0.2s; }
+        body.dark { background:#121212; color:#E5E5E5; }
+        body.dark .navbar, body.dark footer { background:#0F0F0F; border-color:#2C2C2C; }
+        body.dark .service-card, body.dark .testimonial-card, body.dark .process-step { background:#1E1E1E; border-color:#2C2C2C; }
+        .container { max-width:1280px; margin:0 auto; padding:0 2rem; }
+        h1,h2,h3,.logo { font-family:'Playfair Display',serif; font-weight:500; }
+        h1 { font-size:3.5rem; letter-spacing:-0.02em; }
+        h2 { font-size:2.2rem; margin-bottom:1rem; }
+        .section-tag { text-transform:uppercase; letter-spacing:3px; font-size:0.8rem; color:#C8A86A; font-weight:600; }
+        .btn-primary, .btn-outline { display:inline-block; padding:0.8rem 2rem; border-radius:0; font-weight:500; text-decoration:none; transition:0.2s; cursor:pointer; }
+        .btn-primary { background:#1E1E1E; color:#fff; border:1px solid #1E1E1E; }
+        body.dark .btn-primary { background:#E5E5E5; color:#121212; border-color:#E5E5E5; }
+        .btn-primary:hover { background:#C8A86A; border-color:#C8A86A; color:#1E1E1E; }
+        .btn-outline { border:1px solid #1E1E1E; color:#1E1E1E; background:transparent; }
+        body.dark .btn-outline { border-color:#E5E5E5; color:#E5E5E5; }
+        .btn-outline:hover { background:#1E1E1E; color:#fff; }
+        .navbar { position:fixed; top:0; width:100%; background:rgba(255,255,255,0.96); backdrop-filter:blur(10px); z-index:1000; border-bottom:1px solid #E2E2E2; }
+        body.dark .navbar { background:rgba(18,18,18,0.96); border-color:#2C2C2C; }
+        .nav-container { display:flex; justify-content:space-between; align-items:center; padding:1.2rem 2rem; max-width:1400px; margin:0 auto; }
+        .logo { font-size:1.5rem; font-weight:600; letter-spacing:2px; text-decoration:none; color:#1E1E1E; }
+        body.dark .logo { color:#E5E5E5; }
+        .nav-links { display:flex; gap:2rem; list-style:none; }
+        .nav-links a { text-decoration:none; color:#1E1E1E; font-weight:500; }
+        body.dark .nav-links a { color:#E5E5E5; }
+        .nav-links a.active { color:#C8A86A; }
+        .hamburger { display:none; flex-direction:column; cursor:pointer; gap:5px; }
+        .hamburger span { width:25px; height:2px; background:#1E1E1E; }
+        body.dark .hamburger span { background:#E5E5E5; }
+        .hero { height:90vh; background:linear-gradient(rgba(0,0,0,0.35),rgba(0,0,0,0.35)), url('https://images.unsplash.com/photo-1600607687939-ce8a6c25118c?w=1600&auto=format') center/cover; display:flex; align-items:center; margin-top:70px; }
+        .hero-content { max-width:700px; margin-left:10%; color:#fff; }
+        .hero-content h1 { font-size:4rem; margin:1rem 0; }
+        .grid-2col { display:grid; grid-template-columns:1fr 1fr; gap:4rem; align-items:center; margin:5rem 0; }
+        .services-grid { display:grid; grid-template-columns:repeat(3,1fr); gap:2rem; margin:3rem 0; }
+        .service-card, .testimonial-card, .process-step { padding:2rem; background:#fff; border:1px solid #E2E2E2; text-align:center; border-radius:12px; }
+        .service-card i, .process-step i { font-size:2.5rem; color:#C8A86A; margin-bottom:1rem; }
+        .testimonial-card { text-align:left; }
+        .testimonial-card i { color:#C8A86A; font-size:2rem; margin-bottom:1rem; }
+        .stats-grid { display:grid; grid-template-columns:repeat(4,1fr); gap:2rem; text-align:center; margin:4rem 0; }
+        .stat-number { font-size:3rem; font-weight:700; color:#C8A86A; }
+        .process-steps { display:grid; grid-template-columns:repeat(4,1fr); gap:2rem; margin:3rem 0; }
+        .image-gallery { display:grid; grid-template-columns:repeat(3,1fr); gap:1.5rem; margin:3rem 0; }
+        .image-gallery img { width:100%; height:300px; object-fit:cover; border-radius:12px; transition:0.3s; }
+        .image-gallery img:hover { transform:scale(1.02); }
+        .cta-section { background:#F5F3F0; text-align:center; padding:5rem 2rem; margin:4rem 0; border-radius:24px; }
+        body.dark .cta-section { background:#1E1E1E; }
+        footer { background:#F5F3F0; padding:3rem 2rem 1rem; margin-top:4rem; border-top:1px solid #E2E2E2; }
+        .footer-container { display:grid; grid-template-columns:repeat(auto-fit, minmax(200px,1fr)); gap:2rem; max-width:1200px; margin:auto; }
+        .theme-toggle { position:fixed; bottom:2rem; right:2rem; background:#1E1E1E; color:#fff; width:48px; height:48px; border-radius:50%; display:flex; align-items:center; justify-content:center; cursor:pointer; z-index:1000; }
+        @media (max-width:768px) {
+            .nav-links { display:none; flex-direction:column; background:rgba(255,255,255,0.98); position:absolute; top:70px; left:0; width:100%; padding:1rem; text-align:center; gap:1rem; }
+            body.dark .nav-links { background:rgba(18,18,18,0.98); }
+            .nav-links.active { display:flex; }
+            .hamburger { display:flex; }
+            .grid-2col, .services-grid, .stats-grid, .process-steps, .image-gallery { grid-template-columns:1fr; }
+            h1 { font-size:2.5rem; }
+            .hero-content { margin:0 1rem; text-align:center; }
         }
     </style>
 </head>
 <body>
-    <div class="theme-toggle" id="themeToggle">
-        <i class="fas fa-moon"></i>
-    </div>
-
+    <div class="theme-toggle" id="themeToggle"><i class="fas fa-moon"></i></div>
     <nav class="navbar">
         <div class="nav-container">
             <a href="index.html" class="logo">STUDIO NOVA</a>
@@ -380,15 +79,12 @@
                 <li><a href="portfolio.html">Portfolio</a></li>
                 <li><a href="contact.html">Contact</a></li>
             </ul>
-            <div class="hamburger" id="hamburger">
-                <span></span>
-                <span></span>
-                <span></span>
-            </div>
+            <div class="hamburger" id="hamburger"><span></span><span></span><span></span></div>
         </div>
     </nav>
 
     <main>
+        <!-- Hero -->
         <section class="hero">
             <div class="hero-content">
                 <span class="section-tag">EST. 2025</span>
@@ -398,94 +94,100 @@
             </div>
         </section>
 
-        <section class="philosophy container">
-            <div class="philosophy-grid">
-                <div class="philosophy-text">
+        <!-- Philosophy -->
+        <section class="container">
+            <div class="grid-2col">
+                <div>
                     <span class="section-tag">Philosophy</span>
                     <h2>Beyond aesthetics, we create lasting connection</h2>
                     <p>Every line, every material, every shadow is considered. Our work is not about decoration—it's about crafting environments that respond to the way you live today and tomorrow.</p>
                     <p>Based in New York and working globally, we collaborate with artisans, architects, and you to realise spaces of quiet luxury.</p>
                     <a href="about.html" class="btn-outline">Read more <i class="fas fa-arrow-right"></i></a>
                 </div>
-                <div class="philosophy-image">
-                    <img src="https://images.unsplash.com/photo-1600607687939-ce8a6c25118c?w=800&auto=format" alt="Interior philosophy" style="width:100%; border-radius:12px;">
-                </div>
+                <div><img src="https://images.unsplash.com/photo-1600607687939-ce8a6c25118c?w=800&auto=format" style="width:100%; border-radius:12px;"></div>
             </div>
         </section>
 
-        <section class="services-preview">
-            <div class="container">
-                <div class="section-header">
-                    <span class="section-tag">What we do</span>
-                    <h2>Core expertise</h2>
-                </div>
-                <div class="services-grid">
-                    <div class="service-card">
-                        <i class="fas fa-home"></i>
-                        <h3>Residential</h3>
-                        <p>Private residences, apartments, penthouses — tailored to your rhythm of life.</p>
-                    </div>
-                    <div class="service-card">
-                        <i class="fas fa-building"></i>
-                        <h3>Commercial</h3>
-                        <p>Hotels, boutiques, offices — spaces that tell your brand's story.</p>
-                    </div>
-                    <div class="service-card">
-                        <i class="fas fa-pen-ruler"></i>
-                        <h3>Consultation</h3>
-                        <p>Design direction, material curation, and project management.</p>
-                    </div>
-                </div>
+        <!-- Services Preview -->
+        <section class="container">
+            <div style="text-align:center;"><span class="section-tag">What we do</span><h2>Core expertise</h2></div>
+            <div class="services-grid">
+                <div class="service-card"><i class="fas fa-home"></i><h3>Residential</h3><p>Private residences, apartments, penthouses — tailored to your rhythm of life.</p></div>
+                <div class="service-card"><i class="fas fa-building"></i><h3>Commercial</h3><p>Hotels, boutiques, offices — spaces that tell your brand's story.</p></div>
+                <div class="service-card"><i class="fas fa-pen-ruler"></i><h3>Consultation</h3><p>Design direction, material curation, and project management.</p></div>
             </div>
         </section>
 
-        <section class="cta-section">
-            <div class="container">
-                <h2>Let's create something timeless.</h2>
-                <p>Book a complimentary discovery call.</p>
-                <a href="contact.html" class="btn-primary">Inquire now</a>
+        <!-- Stats -->
+        <section class="container">
+            <div class="stats-grid">
+                <div><div class="stat-number">150+</div><p>Projects completed</p></div>
+                <div><div class="stat-number">12</div><p>Design awards</p></div>
+                <div><div class="stat-number">45+</div><p>Team members</p></div>
+                <div><div class="stat-number">8</div><p>Countries</p></div>
             </div>
+        </section>
+
+        <!-- Process -->
+        <section class="container">
+            <div style="text-align:center;"><span class="section-tag">How we work</span><h2>Our creative process</h2></div>
+            <div class="process-steps">
+                <div class="process-step"><i class="fas fa-comments"></i><h3>01. Discovery</h3><p>We listen to your vision, needs, and lifestyle.</p></div>
+                <div class="process-step"><i class="fas fa-drafting-compass"></i><h3>02. Concept</h3><p>Mood boards, sketches, and spatial planning.</p></div>
+                <div class="process-step"><i class="fas fa-cubes"></i><h3>03. Execution</h3><p>Procurement, construction, and installation.</p></div>
+                <div class="process-step"><i class="fas fa-camera-retro"></i><h3>04. Reveal</h3><p>Final styling and handover.</p></div>
+            </div>
+        </section>
+
+        <!-- Gallery -->
+        <section class="container">
+            <div style="text-align:center;"><h2>Recent projects</h2></div>
+            <div class="image-gallery">
+                <img src="https://images.unsplash.com/photo-1600210492486-724fe5c67fb0?w=600" alt="Project 1">
+                <img src="https://images.unsplash.com/photo-1551882547-ff40c63fe5fa?w=600" alt="Project 2">
+                <img src="https://images.unsplash.com/photo-1560185009-dddeb820c7c1?w=600" alt="Project 3">
+                <img src="https://images.unsplash.com/photo-1600607687920-4e2a5a7f3b5f?w=600" alt="Project 4">
+                <img src="https://images.unsplash.com/photo-1497366754035-f200968a6e72?w=600" alt="Project 5">
+                <img src="https://images.unsplash.com/photo-1581091226033-d5c48150dbaa?w=600" alt="Project 6">
+            </div>
+        </section>
+
+        <!-- Testimonials -->
+        <section class="container">
+            <div style="text-align:center;"><span class="section-tag">Testimonials</span><h2>What our clients say</h2></div>
+            <div class="services-grid" style="grid-template-columns:repeat(2,1fr);">
+                <div class="testimonial-card"><i class="fas fa-quote-left"></i><p>“Studio Nova transformed our loft into a serene sanctuary. Every detail is perfect.”</p><strong>— Sarah & Mark</strong></div>
+                <div class="testimonial-card"><i class="fas fa-quote-left"></i><p>“The team’s attention to light and material is unparalleled. Best decision we made.”</p><strong>— Elena R.</strong></div>
+                <div class="testimonial-card"><i class="fas fa-quote-left"></i><p>“They listened, then delivered beyond expectations. A true partnership.”</p><strong>— James K.</strong></div>
+                <div class="testimonial-card"><i class="fas fa-quote-left"></i><p>“Our hotel lobby became the heart of the building. Guests keep complimenting.”</p><strong>— The Soho Hotel</strong></div>
+            </div>
+        </section>
+
+        <!-- CTA -->
+        <section class="cta-section container">
+            <h2>Let's create something timeless.</h2>
+            <p>Book a complimentary discovery call.</p>
+            <a href="contact.html" class="btn-primary">Inquire now</a>
         </section>
     </main>
 
     <footer>
         <div class="footer-container">
-            <div class="footer-col">
-                <h3>STUDIO NOVA</h3>
-                <p>Interior architecture & design</p>
-            </div>
-            <div class="footer-col">
-                <h4>Contact</h4>
-                <p>hello@studionova.com<br>+1 (212) 555-0987</p>
-            </div>
-            <div class="footer-col">
-                <h4>Studio</h4>
-                <p>410 W 13th St, New York, NY 10014</p>
-            </div>
-            <div class="footer-col">
-                <h4>Social</h4>
-                <div class="social-icons">
-                    <a href="#"><i class="fab fa-instagram"></i></a>
-                    <a href="#"><i class="fab fa-linkedin-in"></i></a>
-                    <a href="#"><i class="fab fa-pinterest-p"></i></a>
-                </div>
-            </div>
+            <div><h3>STUDIO NOVA</h3><p>Interior architecture & design</p></div>
+            <div><h4>Contact</h4><p>hello@studionova.com<br>+1 (212) 555-0987</p></div>
+            <div><h4>Studio</h4><p>410 W 13th St, New York, NY 10014</p></div>
+            <div><h4>Social</h4><div class="social-icons"><a href="#"><i class="fab fa-instagram"></i></a> <a href="#"><i class="fab fa-linkedin-in"></i></a> <a href="#"><i class="fab fa-pinterest-p"></i></a></div></div>
         </div>
-        <div class="footer-bottom" style="text-align:center; margin-top:2rem; padding-top:1rem; border-top:1px solid #ddd;">
-            <p>&copy; 2026 Studio Nova — All rights reserved</p>
-        </div>
+        <div style="text-align:center; margin-top:2rem; padding-top:1rem; border-top:1px solid #ddd;">&copy; 2026 Studio Nova — All rights reserved</div>
     </footer>
 
     <script>
-        // Dark mode
         const themeToggle = document.getElementById('themeToggle');
         if (localStorage.getItem('theme') === 'dark') document.body.classList.add('dark');
         themeToggle?.addEventListener('click', () => {
             document.body.classList.toggle('dark');
             localStorage.setItem('theme', document.body.classList.contains('dark') ? 'dark' : 'light');
         });
-
-        // Hamburger menu
         const hamburger = document.getElementById('hamburger');
         const navLinks = document.getElementById('navLinks');
         hamburger?.addEventListener('click', () => navLinks.classList.toggle('active'));
