@@ -1,0 +1,256 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0"/>
+  <title>About — MAISON NOVA</title>
+  <link rel="stylesheet" href="styles.css" />
+  <link href="https://fonts.googleapis.com/css2?family=Cormorant+Garamond:ital,wght@0,300;0,400;0,500;0,600;1,300;1,400&family=Outfit:wght@200;300;400;500&display=swap" rel="stylesheet">
+  <style>
+    .values-grid{display:grid;grid-template-columns:repeat(2,1fr);gap:0;border-top:1px solid var(--border);border-left:1px solid var(--border)}
+    .value-item{padding:2.5rem;border-bottom:1px solid var(--border);border-right:1px solid var(--border)}
+    .value-item h3{font-family:var(--font-display);font-size:1.4rem;font-weight:400;margin:.6rem 0 .8rem}
+    .value-item p{font-size:.88rem;line-height:1.8;color:var(--muted)}
+    .press-logos{display:flex;gap:3rem;align-items:center;flex-wrap:wrap;justify-content:center;padding:3rem;filter:grayscale(1);opacity:.4}
+    .press-logos span{font-family:var(--font-display);font-size:1.5rem;letter-spacing:.1em;font-weight:500}
+    .timeline{position:relative;padding-left:2rem}
+    .timeline::before{content:'';position:absolute;left:0;top:0;bottom:0;width:1px;background:var(--border)}
+    .timeline-item{position:relative;padding:0 0 2.5rem 2rem}
+    .timeline-item::before{content:'';position:absolute;left:-4px;top:5px;width:8px;height:8px;border-radius:50%;background:var(--gold)}
+    .timeline-year{font-size:.72rem;letter-spacing:.15em;text-transform:uppercase;color:var(--gold);margin-bottom:.4rem}
+    .timeline-item h3{font-family:var(--font-display);font-size:1.15rem;font-weight:400;margin-bottom:.4rem}
+    .timeline-item p{font-size:.85rem;line-height:1.7;color:var(--muted)}
+  </style>
+</head>
+<body>
+
+  <nav class="nav scrolled" id="nav">
+    <a href="index.html" class="nav-logo" style="color:var(--charcoal)">MAISON NOVA</a>
+    <ul class="nav-links">
+      <li><a href="projects.html">Projects</a></li>
+      <li><a href="about.html" style="color:var(--gold)">About</a></li>
+      <li><a href="services.html">Services</a></li>
+      <li><a href="contact.html" class="nav-cta" style="border-color:var(--gold);color:var(--gold)">Get in Touch</a></li>
+    </ul>
+    <button class="nav-burger" id="burger"><span style="background:var(--charcoal)"></span><span style="background:var(--charcoal)"></span></button>
+  </nav>
+
+  <div class="mobile-menu" id="mobileMenu">
+    <a href="projects.html">Projects</a>
+    <a href="about.html">About</a>
+    <a href="services.html">Services</a>
+    <a href="contact.html">Get in Touch</a>
+  </div>
+
+  <!-- HERO -->
+  <div class="page-hero">
+    <span class="eyebrow">Our Story</span>
+    <h1>Design with<br/><em>Soul</em></h1>
+    <p>Founded in 2012 by Isabelle Laurent, Maison Nova is a New York-based interior design studio with a reputation for creating spaces of enduring elegance and quiet luxury.</p>
+  </div>
+
+  <!-- SPLIT STORY -->
+  <section style="display:grid;grid-template-columns:1fr 1fr;min-height:560px">
+    <div style="overflow:hidden">
+      <img src="https://images.unsplash.com/photo-1600210492493-0946911123ea?w=900&q=80" alt="Studio" style="width:100%;height:100%;object-fit:cover;transition:transform 1s" onmouseover="this.style.transform='scale(1.04)'" onmouseout="this.style.transform=''" />
+    </div>
+    <div style="padding:5rem 4rem;display:flex;flex-direction:column;gap:1.5rem;justify-content:center">
+      <span class="label">(our philosophy)</span>
+      <h2 style="font-family:var(--font-display);font-size:clamp(1.8rem,3vw,2.5rem);font-weight:300;line-height:1.15">Beauty that<br/><em style="color:var(--gold)">lives and breathes</em></h2>
+      <p style="font-size:.92rem;line-height:1.85;color:var(--muted)">We believe that great interior design is not about following trends — it's about creating spaces that feel genuinely alive. Our process begins with deep listening: understanding how our clients move through their days, what brings them calm, what inspires them to gather and celebrate.</p>
+      <p style="font-size:.92rem;line-height:1.85;color:var(--muted)">Every material we choose, every piece we source, every detail we specify carries intention. The result is spaces that are unmistakably yours — and unmistakably timeless.</p>
+      <div style="display:flex;gap:3rem;margin-top:1rem">
+        <div><div style="font-family:var(--font-display);font-size:2.5rem;font-weight:300" class="stat-num" data-target="140">0</div><span class="stat-label">Projects</span></div>
+        <div><div style="font-family:var(--font-display);font-size:2.5rem;font-weight:300" class="stat-num" data-target="12">0</div><span class="stat-label">Years</span></div>
+        <div><div style="font-family:var(--font-display);font-size:2.5rem;font-weight:300" class="stat-num" data-target="28">0</div><span class="stat-label">Awards</span></div>
+      </div>
+    </div>
+  </section>
+
+  <!-- VALUES -->
+  <section class="section">
+    <div class="section-header centered" style="margin-bottom:2.5rem">
+      <span class="label">(what drives us)</span>
+      <h2 class="section-title">Our Values</h2>
+    </div>
+    <div class="values-grid">
+      <div class="value-item">
+        <div style="font-size:1.5rem;color:var(--gold)">◎</div>
+        <h3>Timelessness Over Trend</h3>
+        <p>We design for decades, not seasons. Every choice is made with longevity in mind — spaces that grow richer as they're lived in.</p>
+      </div>
+      <div class="value-item">
+        <div style="font-size:1.5rem;color:var(--gold)">◈</div>
+        <h3>Radical Listening</h3>
+        <p>Before we put pen to paper, we listen. Your story, your rhythms, your desires become the foundation of every design decision.</p>
+      </div>
+      <div class="value-item">
+        <div style="font-size:1.5rem;color:var(--gold)">◇</div>
+        <h3>Material Integrity</h3>
+        <p>We work exclusively with materials of genuine quality — natural stone, aged brass, hand-woven textiles, solid timber. No substitutes.</p>
+      </div>
+      <div class="value-item">
+        <div style="font-size:1.5rem;color:var(--gold)">○</div>
+        <h3>Conscious Luxury</h3>
+        <p>Opulence and responsibility are not opposites. We source sustainably, partner with ethical makers, and design for longevity.</p>
+      </div>
+    </div>
+  </section>
+
+  <!-- TEAM -->
+  <section class="section" style="background:var(--cream)">
+    <div class="section-header centered">
+      <span class="label">(our people)</span>
+      <h2 class="section-title">Meet the Studio</h2>
+    </div>
+    <div class="team-grid" style="margin-top:2rem">
+      <div class="team-card">
+        <div class="team-card-img">
+          <img src="https://images.unsplash.com/photo-1573496359142-b8d87734a5a2?w=500&q=80" alt="Isabelle Laurent" loading="lazy" />
+        </div>
+        <h3>Isabelle Laurent</h3>
+        <span>Founder & Creative Director</span>
+        <p style="font-size:.82rem;line-height:1.7;color:var(--muted);margin-top:.7rem;text-align:center">With a background in fine arts and architecture from the École des Beaux-Arts, Isabelle founded Maison Nova to bridge the worlds of art and habitation.</p>
+      </div>
+      <div class="team-card">
+        <div class="team-card-img">
+          <img src="https://images.unsplash.com/photo-1507003211169-0a1dd7228f2d?w=500&q=80" alt="Marcus Chen" loading="lazy" />
+        </div>
+        <h3>Marcus Chen</h3>
+        <span>Principal Designer</span>
+        <p style="font-size:.82rem;line-height:1.7;color:var(--muted);margin-top:.7rem;text-align:center">Marcus brings a precision-driven approach to spatial planning, honed through years of working with architecture firms in Tokyo and London.</p>
+      </div>
+      <div class="team-card">
+        <div class="team-card-img">
+          <img src="https://images.unsplash.com/photo-1580489944761-15a19d654956?w=500&q=80" alt="Sophia Okafor" loading="lazy" />
+        </div>
+        <h3>Sophia Okafor</h3>
+        <span>Senior Interior Designer</span>
+        <p style="font-size:.82rem;line-height:1.7;color:var(--muted);margin-top:.7rem;text-align:center">Sophia's expertise in textile and colour theory brings a distinctly warm and layered quality to every project she leads.</p>
+      </div>
+    </div>
+  </section>
+
+  <!-- TIMELINE -->
+  <section style="display:grid;grid-template-columns:1fr 1fr;gap:0">
+    <div style="padding:5rem 4rem;background:var(--warm-white)">
+      <span class="label">(milestones)</span>
+      <h2 style="font-family:var(--font-display);font-size:2.2rem;font-weight:300;margin:1rem 0 2.5rem">Our Journey</h2>
+      <div class="timeline">
+        <div class="timeline-item">
+          <div class="timeline-year">2012</div>
+          <h3>Studio Founded</h3>
+          <p>Isabelle Laurent opens the studio in a Tribeca loft with a team of three, taking on the first residential commission in Manhattan.</p>
+        </div>
+        <div class="timeline-item">
+          <div class="timeline-year">2015</div>
+          <h3>First Hospitality Project</h3>
+          <p>Completion of the acclaimed Arden Boutique Hotel, earning recognition in Architectural Digest and Wallpaper* magazine.</p>
+        </div>
+        <div class="timeline-item">
+          <div class="timeline-year">2018</div>
+          <h3>London Office Opens</h3>
+          <p>International expansion begins with a West London studio and our first European residential commissions.</p>
+        </div>
+        <div class="timeline-item">
+          <div class="timeline-year">2021</div>
+          <h3>IDSA Award for Excellence</h3>
+          <p>Recognised as Interior Design Studio of the Year by the International Design Society of America.</p>
+        </div>
+        <div class="timeline-item">
+          <div class="timeline-year">2024</div>
+          <h3>Paris Atelier</h3>
+          <p>Our third international presence opens in the Marais, anchoring our European design operations.</p>
+        </div>
+      </div>
+    </div>
+    <div style="overflow:hidden">
+      <img src="https://images.unsplash.com/photo-1586023492125-27b2c045efd7?w=900&q=80" alt="Studio work" style="width:100%;height:100%;object-fit:cover" />
+    </div>
+  </section>
+
+  <!-- PRESS -->
+  <section style="background:var(--cream);padding:4rem 3rem;text-align:center">
+    <span class="label" style="display:block;margin-bottom:1.5rem">(as seen in)</span>
+    <div class="press-logos">
+      <span>Architectural Digest</span>
+      <span>Wallpaper*</span>
+      <span>Elle Décor</span>
+      <span>House Beautiful</span>
+      <span>Interior Design</span>
+    </div>
+  </section>
+
+  <!-- CTA -->
+  <section class="testimonial-section">
+    <div class="testimonial-inner">
+      <span class="quote-mark">"</span>
+      <blockquote>Great design is invisible. It doesn't announce itself — it simply makes you feel completely at home.</blockquote>
+      <cite>— Isabelle Laurent, Founder</cite>
+    </div>
+  </section>
+
+  <section class="cta-banner">
+    <div class="cta-content">
+      <h2>Work With<br/><em>Our Studio</em></h2>
+      <p>We take on a select number of commissions each year to ensure every client receives our full attention.</p>
+      <a href="contact.html" class="btn btn-light">Begin Your Project</a>
+    </div>
+    <div class="cta-img">
+      <img src="https://images.unsplash.com/photo-1616048056617-93b94a339009?w=900&q=80" alt="Studio workspace" />
+    </div>
+  </section>
+
+  <footer class="footer">
+    <div class="footer-top">
+      <div class="footer-brand">
+        <span class="footer-logo">MAISON NOVA</span>
+        <p>Interior design studio crafting<br/>timeless spaces since 2012.</p>
+      </div>
+      <div class="footer-links">
+        <div>
+          <h4>Navigate</h4>
+          <a href="index.html">Home</a>
+          <a href="projects.html">Projects</a>
+          <a href="about.html">About</a>
+          <a href="services.html">Services</a>
+        </div>
+        <div>
+          <h4>Connect</h4>
+          <a href="contact.html">Contact</a>
+          <a href="#">Instagram</a>
+          <a href="#">Pinterest</a>
+          <a href="#">Houzz</a>
+        </div>
+      </div>
+    </div>
+    <div class="footer-bottom">
+      <span>© 2026 Maison Nova. All rights reserved.</span>
+      <span>New York · London · Paris</span>
+    </div>
+  </footer>
+
+  <script src="main.js"></script>
+  <script>
+    // Trigger counters when visible
+    const aboutSection = document.querySelector('[data-target]')?.closest('section');
+    const observer = new IntersectionObserver(entries => {
+      entries.forEach(e => { if (e.isIntersecting) { animateCounters(); observer.disconnect(); } });
+    }, { threshold: 0.2 });
+    if (aboutSection) observer.observe(aboutSection);
+
+    function animateCounters() {
+      document.querySelectorAll('.stat-num').forEach(el => {
+        const target = +el.dataset.target;
+        let current = 0;
+        const step = target / 60;
+        const timer = setInterval(() => {
+          current = Math.min(current + step, target);
+          el.textContent = Math.floor(current);
+          if (current >= target) { el.textContent = target; clearInterval(timer); }
+        }, 20);
+      });
+    }
+  </script>
+</body>
+</html>
