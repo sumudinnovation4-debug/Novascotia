@@ -1,790 +1,419 @@
 <!DOCTYPE html>
 <html lang="en">
 <head>
-    <meta charset="UTF-8">
-    <meta name="viewport" content="width=device-width, initial-scale=1.0, viewport-fit=cover">
-    <title>Nebula Interiors | Cosmic Interior Design</title>
-    <!-- Google Fonts & Font Awesome -->
-    <link href="https://fonts.googleapis.com/css2?family=Inter:opsz,wght@14..32,300;14..32,400;14..32,500;14..32,600;14..32,700&family=Playfair+Display:wght@400;500;600;700;800&display=swap" rel="stylesheet">
-    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0-beta3/css/all.min.css">
-    <style>
-        * {
-            margin: 0;
-            padding: 0;
-            box-sizing: border-box;
-        }
-
-        body {
-            font-family: 'Inter', sans-serif;
-            background-color: #0b0712;
-            color: #edecef;
-            scroll-behavior: smooth;
-            overflow-x: hidden;
-        }
-
-        /* custom scrollbar */
-        ::-webkit-scrollbar {
-            width: 6px;
-        }
-        ::-webkit-scrollbar-track {
-            background: #1e192b;
-        }
-        ::-webkit-scrollbar-thumb {
-            background: #c6a15b;
-            border-radius: 8px;
-        }
-
-        h1, h2, h3, .logo, .hero-title, .section-title {
-            font-family: 'Playfair Display', serif;
-        }
-
-        .container {
-            max-width: 1280px;
-            margin: 0 auto;
-            padding: 0 32px;
-        }
-
-        /* Glassmorphic Navbar */
-        .navbar {
-            position: fixed;
-            top: 0;
-            left: 0;
-            width: 100%;
-            background: rgba(11, 7, 18, 0.7);
-            backdrop-filter: blur(14px);
-            border-bottom: 1px solid rgba(198, 161, 91, 0.25);
-            z-index: 1000;
-            padding: 18px 0;
-            transition: all 0.3s ease;
-        }
-
-        .nav-container {
-            display: flex;
-            justify-content: space-between;
-            align-items: center;
-            max-width: 1280px;
-            margin: 0 auto;
-            padding: 0 32px;
-        }
-
-        .logo {
-            font-size: 1.9rem;
-            font-weight: 700;
-            letter-spacing: 2px;
-            background: linear-gradient(135deg, #FFFFFF 30%, #D4AF77 80%);
-            -webkit-background-clip: text;
-            background-clip: text;
-            color: transparent;
-            text-decoration: none;
-        }
-
-        .nav-links {
-            display: flex;
-            gap: 2.5rem;
-            list-style: none;
-        }
-
-        .nav-links a {
-            text-decoration: none;
-            color: #f0ede9;
-            font-weight: 500;
-            font-size: 0.95rem;
-            transition: 0.3s;
-            letter-spacing: 0.5px;
-        }
-
-        .nav-links a:hover {
-            color: #d4af77;
-        }
-
-        .menu-btn {
-            display: none;
-            font-size: 1.8rem;
-            cursor: pointer;
-            color: #d4af77;
-        }
-
-        /* Hero Section with Nebula vibe */
-        .hero {
-            min-height: 100vh;
-            display: flex;
-            align-items: center;
-            position: relative;
-            background: radial-gradient(ellipse at 30% 40%, #201a32, #03010a);
-            overflow: hidden;
-        }
-
-        .hero::before {
-            content: "";
-            position: absolute;
-            width: 100%;
-            height: 100%;
-            background: url('data:image/svg+xml;utf8,<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 1200 800" opacity="0.15"><path fill="none" d="M0,0 L1200,0 L1200,800 L0,800 Z" /><circle cx="200" cy="150" r="3" fill="white"/><circle cx="500" cy="70" r="2" fill="white"/><circle cx="900" cy="200" r="4" fill="white"/><circle cx="1100" cy="450" r="2.5" fill="white"/><circle cx="80" cy="600" r="3" fill="white"/><circle cx="650" cy="550" r="2" fill="white"/><circle cx="400" cy="720" r="3.5" fill="white"/></svg>');
-            background-repeat: repeat;
-            opacity: 0.3;
-            pointer-events: none;
-        }
-
-        .hero-content {
-            position: relative;
-            z-index: 2;
-            max-width: 780px;
-            padding: 0 20px;
-        }
-
-        .hero-title {
-            font-size: 4.6rem;
-            font-weight: 800;
-            line-height: 1.2;
-            margin-bottom: 1rem;
-            background: linear-gradient(to right, #fff, #e9d2a7);
-            -webkit-background-clip: text;
-            background-clip: text;
-            color: transparent;
-        }
-
-        .hero-sub {
-            font-size: 1.2rem;
-            line-height: 1.6;
-            margin-bottom: 2rem;
-            color: #cfcbe6;
-            max-width: 600px;
-        }
-
-        .btn-group {
-            display: flex;
-            gap: 1.2rem;
-            flex-wrap: wrap;
-        }
-
-        .btn-primary {
-            background: #d4af77;
-            border: none;
-            padding: 14px 36px;
-            font-weight: 600;
-            color: #0b0712;
-            border-radius: 40px;
-            font-size: 1rem;
-            cursor: pointer;
-            transition: 0.25s ease;
-            box-shadow: 0 8px 20px rgba(0,0,0,0.3);
-        }
-
-        .btn-primary:hover {
-            background: #eac48a;
-            transform: translateY(-3px);
-            box-shadow: 0 15px 25px rgba(0,0,0,0.4);
-        }
-
-        .btn-outline {
-            background: transparent;
-            border: 1.5px solid #d4af77;
-            padding: 14px 36px;
-            font-weight: 600;
-            color: #d4af77;
-            border-radius: 40px;
-            transition: 0.25s;
-            cursor: pointer;
-        }
-
-        .btn-outline:hover {
-            background: rgba(212, 175, 119, 0.1);
-            transform: translateY(-3px);
-        }
-
-        /* Section styling */
-        section {
-            padding: 100px 0;
-        }
-
-        .section-title {
-            font-size: 2.8rem;
-            font-weight: 600;
-            margin-bottom: 1rem;
-            text-align: center;
-            letter-spacing: -0.5px;
-        }
-
-        .section-sub {
-            text-align: center;
-            color: #b5adcf;
-            max-width: 680px;
-            margin: 0 auto 60px auto;
-            font-size: 1.05rem;
-        }
-
-        .about-grid {
-            display: grid;
-            grid-template-columns: 1fr 1fr;
-            gap: 50px;
-            align-items: center;
-        }
-
-        .about-text h3 {
-            font-size: 2rem;
-            margin-bottom: 1.2rem;
-            color: #e9d2a7;
-        }
-
-        .about-text p {
-            line-height: 1.7;
-            margin-bottom: 1.2rem;
-            color: #cdc6e0;
-        }
-
-        .about-img img {
-            width: 100%;
-            border-radius: 24px;
-            box-shadow: 0 25px 40px -15px rgba(0,0,0,0.6);
-            transition: transform 0.4s;
-        }
-
-        .about-img img:hover {
-            transform: scale(1.02);
-        }
-
-        /* services cards */
-        .services-grid {
-            display: grid;
-            grid-template-columns: repeat(auto-fit, minmax(250px, 1fr));
-            gap: 35px;
-        }
-
-        .service-card {
-            background: rgba(30, 25, 45, 0.7);
-            backdrop-filter: blur(4px);
-            padding: 40px 24px;
-            border-radius: 32px;
-            transition: all 0.3s;
-            text-align: center;
-            border: 1px solid rgba(212, 175, 119, 0.2);
-        }
-
-        .service-card i {
-            font-size: 3rem;
-            color: #d4af77;
-            margin-bottom: 20px;
-        }
-
-        .service-card h4 {
-            font-size: 1.6rem;
-            margin-bottom: 12px;
-        }
-
-        .service-card p {
-            color: #bfb8da;
-        }
-
-        .service-card:hover {
-            background: rgba(40, 33, 60, 0.9);
-            transform: translateY(-8px);
-            border-color: #d4af77;
-        }
-
-        /* Portfolio Grid */
-        .portfolio-grid {
-            display: grid;
-            grid-template-columns: repeat(auto-fill, minmax(340px, 1fr));
-            gap: 30px;
-        }
-
-        .portfolio-item {
-            border-radius: 24px;
-            overflow: hidden;
-            position: relative;
-            cursor: pointer;
-            transition: all 0.3s;
-            box-shadow: 0 12px 25px -8px rgba(0,0,0,0.5);
-        }
-
-        .portfolio-item img {
-            width: 100%;
-            height: 320px;
-            object-fit: cover;
-            transition: transform 0.6s cubic-bezier(0.2, 0.9, 0.4, 1.1);
-        }
-
-        .portfolio-overlay {
-            position: absolute;
-            bottom: 0;
-            left: 0;
-            right: 0;
-            background: linear-gradient(to top, #0b0712, transparent);
-            padding: 30px 20px 20px;
-            opacity: 0;
-            transition: 0.4s;
-        }
-
-        .portfolio-item:hover img {
-            transform: scale(1.05);
-        }
-
-        .portfolio-item:hover .portfolio-overlay {
-            opacity: 1;
-        }
-
-        .portfolio-overlay h4 {
-            font-size: 1.5rem;
-            margin-bottom: 5px;
-        }
-
-        /* Testimonials */
-        .testimonial-grid {
-            display: grid;
-            grid-template-columns: repeat(auto-fit, minmax(300px, 1fr));
-            gap: 30px;
-        }
-
-        .testimonial-card {
-            background: #15101f;
-            padding: 32px;
-            border-radius: 28px;
-            border: 1px solid #2a2438;
-            transition: 0.2s;
-        }
-
-        .testimonial-card i.fa-quote-left {
-            font-size: 2rem;
-            color: #d4af77;
-            opacity: 0.6;
-            margin-bottom: 15px;
-            display: inline-block;
-        }
-
-        .testimonial-text {
-            font-style: italic;
-            line-height: 1.6;
-            margin: 15px 0;
-            color: #e1daf2;
-        }
-
-        .client-name {
-            font-weight: 700;
-            color: #d4af77;
-            margin-top: 12px;
-        }
-
-        /* Contact */
-        .contact-flex {
-            display: grid;
-            grid-template-columns: 1fr 1fr;
-            gap: 50px;
-            background: rgba(20, 15, 33, 0.6);
-            border-radius: 48px;
-            padding: 50px;
-            backdrop-filter: blur(5px);
-            border: 1px solid rgba(212, 175, 119, 0.3);
-        }
-
-        .contact-info h3 {
-            font-size: 2rem;
-            margin-bottom: 20px;
-        }
-
-        .contact-info p {
-            margin-bottom: 25px;
-            line-height: 1.6;
-        }
-
-        .contact-detail {
-            display: flex;
-            align-items: center;
-            gap: 15px;
-            margin-bottom: 20px;
-        }
-
-        .contact-detail i {
-            width: 40px;
-            height: 40px;
-            background: #d4af771a;
-            border-radius: 50%;
-            display: inline-flex;
-            align-items: center;
-            justify-content: center;
-            font-size: 1.2rem;
-            color: #d4af77;
-        }
-
-        .contact-form input, .contact-form textarea {
-            width: 100%;
-            background: #231f32;
-            border: 1px solid #3e3656;
-            padding: 15px 18px;
-            border-radius: 40px;
-            margin-bottom: 20px;
-            color: white;
-            font-family: 'Inter', sans-serif;
-            transition: 0.2s;
-        }
-
-        .contact-form input:focus, .contact-form textarea:focus {
-            outline: none;
-            border-color: #d4af77;
-            background: #2a253d;
-        }
-
-        .contact-form textarea {
-            border-radius: 24px;
-            resize: vertical;
-        }
-
-        .contact-form button {
-            background: #d4af77;
-            border: none;
-            padding: 14px 28px;
-            border-radius: 40px;
-            font-weight: 700;
-            color: #0b0712;
-            cursor: pointer;
-            width: 100%;
-            transition: 0.25s;
-        }
-
-        /* Footer */
-        footer {
-            background: #05030c;
-            padding: 50px 0 30px;
-            border-top: 1px solid #231e32;
-            text-align: center;
-        }
-
-        .footer-social a {
-            color: #cdc6e0;
-            font-size: 1.4rem;
-            margin: 0 15px;
-            transition: 0.2s;
-        }
-
-        .footer-social a:hover {
-            color: #d4af77;
-        }
-
-        /* Lightbox modal */
-        .lightbox {
-            position: fixed;
-            top: 0;
-            left: 0;
-            width: 100%;
-            height: 100%;
-            background: rgba(0,0,0,0.95);
-            backdrop-filter: blur(15px);
-            z-index: 2000;
-            display: none;
-            justify-content: center;
-            align-items: center;
-            cursor: pointer;
-        }
-
-        .lightbox.active {
-            display: flex;
-        }
-
-        .lightbox img {
-            max-width: 85vw;
-            max-height: 85vh;
-            border-radius: 24px;
-            box-shadow: 0 0 45px rgba(0,0,0,0.8);
-            border: 2px solid #d4af77;
-        }
-
-        .close-lightbox {
-            position: absolute;
-            top: 30px;
-            right: 40px;
-            font-size: 2.5rem;
-            color: #d4af77;
-            cursor: pointer;
-        }
-
-        /* Mobile */
-        @media (max-width: 992px) {
-            .hero-title { font-size: 3.5rem; }
-            .about-grid, .contact-flex { grid-template-columns: 1fr; }
-            .nav-links {
-                position: fixed;
-                top: 80px;
-                left: -100%;
-                width: 80%;
-                height: calc(100vh - 80px);
-                background: #0d0920e6;
-                backdrop-filter: blur(24px);
-                flex-direction: column;
-                align-items: center;
-                justify-content: center;
-                gap: 2rem;
-                transition: 0.3s;
-                border-radius: 0 24px 24px 0;
-            }
-            .nav-links.active {
-                left: 0;
-            }
-            .menu-btn {
-                display: block;
-            }
-            .section-title {
-                font-size: 2.2rem;
-            }
-        }
-
-        @media (max-width: 580px) {
-            .container { padding: 0 20px; }
-            .hero-title { font-size: 2.6rem; }
-            .btn-primary, .btn-outline { padding: 10px 24px; }
-        }
-    </style>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0, viewport-fit=cover">
+  <title>Nebula Interiors | Minimalist Design Studio</title>
+  <!-- Google Fonts: Elegant Serif & Sans -->
+  <link href="https://fonts.googleapis.com/css2?family=Inter:opsz,wght@14..32,300;14..32,400;14..32,500;14..32,600;14..32,700&family=Playfair+Display:ital,wght@0,400;0,500;0,600;0,700;0,800;1,400&display=swap" rel="stylesheet">
+  <!-- Font Awesome 6 (free icons) -->
+  <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0-beta3/css/all.min.css">
+  <!-- Tailwind CSS v3 + Custom layer -->
+  <script src="https://cdn.tailwindcss.com"></script>
+  <style>
+    /* Custom overrides for a refined, airy framer-style aesthetic */
+    body {
+      font-family: 'Inter', sans-serif;
+      background-color: #FCFAF7;
+      color: #1A1A1A;
+      scroll-behavior: smooth;
+    }
+    h1, h2, h3, h4, .serif, .logo-font {
+      font-family: 'Playfair Display', serif;
+    }
+    /* custom subtle scrollbar */
+    ::-webkit-scrollbar {
+      width: 6px;
+    }
+    ::-webkit-scrollbar-track {
+      background: #E8E5DF;
+    }
+    ::-webkit-scrollbar-thumb {
+      background: #C6A15B;
+      border-radius: 8px;
+    }
+    /* image hover smooth */
+    .img-hover-zoom {
+      transition: transform 0.6s cubic-bezier(0.2, 0.9, 0.4, 1.1);
+    }
+    .group:hover .img-hover-zoom {
+      transform: scale(1.03);
+    }
+    /* framer-like smooth transition for cards */
+    .card-transition {
+      transition: all 0.3s ease;
+    }
+    .card-transition:hover {
+      transform: translateY(-6px);
+    }
+    /* custom focus ring */
+    input:focus, textarea:focus {
+      outline: none;
+      ring: 2px solid #C6A15B;
+      border-color: #C6A15B;
+    }
+    /* Nav link hover */
+    .nav-link {
+      position: relative;
+    }
+    .nav-link:after {
+      content: '';
+      position: absolute;
+      width: 0;
+      height: 1px;
+      bottom: -4px;
+      left: 0;
+      background-color: #C6A15B;
+      transition: width 0.25s ease;
+    }
+    .nav-link:hover:after {
+      width: 100%;
+    }
+    /* Lightbox custom */
+    .lightbox {
+      background: rgba(0, 0, 0, 0.92);
+      backdrop-filter: blur(12px);
+    }
+  </style>
 </head>
-<body>
+<body class="antialiased">
 
-<div class="navbar" id="navbar">
-    <div class="nav-container">
-        <a href="#" class="logo">✦ NEBULA</a>
-        <div class="menu-btn" id="menuBtn">
-            <i class="fas fa-bars"></i>
-        </div>
-        <ul class="nav-links" id="navLinks">
-            <li><a href="#home">Home</a></li>
-            <li><a href="#about">Studio</a></li>
-            <li><a href="#services">Services</a></li>
-            <li><a href="#portfolio">Portfolio</a></li>
-            <li><a href="#testimonials">Voices</a></li>
-            <li><a href="#contact">Contact</a></li>
-        </ul>
+  <!-- ========== STICKY NAVBAR (minimal & transparent) ========== -->
+  <nav class="fixed top-0 left-0 w-full z-50 transition-all duration-300 bg-white/80 backdrop-blur-md border-b border-gray-100">
+    <div class="max-w-7xl mx-auto px-6 md:px-10 py-5 flex justify-between items-center">
+      <a href="#home" class="text-2xl md:text-3xl font-semibold tracking-tight serif text-neutral-900 hover:opacity-80 transition">Nebula</a>
+      <!-- Desktop menu -->
+      <div class="hidden md:flex space-x-10 text-sm font-medium text-neutral-700">
+        <a href="#home" class="nav-link">Home</a>
+        <a href="#studio" class="nav-link">Studio</a>
+        <a href="#services" class="nav-link">Services</a>
+        <a href="#work" class="nav-link">Work</a>
+        <a href="#stories" class="nav-link">Stories</a>
+        <a href="#contact" class="nav-link">Contact</a>
+      </div>
+      <!-- Mobile hamburger -->
+      <div class="md:hidden">
+        <button id="menuBtn" class="text-2xl text-neutral-800 focus:outline-none">
+          <i class="fas fa-bars"></i>
+        </button>
+      </div>
     </div>
-</div>
-
-<!-- Hero -->
-<section id="home" class="hero">
-    <div class="container hero-content">
-        <span style="color:#d4af77; letter-spacing:3px; font-weight:500;">INTERIOR ALCHEMY</span>
-        <h1 class="hero-title">Crafting Cosmic<br>Spaces, Earthly Warmth</h1>
-        <p class="hero-sub">Nebula Interiors — where galaxies of inspiration meet timeless elegance. Bespoke design that transcends the ordinary.</p>
-        <div class="btn-group">
-            <button class="btn-primary" onclick="document.getElementById('contact').scrollIntoView({behavior:'smooth'})">Start your journey</button>
-            <button class="btn-outline" onclick="document.getElementById('portfolio').scrollIntoView({behavior:'smooth'})">Explore cosmos</button>
-        </div>
+    <!-- Mobile menu panel -->
+    <div id="mobileMenu" class="fixed inset-0 bg-white/95 backdrop-blur-lg z-40 flex flex-col items-center justify-center space-y-8 text-xl font-medium transform translate-x-full transition-transform duration-300 ease-in-out md:hidden">
+      <button id="closeMenu" class="absolute top-6 right-6 text-3xl text-neutral-600">&times;</button>
+      <a href="#home" class="nav-link-mobile">Home</a>
+      <a href="#studio" class="nav-link-mobile">Studio</a>
+      <a href="#services" class="nav-link-mobile">Services</a>
+      <a href="#work" class="nav-link-mobile">Work</a>
+      <a href="#stories" class="nav-link-mobile">Stories</a>
+      <a href="#contact" class="nav-link-mobile">Contact</a>
     </div>
-</section>
+  </nav>
 
-<!-- About Section -->
-<section id="about">
-    <div class="container">
-        <div class="about-grid">
-            <div class="about-text">
-                <h3>Beyond the expected</h3>
-                <p>Founded by visionaries, Nebula curates interiors that breathe stardust and sophistication. Each design is a signature — blending celestial minimalism with organic textures. We don’t just decorate; we choreograph energy, light, and function into a seamless narrative.</p>
-                <p>With award-winning designers and a philosophy rooted in infinite creativity, we translate your story into spatial poetry. Recognized globally for pushing boundaries, we are the atelier for the connoisseur.</p>
-                <p><strong>✦ 200+ luxury projects | ✦ 15 design awards | ✦ 4 continents</strong></p>
-            </div>
-            <div class="about-img">
-                <img src="https://images.unsplash.com/photo-1600585154340-be6161a56a0c?w=700&h=500&fit=crop" alt="Nebula interior design studio">
-            </div>
+  <!-- HERO SECTION (serene, spacious, minimalist) -->
+  <section id="home" class="pt-36 md:pt-44 pb-20 md:pb-28 px-6 md:px-10 max-w-7xl mx-auto">
+    <div class="grid md:grid-cols-2 gap-12 items-center">
+      <div class="space-y-6">
+        <span class="text-xs uppercase tracking-[0.2em] text-stone-500 font-medium">Interior Architecture</span>
+        <h1 class="text-5xl md:text-7xl lg:text-8xl font-light tracking-tight serif leading-[1.1] text-neutral-900">Where silence<br>speaks volume.</h1>
+        <p class="text-base md:text-lg text-neutral-500 max-w-md leading-relaxed">Nebula creates quiet, considered spaces that breathe. Designed for those who value balance, texture, and timeless form.</p>
+        <div class="flex flex-wrap gap-4 pt-4">
+          <a href="#contact" class="px-8 py-3 bg-neutral-900 text-white text-sm font-medium rounded-full hover:bg-neutral-800 transition shadow-sm">Begin the journey</a>
+          <a href="#work" class="px-8 py-3 border border-neutral-300 text-neutral-800 text-sm font-medium rounded-full hover:bg-neutral-50 transition">View portfolio</a>
         </div>
+      </div>
+      <div class="relative aspect-[4/3] md:aspect-square rounded-3xl overflow-hidden shadow-xl">
+        <img src="https://images.unsplash.com/photo-1616486338812-3eada4c3d61c?w=800&h=1000&fit=crop" alt="Minimalist interior" class="w-full h-full object-cover img-hover-zoom">
+      </div>
     </div>
-</section>
+  </section>
 
-<!-- Services Section -->
-<section id="services">
-    <div class="container">
-        <h2 class="section-title">Stellar Services</h2>
-        <p class="section-sub">From concept to constellation — full spectrum interior experiences</p>
-        <div class="services-grid">
-            <div class="service-card"><i class="fas fa-drafting-compass"></i><h4>Cosmic Concept</h4><p>Vision-driven moodboards, space planning & 3D visualizations.</p></div>
-            <div class="service-card"><i class="fas fa-couch"></i><h4>Residential Galaxy</h4><p>Luxury apartments, penthouses, and bespoke homes.</p></div>
-            <div class="service-card"><i class="fas fa-building"></i><h4>Commercial Nebula</h4><p>Hotels, boutiques, offices with immersive identity.</p></div>
-            <div class="service-card"><i class="fas fa-leaf"></i><h4>Bio-Philic Design</h4><p>Harmony with nature, sustainable materials & wellness.</p></div>
+  <!-- STUDIO / ABOUT (quiet luxury) -->
+  <section id="studio" class="py-20 md:py-28 bg-neutral-50/40">
+    <div class="max-w-7xl mx-auto px-6 md:px-10">
+      <div class="grid md:grid-cols-2 gap-16 items-start">
+        <div class="space-y-5">
+          <span class="text-stone-400 text-sm uppercase tracking-wider">— The atelier</span>
+          <h2 class="text-3xl md:text-5xl serif font-medium text-neutral-900">Craft with intention, design with stillness.</h2>
+          <div class="w-12 h-0.5 bg-amber-600/40 my-5"></div>
+          <p class="text-neutral-600 leading-relaxed">Founded by architects and artisans, Nebula is not just an interior studio—it is a philosophy of restraint. We believe that true luxury lies in subtlety: the warmth of natural oak, the poetry of shadow, the precision of negative space.</p>
+          <p class="text-neutral-600 leading-relaxed">Each project is a quiet collaboration, stripping the unnecessary to reveal the essential. Our work has been recognized across Milan, Paris, and Tokyo for its meditative minimalism.</p>
+          <div class="flex gap-12 pt-4">
+            <div><span class="block text-3xl serif font-semibold">12+</span><span class="text-sm text-neutral-500">Years of quiet craft</span></div>
+            <div><span class="block text-3xl serif font-semibold">47</span><span class="text-sm text-neutral-500">Residential projects</span></div>
+            <div><span class="block text-3xl serif font-semibold">9</span><span class="text-sm text-neutral-500">Global awards</span></div>
+          </div>
         </div>
-    </div>
-</section>
-
-<!-- Portfolio Section -->
-<section id="portfolio">
-    <div class="container">
-        <h2 class="section-title">Celestial Portfolio</h2>
-        <p class="section-sub">Curated masterpieces that redefine interior architecture</p>
-        <div class="portfolio-grid" id="portfolioGrid">
-            <!-- dynamic js will generate but we can render static images using array -->
+        <div class="grid grid-cols-2 gap-4">
+          <img src="https://images.unsplash.com/photo-1600565193348-f74bd4c35c85?w=500&h=600&fit=crop" class="rounded-2xl w-full h-64 object-cover shadow-md img-hover-zoom" alt="detail design">
+          <img src="https://images.unsplash.com/photo-1618221195710-dd6b41faaea6?w=500&h=600&fit=crop" class="rounded-2xl w-full h-64 object-cover mt-6 shadow-md img-hover-zoom" alt="minimal living">
+          <img src="https://images.unsplash.com/photo-1583847268964-b28dc8f51f92?w=500&h=400&fit=crop" class="rounded-2xl w-full h-48 object-cover shadow-md img-hover-zoom col-span-2" alt="texture">
         </div>
+      </div>
     </div>
-</section>
+  </section>
 
-<!-- Testimonials -->
-<section id="testimonials">
-    <div class="container">
-        <h2 class="section-title">Nebula Chronicles</h2>
-        <p class="section-sub">What our interstellar clients say</p>
-        <div class="testimonial-grid">
-            <div class="testimonial-card"><i class="fas fa-quote-left"></i><p class="testimonial-text">"Nebula transformed our loft into a sanctuary of calm and wonder. Every detail echoes elegance, from lighting to textures. Exceeds expectations!"</p><div class="client-name">— Helen james., Art Collector</div></div>
-            <div class="testimonial-card"><i class="fas fa-quote-left"></i><p class="testimonial-text">"The Nebula team brought ethereal beauty into our boutique hotel. Guests rave about the otherworldly ambience. A truly visionary studio."</p><div class="client-name">— Marcus john,Hotelier</div></div>
-            <div class="testimonial-card"><i class="fas fa-quote-left"></i><p class="testimonial-text">"We hired Nebula for our corporate HQ — the result is a breathtaking mix of innovation and comfort. Best investment ever."</p><div class="client-name">— john j., CEO</div></div>
+  <!-- SERVICES — minimal, like framer cards -->
+  <section id="services" class="py-24 md:py-32 max-w-7xl mx-auto px-6 md:px-10">
+    <div class="text-center max-w-2xl mx-auto mb-16">
+      <span class="text-amber-700/70 text-sm font-medium tracking-wider">— What we offer</span>
+      <h2 class="text-3xl md:text-5xl serif font-medium mt-3 text-neutral-900">Disciplined elegance,<br>tailored to you.</h2>
+      <p class="text-neutral-500 mt-5">A holistic approach ranging from spatial strategy to curated objects.</p>
+    </div>
+    <div class="grid md:grid-cols-3 gap-8">
+      <div class="group bg-white p-8 rounded-2xl border border-neutral-100 shadow-sm card-transition hover:shadow-md">
+        <i class="fas fa-pencil-ruler text-3xl text-amber-600/80 mb-5"></i>
+        <h3 class="text-xl font-semibold serif mb-3">Concept & Narrative</h3>
+        <p class="text-neutral-500 text-sm leading-relaxed">We shape stories through mood, materiality, and atmosphere — creating a sensory blueprint for your space.</p>
+      </div>
+      <div class="group bg-white p-8 rounded-2xl border border-neutral-100 shadow-sm card-transition hover:shadow-md">
+        <i class="fas fa-couch text-3xl text-amber-600/80 mb-5"></i>
+        <h3 class="text-xl font-semibold serif mb-3">Interior Architecture</h3>
+        <p class="text-neutral-500 text-sm leading-relaxed">From custom joinery to spatial flow, we design volumes that feel both generous and intimate.</p>
+      </div>
+      <div class="group bg-white p-8 rounded-2xl border border-neutral-100 shadow-sm card-transition hover:shadow-md">
+        <i class="fas fa-leaf text-3xl text-amber-600/80 mb-5"></i>
+        <h3 class="text-xl font-semibold serif mb-3">Sourcing & Curation</h3>
+        <p class="text-neutral-500 text-sm leading-relaxed">We source unique furniture, lighting, and art from independent makers — building soulful compositions.</p>
+      </div>
+    </div>
+  </section>
+
+  <!-- WORK / PORTFOLIO (grid with lightbox) -->
+  <section id="work" class="py-16 bg-neutral-50/30">
+    <div class="max-w-7xl mx-auto px-6 md:px-10">
+      <div class="mb-14">
+        <span class="text-stone-400 text-sm uppercase tracking-widest">— Selected projects</span>
+        <h2 class="text-3xl md:text-5xl serif font-medium mt-2 text-neutral-900">Spaces that breathe.</h2>
+      </div>
+      <div class="grid sm:grid-cols-2 lg:grid-cols-3 gap-6" id="portfolioGrid">
+        <!-- dynamic portfolio injected via js -->
+      </div>
+    </div>
+  </section>
+
+  <!-- TESTIMONIALS (pure elegance, minimal) -->
+  <section id="stories" class="py-24 max-w-7xl mx-auto px-6 md:px-10">
+    <div class="text-center max-w-2xl mx-auto mb-16">
+      <span class="text-amber-700/60 text-sm tracking-widest">— Quiet praise</span>
+      <h2 class="text-3xl md:text-5xl serif font-medium mt-3 text-neutral-900">What clients feel</h2>
+      <div class="w-16 h-px bg-neutral-300 mx-auto mt-6"></div>
+    </div>
+    <div class="grid md:grid-cols-3 gap-7">
+      <div class="bg-white p-7 rounded-2xl border border-neutral-100 shadow-sm">
+        <i class="fas fa-quote-left text-2xl text-amber-500/40 mb-4"></i>
+        <p class="text-neutral-600 text-sm italic leading-relaxed">“Nebula transformed our empty loft into a meditative home. Every corner feels intentional, calm, and beautifully restrained.”</p>
+        <div class="mt-6 flex items-center gap-3">
+          <div class="w-8 h-8 rounded-full bg-neutral-200 flex items-center justify-center text-xs">LM</div>
+          <div><p class="text-sm font-medium">— Luca Moretti</p><p class="text-xs text-neutral-400">Designer</p></div>
         </div>
-    </div>
-</section>
-
-<!-- Contact Section -->
-<section id="contact">
-    <div class="container">
-        <div class="contact-flex">
-            <div class="contact-info">
-                <h3>Ignite your space</h3>
-                <p>Discuss your project with our principal designers. From visionary sketches to turnkey delivery, we craft unparalleled interiors.</p>
-                <div class="contact-detail"><i class="fas fa-map-marker-alt"></i> <span>Abuja, Nigeria</span></div>
-                <div class="contact-detail"><i class="fas fa-phone-alt"></i> <span>+234 8140295116</span></div>
-                <div class="contact-detail"><i class="fas fa-envelope"></i> <span>nebula-interior.vercel.app</span></div>
-                <div class="contact-detail"><i class="fas fa-star-of-life"></i> <span>Consultation by appointment</span></div>
-            </div>
-            <div class="contact-form">
-                <form id="contactForm">
-                    <input type="text" placeholder="Full name" id="name" required>
-                    <input type="email" placeholder="Email address" id="email" required>
-                    <textarea rows="4" placeholder="Tell us about your dream space..." id="message" required></textarea>
-                    <button type="submit">Send celestial request <i class="fas fa-arrow-right"></i></button>
-                </form>
-            </div>
+      </div>
+      <div class="bg-white p-7 rounded-2xl border border-neutral-100 shadow-sm">
+        <i class="fas fa-quote-left text-2xl text-amber-500/40 mb-4"></i>
+        <p class="text-neutral-600 text-sm italic leading-relaxed">“A masterclass in minimalist luxury. The team listened and elevated our vision beyond expectations.”</p>
+        <div class="mt-6 flex items-center gap-3">
+          <div class="w-8 h-8 rounded-full bg-neutral-200 flex items-center justify-center text-xs">SR</div>
+          <div><p class="text-sm font-medium">— Sofia Romano</p><p class="text-xs text-neutral-400">Architect</p></div>
         </div>
-    </div>
-</section>
-
-<footer>
-    <div class="container">
-        <div class="footer-social">
-            <a href="#"><i class="fab fa-instagram"></i></a>
-            <a href="#"><i class="fab fa-pinterest-p"></i></a>
-            <a href="#"><i class="fab fa-linkedin-in"></i></a>
-            <a href="#"><i class="fab fa-behance"></i></a>
+      </div>
+      <div class="bg-white p-7 rounded-2xl border border-neutral-100 shadow-sm">
+        <i class="fas fa-quote-left text-2xl text-amber-500/40 mb-4"></i>
+        <p class="text-neutral-600 text-sm italic leading-relaxed">“Working with Nebula felt like a creative sanctuary. The result? A space that truly reflects who we are.”</p>
+        <div class="mt-6 flex items-center gap-3">
+          <div class="w-8 h-8 rounded-full bg-neutral-200 flex items-center justify-center text-xs">EK</div>
+          <div><p class="text-sm font-medium">— Elena K.</p><p class="text-xs text-neutral-400">Collector</p></div>
         </div>
-        <p style="margin-top: 35px; font-size: 0.85rem;">© 2025 NEBULA INTERIORS — Where the cosmos meets craftsmanship. All rights reserved.</p>
-        <p style="margin-top: 12px; font-size: 0.75rem;">✦ KM designs✦</p>
+      </div>
     </div>
-</footer>
+  </section>
 
-<!-- Lightbox Modal -->
-<div id="lightbox" class="lightbox">
-    <span class="close-lightbox">&times;</span>
-    <img id="lightboxImg" src="" alt="Enlarged view">
-</div>
+  <!-- CONTACT (clean editorial) -->
+  <section id="contact" class="py-24 bg-white border-t border-neutral-100">
+    <div class="max-w-6xl mx-auto px-6 md:px-10">
+      <div class="grid md:grid-cols-2 gap-16">
+        <div>
+          <h2 class="text-3xl md:text-4xl serif font-medium text-neutral-900">Begin a conversation</h2>
+          <div class="mt-5 h-px w-12 bg-amber-500/50"></div>
+          <p class="text-neutral-500 mt-6 leading-relaxed">We collaborate with clients globally. Reach out to discuss your vision, and we’ll respond within 48 hours.</p>
+          <div class="mt-10 space-y-5">
+            <div class="flex items-center gap-4"><i class="fas fa-map-marker-alt w-6 text-amber-600/70"></i><span class="text-neutral-600">Milan / New York / Online</span></div>
+            <div class="flex items-center gap-4"><i class="far fa-envelope w-6 text-amber-600/70"></i><span class="text-neutral-600">studio@nebula-interiors.com</span></div>
+            <div class="flex items-center gap-4"><i class="fas fa-phone-alt w-6 text-amber-600/70"></i><span class="text-neutral-600">+1 (212) 555 0990</span></div>
+          </div>
+          <div class="flex gap-5 mt-12">
+            <a href="#" class="text-neutral-400 hover:text-neutral-700 transition"><i class="fab fa-instagram text-xl"></i></a>
+            <a href="#" class="text-neutral-400 hover:text-neutral-700 transition"><i class="fab fa-pinterest-p text-xl"></i></a>
+            <a href="#" class="text-neutral-400 hover:text-neutral-700 transition"><i class="fab fa-linkedin-in text-xl"></i></a>
+          </div>
+        </div>
+        <div>
+          <form id="contactForm" class="space-y-6">
+            <div><input type="text" placeholder="Full name" id="name" class="w-full border-b border-neutral-200 py-3 bg-transparent focus:border-amber-500 transition text-neutral-800 placeholder:text-neutral-400 text-sm"></div>
+            <div><input type="email" placeholder="Email address" id="email" class="w-full border-b border-neutral-200 py-3 bg-transparent focus:border-amber-500 transition text-neutral-800 placeholder:text-neutral-400 text-sm"></div>
+            <div><textarea rows="4" placeholder="Tell us about your project..." id="message" class="w-full border-b border-neutral-200 py-3 bg-transparent focus:border-amber-500 transition text-neutral-800 placeholder:text-neutral-400 text-sm resize-none"></textarea></div>
+            <button type="submit" class="px-8 py-3 bg-neutral-900 text-white text-sm rounded-full hover:bg-neutral-800 transition w-full md:w-auto">Send inquiry →</button>
+          </form>
+          <p id="formFeedback" class="text-xs text-neutral-500 mt-4"></p>
+        </div>
+      </div>
+    </div>
+  </section>
 
-<script>
-    // Portfolio data (interior images)
-    const portfolioItems = [
-        { img: "https://images.unsplash.com/photo-1567016432779-094069958ea5?w=700&h=450&fit=crop", title: "Nebula Lounge", category: "Residential" },
-        { img: "https://images.unsplash.com/photo-1556911220-bff31c812dba?w=700&h=450&fit=crop", title: "Stellar Kitchen", category: "Modern" },
-        { img: "https://images.unsplash.com/photo-1566665797739-1674de7a421a?w=700&h=450&fit=crop", title: "Elysian Bedroom", category: "Master Suite" },
-        { img: "https://images.unsplash.com/photo-1497366754035-f2001dbb0d1c?w=700&h=450&fit=crop", title: "Orion Office", category: "Corporate" },
-        { img: "https://images.unsplash.com/photo-1552321554-5fefe8c9ef14?w=700&h=450&fit=crop", title: "Lunar Bath", category: "Spa" },
-        { img: "https://images.unsplash.com/photo-1582268611958-ebfd161ef9cf?w=700&h=450&fit=crop", title: "Zenith Terrace", category: "Outdoor" }
+  <!-- FOOTER minimal -->
+  <footer class="border-t border-neutral-100 py-12 bg-white">
+    <div class="max-w-7xl mx-auto px-6 md:px-10 flex flex-col md:flex-row justify-between items-center gap-4 text-neutral-400 text-xs">
+      <p>© 2025 Nebula Interiors — Quiet luxury studio</p>
+      <div class="flex gap-6">
+        <a href="#" class="hover:text-neutral-700 transition">Legal</a>
+        <a href="#" class="hover:text-neutral-700 transition">Accessibility</a>
+        <a href="#" class="hover:text-neutral-700 transition">Press</a>
+      </div>
+    </div>
+  </footer>
+
+  <!-- Lightbox Modal -->
+  <div id="lightbox" class="fixed inset-0 lightbox hidden justify-center items-center z-[100] cursor-pointer">
+    <span class="absolute top-6 right-8 text-white text-4xl font-light">&times;</span>
+    <img id="lightboxImg" class="max-w-[88vw] max-h-[85vh] rounded-xl shadow-2xl border border-white/20">
+  </div>
+
+  <script>
+    // Portfolio Grid data (High-end minimal images)
+    const portfolioData = [
+      { img: "https://images.unsplash.com/photo-1600210492493-0946911123ea?w=800&h=1000&fit=crop", title: "Concrete Canvas", tag: "Residence" },
+      { img: "https://images.unsplash.com/photo-1600585154340-be6161a56a0c?w=800&h=1000&fit=crop", title: "Atmospheric Light", tag: "Penthouse" },
+      { img: "https://images.unsplash.com/photo-1616486338812-3eada4c3d61c?w=800&h=1000&fit=crop", title: "Neutral Harmony", tag: "Apartment" },
+      { img: "https://images.unsplash.com/photo-1567016432779-094069958ea5?w=800&h=1000&fit=crop", title: "Monochrome Essence", tag: "Studio" },
+      { img: "https://images.unsplash.com/photo-1556911220-bff31c812dba?w=800&h=1000&fit=crop", title: "Sculptural Kitchen", tag: "Modern" },
+      { img: "https://images.unsplash.com/photo-1583847268964-b28dc8f51f92?w=800&h=1000&fit=crop", title: "Minimalist Retreat", tag: "Wellness" }
     ];
 
-    function loadPortfolio() {
-        const container = document.getElementById('portfolioGrid');
-        if (!container) return;
-        container.innerHTML = '';
-        portfolioItems.forEach(item => {
-            const portfolioDiv = document.createElement('div');
-            portfolioDiv.className = 'portfolio-item';
-            portfolioDiv.setAttribute('data-img', item.img);
-            portfolioDiv.innerHTML = `
-                <img src="${item.img}" alt="${item.title}" loading="lazy">
-                <div class="portfolio-overlay">
-                    <h4>${item.title}</h4>
-                    <p>${item.category}</p>
-                </div>
-            `;
-            portfolioDiv.addEventListener('click', () => openLightbox(item.img));
-            container.appendChild(portfolioDiv);
-        });
+    function buildPortfolio() {
+      const container = document.getElementById('portfolioGrid');
+      if (!container) return;
+      container.innerHTML = '';
+      portfolioData.forEach(item => {
+        const card = document.createElement('div');
+        card.className = 'group cursor-pointer overflow-hidden rounded-2xl bg-white shadow-sm border border-neutral-100';
+        card.innerHTML = `
+          <div class="relative overflow-hidden h-72">
+            <img src="${item.img}" alt="${item.title}" class="w-full h-full object-cover transition duration-700 group-hover:scale-105">
+          </div>
+          <div class="p-5">
+            <p class="text-xs uppercase tracking-wider text-amber-600/70">${item.tag}</p>
+            <h4 class="text-lg font-medium mt-1 serif">${item.title}</h4>
+          </div>
+        `;
+        card.addEventListener('click', () => openLightbox(item.img));
+        container.appendChild(card);
+      });
     }
 
-    // Lightbox Logic
+    // Lightbox functionality
     const lightbox = document.getElementById('lightbox');
     const lightboxImg = document.getElementById('lightboxImg');
-    function openLightbox(imgSrc) {
-        lightboxImg.src = imgSrc;
-        lightbox.classList.add('active');
-        document.body.style.overflow = 'hidden';
+    function openLightbox(src) {
+      lightboxImg.src = src;
+      lightbox.classList.remove('hidden');
+      lightbox.classList.add('flex');
+      document.body.style.overflow = 'hidden';
     }
     function closeLightbox() {
-        lightbox.classList.remove('active');
-        document.body.style.overflow = '';
+      lightbox.classList.add('hidden');
+      lightbox.classList.remove('flex');
+      document.body.style.overflow = '';
     }
     if(lightbox) {
-        lightbox.addEventListener('click', (e) => {
-            if(e.target === lightbox || e.target.classList.contains('close-lightbox')) closeLightbox();
-        });
-        document.addEventListener('keydown', (e) => {
-            if(e.key === 'Escape' && lightbox.classList.contains('active')) closeLightbox();
-        });
+      lightbox.addEventListener('click', (e) => {
+        if(e.target === lightbox || e.target.classList.contains('close-lightbox') || e.target.tagName === 'SPAN') {
+          closeLightbox();
+        }
+      });
+      document.addEventListener('keydown', (e) => { if(e.key === 'Escape') closeLightbox(); });
     }
 
     // Mobile menu toggle
     const menuBtn = document.getElementById('menuBtn');
-    const navLinks = document.getElementById('navLinks');
-    if(menuBtn) {
-        menuBtn.addEventListener('click', () => {
-            navLinks.classList.toggle('active');
-            const icon = menuBtn.querySelector('i');
-            if(icon.classList.contains('fa-bars')) {
-                icon.classList.remove('fa-bars');
-                icon.classList.add('fa-times');
-            } else {
-                icon.classList.remove('fa-times');
-                icon.classList.add('fa-bars');
-            }
+    const mobileMenu = document.getElementById('mobileMenu');
+    const closeMenuBtn = document.getElementById('closeMenu');
+    if(menuBtn && mobileMenu && closeMenuBtn) {
+      menuBtn.addEventListener('click', () => {
+        mobileMenu.classList.remove('translate-x-full');
+        mobileMenu.classList.add('translate-x-0');
+      });
+      closeMenuBtn.addEventListener('click', () => {
+        mobileMenu.classList.remove('translate-x-0');
+        mobileMenu.classList.add('translate-x-full');
+      });
+      const mobileLinks = document.querySelectorAll('.nav-link-mobile');
+      mobileLinks.forEach(link => {
+        link.addEventListener('click', () => {
+          mobileMenu.classList.remove('translate-x-0');
+          mobileMenu.classList.add('translate-x-full');
         });
-        // Close menu when clicking on any link
-        const links = document.querySelectorAll('.nav-links a');
-        links.forEach(link => {
-            link.addEventListener('click', () => {
-                navLinks.classList.remove('active');
-                const icon = menuBtn.querySelector('i');
-                if(icon.classList.contains('fa-times')) {
-                    icon.classList.remove('fa-times');
-                    icon.classList.add('fa-bars');
-                }
-            });
-        });
+      });
     }
 
-    // Contact form submission
-    const contactForm = document.getElementById('contactForm');
-    if(contactForm) {
-        contactForm.addEventListener('submit', function(e) {
-            e.preventDefault();
-            const name = document.getElementById('name').value.trim();
-            const email = document.getElementById('email').value.trim();
-            const message = document.getElementById('message').value.trim();
-            if(name && email && message) {
-                alert(`✨ Thank you, ${name}! Your celestial vision has been received. Our design oracle will reply within 24h.`);
-                contactForm.reset();
-            } else {
-                alert('Please fill all fields to journey with us.');
-            }
-        });
-    }
-
-    // Sticky navbar shadow on scroll
-    window.addEventListener('scroll', () => {
-        const navbar = document.getElementById('navbar');
-        if(window.scrollY > 50) {
-            navbar.style.background = "rgba(11, 7, 18, 0.9)";
-            navbar.style.backdropFilter = "blur(18px)";
+    // Contact form handler
+    const form = document.getElementById('contactForm');
+    const feedback = document.getElementById('formFeedback');
+    if(form) {
+      form.addEventListener('submit', (e) => {
+        e.preventDefault();
+        const name = document.getElementById('name').value.trim();
+        const email = document.getElementById('email').value.trim();
+        const msg = document.getElementById('message').value.trim();
+        if(name && email && msg) {
+          feedback.innerHTML = '<span class="text-green-600">✓ Message sent. We’ll be in touch soon.</span>';
+          form.reset();
+          setTimeout(() => { feedback.innerHTML = ''; }, 4000);
         } else {
-            navbar.style.background = "rgba(11, 7, 18, 0.7)";
+          feedback.innerHTML = '<span class="text-amber-700">Please fill all fields.</span>';
         }
+      });
+    }
+
+    // Navbar background change on scroll
+    window.addEventListener('scroll', () => {
+      const nav = document.querySelector('nav');
+      if(window.scrollY > 20) {
+        nav.classList.add('bg-white/90', 'shadow-sm');
+        nav.classList.remove('bg-white/80');
+      } else {
+        nav.classList.remove('bg-white/90', 'shadow-sm');
+        nav.classList.add('bg-white/80');
+      }
     });
 
-    // Initialize Portfolio
-    loadPortfolio();
-    
-    // Smooth scroll for all anchor links
+    // Smooth scroll for anchor links
     document.querySelectorAll('a[href^="#"]').forEach(anchor => {
-        anchor.addEventListener('click', function(e) {
-            const target = document.querySelector(this.getAttribute('href'));
-            if(target) {
-                e.preventDefault();
-                target.scrollIntoView({ behavior: 'smooth', block: 'start' });
-            }
-        });
+      anchor.addEventListener('click', function(e) {
+        const targetId = this.getAttribute('href');
+        if(targetId === "#") return;
+        const targetElem = document.querySelector(targetId);
+        if(targetElem) {
+          e.preventDefault();
+          targetElem.scrollIntoView({ behavior: 'smooth', block: 'start' });
+        }
+      });
     });
-</script>
+
+    buildPortfolio();
+  </script>
+
+  <style>
+    .nav-link-mobile {
+      font-family: 'Inter', sans-serif;
+      font-weight: 450;
+      font-size: 1.4rem;
+      color: #1f1f1f;
+      padding: 0.5rem 1rem;
+      transition: 0.2s;
+    }
+    .nav-link-mobile:hover { color: #b87c4a; }
+    img {
+      will-change: transform;
+    }
+  </style>
 </body>
 </html>
