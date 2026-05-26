@@ -1,2059 +1,790 @@
 <!DOCTYPE html>
 <html lang="en">
 <head>
-<meta charset="UTF-8">
-<meta name="viewport" content="width=device-width, initial-scale=1.0">
-<title>Nebula — Luxury Interior Design</title>
-<link rel="preconnect" href="https://fonts.googleapis.com">
-<link href="https://fonts.googleapis.com/css2?family=Cormorant+Garamond:ital,wght@0,300;0,400;0,600;1,300;1,400&family=Raleway:wght@200;300;400;500&display=swap" rel="stylesheet">
-<style>
-  :root {
-    --ink: #0b0b0f;
-    --paper: #f5f2ec;
-    --gold: #c9a96e;
-    --gold-light: #e8d5b0;
-    --fog: #8a8681;
-    --deep: #1a1820;
-    --accent: #b07d4a;
-  }
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0, viewport-fit=cover">
+    <title>Nebula Interiors | Cosmic Interior Design</title>
+    <!-- Google Fonts & Font Awesome -->
+    <link href="https://fonts.googleapis.com/css2?family=Inter:opsz,wght@14..32,300;14..32,400;14..32,500;14..32,600;14..32,700&family=Playfair+Display:wght@400;500;600;700;800&display=swap" rel="stylesheet">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0-beta3/css/all.min.css">
+    <style>
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+        }
 
-  *, *::before, *::after { margin: 0; padding: 0; box-sizing: border-box; }
+        body {
+            font-family: 'Inter', sans-serif;
+            background-color: #0b0712;
+            color: #edecef;
+            scroll-behavior: smooth;
+            overflow-x: hidden;
+        }
 
-  html { scroll-behavior: smooth; font-size: 16px; }
+        /* custom scrollbar */
+        ::-webkit-scrollbar {
+            width: 6px;
+        }
+        ::-webkit-scrollbar-track {
+            background: #1e192b;
+        }
+        ::-webkit-scrollbar-thumb {
+            background: #c6a15b;
+            border-radius: 8px;
+        }
 
-  body {
-    background: var(--ink);
-    color: var(--paper);
-    font-family: 'Raleway', sans-serif;
-    font-weight: 300;
-    overflow-x: hidden;
-    cursor: none;
-  }
+        h1, h2, h3, .logo, .hero-title, .section-title {
+            font-family: 'Playfair Display', serif;
+        }
 
-  /* Custom cursor */
-  .cursor {
-    position: fixed;
-    width: 10px; height: 10px;
-    background: var(--gold);
-    border-radius: 50%;
-    pointer-events: none;
-    z-index: 9999;
-    transform: translate(-50%, -50%);
-    transition: transform 0.1s ease, width 0.3s ease, height 0.3s ease, background 0.3s ease;
-    mix-blend-mode: difference;
-  }
-  .cursor-ring {
-    position: fixed;
-    width: 38px; height: 38px;
-    border: 1px solid rgba(201,169,110,0.5);
-    border-radius: 50%;
-    pointer-events: none;
-    z-index: 9998;
-    transform: translate(-50%, -50%);
-    transition: transform 0.18s ease, width 0.3s ease, height 0.3s ease;
-  }
-  body:hover .cursor { opacity: 1; }
+        .container {
+            max-width: 1280px;
+            margin: 0 auto;
+            padding: 0 32px;
+        }
 
-  /* Grain overlay */
-  body::before {
-    content: '';
-    position: fixed;
-    inset: 0;
-    background-image: url("data:image/svg+xml,%3Csvg viewBox='0 0 512 512' xmlns='http://www.w3.org/2000/svg'%3E%3Cfilter id='noise'%3E%3CfeTurbulence type='fractalNoise' baseFrequency='0.9' numOctaves='4' stitchTiles='stitch'/%3E%3C/filter%3E%3Crect width='100%25' height='100%25' filter='url(%23noise)' opacity='1'/%3E%3C/svg%3E");
-    opacity: 0.03;
-    pointer-events: none;
-    z-index: 9997;
-  }
+        /* Glassmorphic Navbar */
+        .navbar {
+            position: fixed;
+            top: 0;
+            left: 0;
+            width: 100%;
+            background: rgba(11, 7, 18, 0.7);
+            backdrop-filter: blur(14px);
+            border-bottom: 1px solid rgba(198, 161, 91, 0.25);
+            z-index: 1000;
+            padding: 18px 0;
+            transition: all 0.3s ease;
+        }
 
-  /* NAV */
-  nav {
-    position: fixed;
-    top: 0; left: 0; right: 0;
-    z-index: 1000;
-    padding: 2rem 5vw;
-    display: flex;
-    align-items: center;
-    justify-content: space-between;
-    mix-blend-mode: normal;
-    transition: background 0.6s ease, padding 0.4s ease;
-  }
-  nav.scrolled {
-    background: rgba(11,11,15,0.92);
-    backdrop-filter: blur(20px);
-    padding: 1.2rem 5vw;
-    border-bottom: 1px solid rgba(201,169,110,0.12);
-  }
-  .nav-logo {
-    font-family: 'Cormorant Garamond', serif;
-    font-size: 1.9rem;
-    font-weight: 300;
-    letter-spacing: 0.25em;
-    color: var(--paper);
-    text-decoration: none;
-    text-transform: uppercase;
-  }
-  .nav-logo span { color: var(--gold); }
-  .nav-links {
-    display: flex;
-    gap: 3rem;
-    list-style: none;
-    align-items: center;
-  }
-  .nav-links a {
-    color: rgba(245,242,236,0.65);
-    text-decoration: none;
-    font-size: 0.7rem;
-    letter-spacing: 0.2em;
-    text-transform: uppercase;
-    transition: color 0.3s ease;
-    position: relative;
-  }
-  .nav-links a::after {
-    content: '';
-    position: absolute;
-    bottom: -4px; left: 0;
-    width: 0; height: 1px;
-    background: var(--gold);
-    transition: width 0.4s ease;
-  }
-  .nav-links a:hover { color: var(--gold); }
-  .nav-links a:hover::after { width: 100%; }
-  .nav-cta {
-    border: 1px solid var(--gold) !important;
-    padding: 0.6rem 1.5rem !important;
-    color: var(--gold) !important;
-    letter-spacing: 0.15em !important;
-    transition: background 0.3s ease, color 0.3s ease !important;
-  }
-  .nav-cta:hover { background: var(--gold) !important; color: var(--ink) !important; }
-  .nav-cta::after { display: none !important; }
+        .nav-container {
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+            max-width: 1280px;
+            margin: 0 auto;
+            padding: 0 32px;
+        }
 
-  /* HERO */
-  .hero {
-    min-height: 100vh;
-    position: relative;
-    display: flex;
-    align-items: flex-end;
-    padding: 0 5vw 8vh;
-    overflow: hidden;
-  }
-  .hero-bg {
-    position: absolute;
-    inset: 0;
-    background:
-      radial-gradient(ellipse 80% 60% at 70% 40%, rgba(201,169,110,0.06) 0%, transparent 60%),
-      radial-gradient(ellipse 50% 70% at 20% 80%, rgba(176,125,74,0.05) 0%, transparent 55%),
-      linear-gradient(160deg, #0b0b0f 0%, #1a1820 50%, #0f0e12 100%);
-  }
-  .hero-grid {
-    position: absolute;
-    inset: 0;
-    background-image:
-      linear-gradient(rgba(201,169,110,0.04) 1px, transparent 1px),
-      linear-gradient(90deg, rgba(201,169,110,0.04) 1px, transparent 1px);
-    background-size: 80px 80px;
-    mask-image: radial-gradient(ellipse 70% 70% at 60% 40%, black 0%, transparent 75%);
-  }
-  .hero-line-deco {
-    position: absolute;
-    top: 0; right: 15vw;
-    width: 1px;
-    height: 45vh;
-    background: linear-gradient(to bottom, transparent, var(--gold), transparent);
-    animation: lineFloat 8s ease-in-out infinite;
-  }
-  @keyframes lineFloat {
-    0%, 100% { opacity: 0.3; transform: scaleY(1); }
-    50% { opacity: 0.7; transform: scaleY(1.1); }
-  }
-  .hero-orbit {
-    position: absolute;
-    top: 12vh; right: 10vw;
-    width: 420px; height: 420px;
-    border: 1px solid rgba(201,169,110,0.08);
-    border-radius: 50%;
-    animation: orbit 25s linear infinite;
-  }
-  .hero-orbit::before {
-    content: '';
-    position: absolute;
-    top: -4px; left: 50%;
-    width: 8px; height: 8px;
-    background: var(--gold);
-    border-radius: 50%;
-    transform: translateX(-50%);
-    box-shadow: 0 0 20px var(--gold);
-  }
-  .hero-orbit-2 {
-    width: 260px; height: 260px;
-    top: calc(12vh + 80px); right: calc(10vw + 80px);
-    animation-duration: 15s;
-    animation-direction: reverse;
-    border-color: rgba(201,169,110,0.05);
-  }
-  @keyframes orbit { from { transform: rotate(0deg); } to { transform: rotate(360deg); } }
+        .logo {
+            font-size: 1.9rem;
+            font-weight: 700;
+            letter-spacing: 2px;
+            background: linear-gradient(135deg, #FFFFFF 30%, #D4AF77 80%);
+            -webkit-background-clip: text;
+            background-clip: text;
+            color: transparent;
+            text-decoration: none;
+        }
 
-  .hero-content {
-    position: relative;
-    z-index: 2;
-    max-width: 820px;
-  }
-  .hero-eyebrow {
-    font-size: 0.65rem;
-    letter-spacing: 0.4em;
-    text-transform: uppercase;
-    color: var(--gold);
-    margin-bottom: 2rem;
-    display: flex;
-    align-items: center;
-    gap: 1.2rem;
-    opacity: 0;
-    animation: fadeUp 1s 0.3s forwards;
-  }
-  .hero-eyebrow::before {
-    content: '';
-    width: 40px; height: 1px;
-    background: var(--gold);
-  }
-  .hero-title {
-    font-family: 'Cormorant Garamond', serif;
-    font-size: clamp(3.8rem, 8vw, 9rem);
-    font-weight: 300;
-    line-height: 0.92;
-    letter-spacing: -0.01em;
-    margin-bottom: 2.5rem;
-    opacity: 0;
-    animation: fadeUp 1.1s 0.5s forwards;
-  }
-  .hero-title em {
-    font-style: italic;
-    color: var(--gold);
-  }
-  .hero-title .line { display: block; overflow: hidden; }
-  .hero-sub {
-    font-size: 0.8rem;
-    letter-spacing: 0.1em;
-    color: rgba(245,242,236,0.5);
-    max-width: 380px;
-    line-height: 1.9;
-    margin-bottom: 3rem;
-    opacity: 0;
-    animation: fadeUp 1s 0.7s forwards;
-  }
-  .hero-actions {
-    display: flex;
-    gap: 1.5rem;
-    align-items: center;
-    opacity: 0;
-    animation: fadeUp 1s 0.9s forwards;
-  }
-  .btn-primary {
-    background: var(--gold);
-    color: var(--ink);
-    padding: 1rem 2.8rem;
-    font-family: 'Raleway', sans-serif;
-    font-size: 0.7rem;
-    font-weight: 500;
-    letter-spacing: 0.2em;
-    text-transform: uppercase;
-    text-decoration: none;
-    border: none;
-    cursor: none;
-    position: relative;
-    overflow: hidden;
-    transition: transform 0.3s ease;
-    display: inline-block;
-  }
-  .btn-primary::before {
-    content: '';
-    position: absolute;
-    inset: 0;
-    background: rgba(255,255,255,0.15);
-    transform: translateX(-100%) skewX(-15deg);
-    transition: transform 0.5s ease;
-  }
-  .btn-primary:hover::before { transform: translateX(110%) skewX(-15deg); }
-  .btn-primary:hover { transform: translateY(-2px); }
+        .nav-links {
+            display: flex;
+            gap: 2.5rem;
+            list-style: none;
+        }
 
-  .btn-ghost {
-    color: rgba(245,242,236,0.6);
-    font-size: 0.7rem;
-    letter-spacing: 0.2em;
-    text-transform: uppercase;
-    text-decoration: none;
-    display: flex;
-    align-items: center;
-    gap: 0.8rem;
-    transition: color 0.3s ease;
-  }
-  .btn-ghost:hover { color: var(--paper); }
-  .btn-ghost .arrow {
-    width: 32px; height: 1px;
-    background: currentColor;
-    position: relative;
-    transition: width 0.3s ease;
-  }
-  .btn-ghost .arrow::after {
-    content: '';
-    position: absolute;
-    right: 0; top: -3px;
-    width: 7px; height: 7px;
-    border-right: 1px solid currentColor;
-    border-top: 1px solid currentColor;
-    transform: rotate(45deg);
-  }
-  .btn-ghost:hover .arrow { width: 50px; }
+        .nav-links a {
+            text-decoration: none;
+            color: #f0ede9;
+            font-weight: 500;
+            font-size: 0.95rem;
+            transition: 0.3s;
+            letter-spacing: 0.5px;
+        }
 
-  .hero-scroll-hint {
-    position: absolute;
-    bottom: 6vh; right: 5vw;
-    writing-mode: vertical-rl;
-    font-size: 0.6rem;
-    letter-spacing: 0.3em;
-    color: rgba(245,242,236,0.25);
-    text-transform: uppercase;
-    display: flex;
-    align-items: center;
-    gap: 1rem;
-    opacity: 0;
-    animation: fadeIn 1s 1.5s forwards;
-  }
-  .hero-scroll-hint::after {
-    content: '';
-    width: 1px; height: 60px;
-    background: linear-gradient(to bottom, transparent, var(--fog));
-    animation: scrollPulse 2s ease-in-out infinite;
-  }
-  @keyframes scrollPulse {
-    0%, 100% { opacity: 0.3; }
-    50% { opacity: 0.8; }
-  }
+        .nav-links a:hover {
+            color: #d4af77;
+        }
 
-  .hero-stats {
-    position: absolute;
-    bottom: 6vh; left: 5vw;
-    display: flex;
-    gap: 3rem;
-    opacity: 0;
-    animation: fadeUp 1s 1.2s forwards;
-  }
-  .stat-item { }
-  .stat-num {
-    font-family: 'Cormorant Garamond', serif;
-    font-size: 2.2rem;
-    font-weight: 300;
-    color: var(--gold);
-    line-height: 1;
-  }
-  .stat-label {
-    font-size: 0.6rem;
-    letter-spacing: 0.2em;
-    text-transform: uppercase;
-    color: var(--fog);
-    margin-top: 0.4rem;
-  }
+        .menu-btn {
+            display: none;
+            font-size: 1.8rem;
+            cursor: pointer;
+            color: #d4af77;
+        }
 
-  @keyframes fadeUp {
-    from { opacity: 0; transform: translateY(30px); }
-    to { opacity: 1; transform: translateY(0); }
-  }
-  @keyframes fadeIn {
-    from { opacity: 0; }
-    to { opacity: 1; }
-  }
+        /* Hero Section with Nebula vibe */
+        .hero {
+            min-height: 100vh;
+            display: flex;
+            align-items: center;
+            position: relative;
+            background: radial-gradient(ellipse at 30% 40%, #201a32, #03010a);
+            overflow: hidden;
+        }
 
-  /* SECTION SHARED */
-  section { position: relative; }
-  .section-tag {
-    font-size: 0.6rem;
-    letter-spacing: 0.4em;
-    text-transform: uppercase;
-    color: var(--gold);
-    display: flex;
-    align-items: center;
-    gap: 1rem;
-    margin-bottom: 1.5rem;
-  }
-  .section-tag::before {
-    content: '';
-    width: 30px; height: 1px;
-    background: var(--gold);
-  }
+        .hero::before {
+            content: "";
+            position: absolute;
+            width: 100%;
+            height: 100%;
+            background: url('data:image/svg+xml;utf8,<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 1200 800" opacity="0.15"><path fill="none" d="M0,0 L1200,0 L1200,800 L0,800 Z" /><circle cx="200" cy="150" r="3" fill="white"/><circle cx="500" cy="70" r="2" fill="white"/><circle cx="900" cy="200" r="4" fill="white"/><circle cx="1100" cy="450" r="2.5" fill="white"/><circle cx="80" cy="600" r="3" fill="white"/><circle cx="650" cy="550" r="2" fill="white"/><circle cx="400" cy="720" r="3.5" fill="white"/></svg>');
+            background-repeat: repeat;
+            opacity: 0.3;
+            pointer-events: none;
+        }
 
-  /* MARQUEE */
-  .marquee-strip {
-    background: var(--gold);
-    padding: 1rem 0;
-    overflow: hidden;
-    white-space: nowrap;
-  }
-  .marquee-track {
-    display: inline-flex;
-    animation: marquee 20s linear infinite;
-  }
-  .marquee-item {
-    font-family: 'Cormorant Garamond', serif;
-    font-size: 1.1rem;
-    font-weight: 300;
-    font-style: italic;
-    color: var(--ink);
-    padding: 0 3rem;
-    letter-spacing: 0.05em;
-  }
-  .marquee-dot {
-    color: rgba(11,11,15,0.3);
-    font-size: 0.4rem;
-    vertical-align: middle;
-  }
-  @keyframes marquee {
-    from { transform: translateX(0); }
-    to { transform: translateX(-50%); }
-  }
+        .hero-content {
+            position: relative;
+            z-index: 2;
+            max-width: 780px;
+            padding: 0 20px;
+        }
 
-  /* ABOUT */
-  .about {
-    padding: 14vh 5vw;
-    display: grid;
-    grid-template-columns: 1fr 1fr;
-    gap: 10vw;
-    align-items: center;
-  }
-  .about-left { }
-  .about-title {
-    font-family: 'Cormorant Garamond', serif;
-    font-size: clamp(2.8rem, 5vw, 5.5rem);
-    font-weight: 300;
-    line-height: 1.05;
-    margin-bottom: 2rem;
-  }
-  .about-title em { font-style: italic; color: var(--gold); }
-  .about-body {
-    color: rgba(245,242,236,0.55);
-    line-height: 2;
-    font-size: 0.85rem;
-    margin-bottom: 2rem;
-  }
-  .about-signature {
-    font-family: 'Cormorant Garamond', serif;
-    font-style: italic;
-    font-size: 1.8rem;
-    color: var(--gold);
-    opacity: 0.7;
-  }
-  .about-right {
-    position: relative;
-  }
-  .about-img-wrap {
-    aspect-ratio: 3/4;
-    background: var(--deep);
-    position: relative;
-    overflow: hidden;
-  }
-  .about-img-wrap::before {
-    content: '';
-    position: absolute;
-    inset: 0;
-    background:
-      linear-gradient(135deg, rgba(201,169,110,0.12) 0%, transparent 50%),
-      linear-gradient(to bottom, transparent 50%, rgba(11,11,15,0.4) 100%);
-    z-index: 1;
-  }
-  .room-render {
-    width: 100%; height: 100%;
-    background:
-      radial-gradient(circle at 30% 60%, rgba(201,169,110,0.15) 0%, transparent 50%),
-      linear-gradient(160deg, #1a1820 0%, #0f0e12 100%);
-    display: flex;
-    align-items: center;
-    justify-content: center;
-    position: relative;
-    overflow: hidden;
-  }
-  /* SVG room illustration */
-  .room-render svg { width: 85%; height: 85%; opacity: 0.9; }
+        .hero-title {
+            font-size: 4.6rem;
+            font-weight: 800;
+            line-height: 1.2;
+            margin-bottom: 1rem;
+            background: linear-gradient(to right, #fff, #e9d2a7);
+            -webkit-background-clip: text;
+            background-clip: text;
+            color: transparent;
+        }
 
-  .about-float-card {
-    position: absolute;
-    bottom: -2rem;
-    left: -3rem;
-    background: var(--gold);
-    padding: 2rem 2.5rem;
-    z-index: 2;
-  }
-  .about-float-card .num {
-    font-family: 'Cormorant Garamond', serif;
-    font-size: 3rem;
-    font-weight: 300;
-    color: var(--ink);
-    line-height: 1;
-  }
-  .about-float-card .label {
-    font-size: 0.6rem;
-    letter-spacing: 0.2em;
-    text-transform: uppercase;
-    color: rgba(11,11,15,0.65);
-    margin-top: 0.4rem;
-  }
+        .hero-sub {
+            font-size: 1.2rem;
+            line-height: 1.6;
+            margin-bottom: 2rem;
+            color: #cfcbe6;
+            max-width: 600px;
+        }
 
-  /* SERVICES */
-  .services {
-    padding: 14vh 5vw;
-    background: var(--deep);
-  }
-  .services-header {
-    display: flex;
-    justify-content: space-between;
-    align-items: flex-end;
-    margin-bottom: 6rem;
-  }
-  .services-title {
-    font-family: 'Cormorant Garamond', serif;
-    font-size: clamp(2.5rem, 4.5vw, 5rem);
-    font-weight: 300;
-    line-height: 1.05;
-    max-width: 500px;
-  }
-  .services-title em { font-style: italic; color: var(--gold); }
-  .services-intro {
-    max-width: 320px;
-    color: rgba(245,242,236,0.45);
-    font-size: 0.8rem;
-    line-height: 2;
-  }
-  .services-grid {
-    display: grid;
-    grid-template-columns: repeat(3, 1fr);
-    gap: 0;
-  }
-  .service-card {
-    padding: 3.5rem 3rem;
-    border: 1px solid rgba(201,169,110,0.1);
-    position: relative;
-    overflow: hidden;
-    transition: background 0.5s ease;
-    cursor: none;
-  }
-  .service-card::before {
-    content: '';
-    position: absolute;
-    inset: 0;
-    background: linear-gradient(135deg, rgba(201,169,110,0.06) 0%, transparent 60%);
-    opacity: 0;
-    transition: opacity 0.5s ease;
-  }
-  .service-card:hover { background: rgba(201,169,110,0.04); }
-  .service-card:hover::before { opacity: 1; }
-  .service-num {
-    font-family: 'Cormorant Garamond', serif;
-    font-size: 0.75rem;
-    color: var(--gold);
-    letter-spacing: 0.2em;
-    margin-bottom: 2rem;
-    opacity: 0.6;
-  }
-  .service-icon {
-    width: 48px; height: 48px;
-    margin-bottom: 2rem;
-    opacity: 0.7;
-    transition: opacity 0.3s ease;
-  }
-  .service-card:hover .service-icon { opacity: 1; }
-  .service-name {
-    font-family: 'Cormorant Garamond', serif;
-    font-size: 1.8rem;
-    font-weight: 300;
-    margin-bottom: 1rem;
-    line-height: 1.1;
-  }
-  .service-desc {
-    font-size: 0.78rem;
-    color: rgba(245,242,236,0.45);
-    line-height: 2;
-  }
-  .service-arrow {
-    position: absolute;
-    bottom: 3rem; right: 3rem;
-    width: 40px; height: 40px;
-    border: 1px solid rgba(201,169,110,0.2);
-    border-radius: 50%;
-    display: flex;
-    align-items: center;
-    justify-content: center;
-    transition: background 0.3s ease, border-color 0.3s ease;
-  }
-  .service-card:hover .service-arrow {
-    background: var(--gold);
-    border-color: var(--gold);
-  }
-  .service-arrow svg { width: 14px; transition: fill 0.3s ease; }
-  .service-card:hover .service-arrow svg path { stroke: var(--ink); }
+        .btn-group {
+            display: flex;
+            gap: 1.2rem;
+            flex-wrap: wrap;
+        }
 
-  /* PORTFOLIO */
-  .portfolio {
-    padding: 14vh 5vw;
-  }
-  .portfolio-header {
-    margin-bottom: 5rem;
-  }
-  .portfolio-title {
-    font-family: 'Cormorant Garamond', serif;
-    font-size: clamp(2.5rem, 4.5vw, 5rem);
-    font-weight: 300;
-    line-height: 1.05;
-  }
-  .portfolio-title em { font-style: italic; color: var(--gold); }
+        .btn-primary {
+            background: #d4af77;
+            border: none;
+            padding: 14px 36px;
+            font-weight: 600;
+            color: #0b0712;
+            border-radius: 40px;
+            font-size: 1rem;
+            cursor: pointer;
+            transition: 0.25s ease;
+            box-shadow: 0 8px 20px rgba(0,0,0,0.3);
+        }
 
-  .filter-bar {
-    display: flex;
-    gap: 2rem;
-    margin-top: 2.5rem;
-    border-bottom: 1px solid rgba(201,169,110,0.1);
-    padding-bottom: 1.5rem;
-  }
-  .filter-btn {
-    font-size: 0.65rem;
-    letter-spacing: 0.2em;
-    text-transform: uppercase;
-    color: rgba(245,242,236,0.35);
-    background: none;
-    border: none;
-    cursor: none;
-    padding: 0.3rem 0;
-    position: relative;
-    transition: color 0.3s ease;
-  }
-  .filter-btn.active, .filter-btn:hover { color: var(--gold); }
-  .filter-btn.active::after {
-    content: '';
-    position: absolute;
-    bottom: -1.5rem; left: 0; right: 0;
-    height: 1px;
-    background: var(--gold);
-  }
+        .btn-primary:hover {
+            background: #eac48a;
+            transform: translateY(-3px);
+            box-shadow: 0 15px 25px rgba(0,0,0,0.4);
+        }
 
-  .portfolio-masonry {
-    display: grid;
-    grid-template-columns: repeat(12, 1fr);
-    grid-auto-rows: 80px;
-    gap: 1.5rem;
-    margin-top: 3rem;
-  }
-  .pf-item {
-    position: relative;
-    overflow: hidden;
-    cursor: none;
-  }
-  .pf-item:nth-child(1) { grid-column: span 5; grid-row: span 5; }
-  .pf-item:nth-child(2) { grid-column: span 7; grid-row: span 3; }
-  .pf-item:nth-child(3) { grid-column: span 4; grid-row: span 4; }
-  .pf-item:nth-child(4) { grid-column: span 3; grid-row: span 4; }
-  .pf-item:nth-child(5) { grid-column: span 5; grid-row: span 4; }
-  .pf-item:nth-child(6) { grid-column: span 7; grid-row: span 3; }
+        .btn-outline {
+            background: transparent;
+            border: 1.5px solid #d4af77;
+            padding: 14px 36px;
+            font-weight: 600;
+            color: #d4af77;
+            border-radius: 40px;
+            transition: 0.25s;
+            cursor: pointer;
+        }
 
-  .pf-inner {
-    width: 100%; height: 100%;
-    position: relative;
-    overflow: hidden;
-  }
-  .pf-visual {
-    width: 100%; height: 100%;
-    transition: transform 0.8s cubic-bezier(0.25, 0.46, 0.45, 0.94);
-  }
-  .pf-item:hover .pf-visual { transform: scale(1.06); }
+        .btn-outline:hover {
+            background: rgba(212, 175, 119, 0.1);
+            transform: translateY(-3px);
+        }
 
-  /* Room visuals using CSS gradients + SVG */
-  .room-1 { background: linear-gradient(135deg, #1c1a26 0%, #2a2535 40%, #1a1820 100%); }
-  .room-2 { background: linear-gradient(160deg, #24201a 0%, #2e2820 50%, #1a1610 100%); }
-  .room-3 { background: linear-gradient(145deg, #161820 0%, #1e2030 50%, #131520 100%); }
-  .room-4 { background: linear-gradient(155deg, #201a18 0%, #2a2220 50%, #181410 100%); }
-  .room-5 { background: linear-gradient(140deg, #1a1c20 0%, #222630 50%, #141618 100%); }
-  .room-6 { background: linear-gradient(150deg, #201c14 0%, #2a2416 50%, #161208 100%); }
+        /* Section styling */
+        section {
+            padding: 100px 0;
+        }
 
-  .pf-overlay {
-    position: absolute;
-    inset: 0;
-    background: linear-gradient(to top, rgba(11,11,15,0.85) 0%, transparent 55%);
-    opacity: 0;
-    transition: opacity 0.5s ease;
-    display: flex;
-    flex-direction: column;
-    justify-content: flex-end;
-    padding: 2rem;
-  }
-  .pf-item:hover .pf-overlay { opacity: 1; }
-  .pf-cat {
-    font-size: 0.6rem;
-    letter-spacing: 0.25em;
-    text-transform: uppercase;
-    color: var(--gold);
-    margin-bottom: 0.5rem;
-  }
-  .pf-name {
-    font-family: 'Cormorant Garamond', serif;
-    font-size: 1.5rem;
-    font-weight: 300;
-  }
+        .section-title {
+            font-size: 2.8rem;
+            font-weight: 600;
+            margin-bottom: 1rem;
+            text-align: center;
+            letter-spacing: -0.5px;
+        }
 
-  /* Decorative room elements in SVG */
-  .room-art {
-    position: absolute;
-    inset: 0;
-    display: flex;
-    align-items: center;
-    justify-content: center;
-    opacity: 0.5;
-    transition: opacity 0.5s ease;
-  }
-  .pf-item:hover .room-art { opacity: 0.3; }
+        .section-sub {
+            text-align: center;
+            color: #b5adcf;
+            max-width: 680px;
+            margin: 0 auto 60px auto;
+            font-size: 1.05rem;
+        }
 
-  /* PROCESS */
-  .process {
-    padding: 14vh 5vw;
-    background: linear-gradient(160deg, #0d0c10 0%, #1a1820 50%, #0b0b0f 100%);
-  }
-  .process-title {
-    font-family: 'Cormorant Garamond', serif;
-    font-size: clamp(2.5rem, 4.5vw, 5rem);
-    font-weight: 300;
-    line-height: 1.05;
-    margin-bottom: 7rem;
-    max-width: 600px;
-  }
-  .process-title em { font-style: italic; color: var(--gold); }
-  .process-steps {
-    position: relative;
-  }
-  .process-line {
-    position: absolute;
-    top: 2rem; left: 2rem;
-    width: 1px;
-    height: calc(100% - 4rem);
-    background: linear-gradient(to bottom, var(--gold), rgba(201,169,110,0.1));
-  }
-  .process-step {
-    display: grid;
-    grid-template-columns: 5rem 1fr;
-    gap: 3rem;
-    padding: 0 0 5rem 0;
-    position: relative;
-  }
-  .step-marker {
-    display: flex;
-    flex-direction: column;
-    align-items: center;
-    gap: 0;
-  }
-  .step-dot {
-    width: 4rem; height: 4rem;
-    border: 1px solid rgba(201,169,110,0.3);
-    border-radius: 50%;
-    display: flex;
-    align-items: center;
-    justify-content: center;
-    font-family: 'Cormorant Garamond', serif;
-    font-size: 1.2rem;
-    color: var(--gold);
-    background: var(--ink);
-    position: relative;
-    z-index: 1;
-    transition: background 0.4s ease, border-color 0.4s ease;
-    flex-shrink: 0;
-  }
-  .process-step:hover .step-dot {
-    background: rgba(201,169,110,0.1);
-    border-color: var(--gold);
-  }
-  .step-content { padding-top: 0.8rem; }
-  .step-num-label {
-    font-size: 0.6rem;
-    letter-spacing: 0.3em;
-    text-transform: uppercase;
-    color: var(--gold);
-    margin-bottom: 0.8rem;
-    opacity: 0.6;
-  }
-  .step-title {
-    font-family: 'Cormorant Garamond', serif;
-    font-size: 2rem;
-    font-weight: 300;
-    margin-bottom: 1rem;
-  }
-  .step-desc {
-    color: rgba(245,242,236,0.45);
-    font-size: 0.82rem;
-    line-height: 2;
-    max-width: 520px;
-  }
+        .about-grid {
+            display: grid;
+            grid-template-columns: 1fr 1fr;
+            gap: 50px;
+            align-items: center;
+        }
 
-  /* TESTIMONIALS */
-  .testimonials {
-    padding: 14vh 5vw;
-    overflow: hidden;
-  }
-  .test-header {
-    margin-bottom: 5rem;
-  }
-  .test-title {
-    font-family: 'Cormorant Garamond', serif;
-    font-size: clamp(2.5rem, 4.5vw, 5rem);
-    font-weight: 300;
-    line-height: 1.05;
-  }
-  .test-title em { font-style: italic; color: var(--gold); }
-  .test-grid {
-    display: grid;
-    grid-template-columns: repeat(3, 1fr);
-    gap: 2rem;
-  }
-  .test-card {
-    padding: 3rem;
-    border: 1px solid rgba(201,169,110,0.1);
-    position: relative;
-    transition: border-color 0.4s ease;
-  }
-  .test-card:hover { border-color: rgba(201,169,110,0.3); }
-  .test-quote-mark {
-    font-family: 'Cormorant Garamond', serif;
-    font-size: 5rem;
-    color: var(--gold);
-    opacity: 0.2;
-    line-height: 0.7;
-    margin-bottom: 1.5rem;
-  }
-  .test-text {
-    font-family: 'Cormorant Garamond', serif;
-    font-size: 1.15rem;
-    font-weight: 300;
-    font-style: italic;
-    line-height: 1.7;
-    color: rgba(245,242,236,0.8);
-    margin-bottom: 2.5rem;
-  }
-  .test-author {
-    display: flex;
-    align-items: center;
-    gap: 1rem;
-  }
-  .test-avatar {
-    width: 44px; height: 44px;
-    border-radius: 50%;
-    background: linear-gradient(135deg, rgba(201,169,110,0.3), rgba(201,169,110,0.1));
-    border: 1px solid rgba(201,169,110,0.2);
-    display: flex;
-    align-items: center;
-    justify-content: center;
-    font-family: 'Cormorant Garamond', serif;
-    font-size: 1.1rem;
-    color: var(--gold);
-  }
-  .test-name {
-    font-size: 0.75rem;
-    font-weight: 500;
-    letter-spacing: 0.1em;
-    margin-bottom: 0.2rem;
-  }
-  .test-role {
-    font-size: 0.65rem;
-    color: var(--fog);
-    letter-spacing: 0.1em;
-  }
-  .test-stars {
-    position: absolute;
-    top: 3rem; right: 3rem;
-    color: var(--gold);
-    font-size: 0.65rem;
-    letter-spacing: 0.15em;
-  }
+        .about-text h3 {
+            font-size: 2rem;
+            margin-bottom: 1.2rem;
+            color: #e9d2a7;
+        }
 
-  /* TEAM */
-  .team {
-    padding: 14vh 5vw;
-    background: var(--deep);
-  }
-  .team-header {
-    display: flex;
-    justify-content: space-between;
-    align-items: flex-end;
-    margin-bottom: 5rem;
-  }
-  .team-title {
-    font-family: 'Cormorant Garamond', serif;
-    font-size: clamp(2.5rem, 4.5vw, 5rem);
-    font-weight: 300;
-    line-height: 1.05;
-  }
-  .team-title em { font-style: italic; color: var(--gold); }
-  .team-grid {
-    display: grid;
-    grid-template-columns: repeat(4, 1fr);
-    gap: 2rem;
-  }
-  .team-card {
-    position: relative;
-    cursor: none;
-  }
-  .team-img {
-    aspect-ratio: 3/4;
-    background: var(--ink);
-    position: relative;
-    overflow: hidden;
-    margin-bottom: 1.5rem;
-  }
-  .team-portrait {
-    width: 100%; height: 100%;
-    display: flex;
-    align-items: center;
-    justify-content: center;
-    position: relative;
-  }
-  .team-portrait-bg {
-    position: absolute;
-    inset: 0;
-    transition: transform 0.6s ease;
-  }
-  .team-card:hover .team-portrait-bg { transform: scale(1.04); }
-  .tp1 { background: linear-gradient(160deg, #1e1c28 0%, #2a2535 100%); }
-  .tp2 { background: linear-gradient(160deg, #1e1a14 0%, #2a2218 100%); }
-  .tp3 { background: linear-gradient(160deg, #161820 0%, #1e2228 100%); }
-  .tp4 { background: linear-gradient(160deg, #1c1810 0%, #261e12 100%); }
-  .team-img-overlay {
-    position: absolute;
-    inset: 0;
-    background: linear-gradient(to top, rgba(11,11,15,0.6) 0%, transparent 50%);
-    opacity: 0;
-    transition: opacity 0.5s ease;
-  }
-  .team-card:hover .team-img-overlay { opacity: 1; }
-  .team-social {
-    position: absolute;
-    bottom: 1.5rem; right: 1.5rem;
-    display: flex;
-    gap: 0.5rem;
-    opacity: 0;
-    transform: translateY(10px);
-    transition: opacity 0.4s ease, transform 0.4s ease;
-  }
-  .team-card:hover .team-social { opacity: 1; transform: translateY(0); }
-  .social-dot {
-    width: 32px; height: 32px;
-    background: rgba(201,169,110,0.9);
-    display: flex;
-    align-items: center;
-    justify-content: center;
-    font-size: 0.6rem;
-    color: var(--ink);
-    font-weight: 700;
-    letter-spacing: 0;
-    transition: background 0.3s ease;
-  }
-  .social-dot:hover { background: var(--gold); }
-  .team-name {
-    font-family: 'Cormorant Garamond', serif;
-    font-size: 1.4rem;
-    font-weight: 300;
-    margin-bottom: 0.3rem;
-  }
-  .team-role {
-    font-size: 0.65rem;
-    letter-spacing: 0.2em;
-    text-transform: uppercase;
-    color: var(--gold);
-    opacity: 0.7;
-  }
+        .about-text p {
+            line-height: 1.7;
+            margin-bottom: 1.2rem;
+            color: #cdc6e0;
+        }
 
-  /* AWARDS */
-  .awards {
-    padding: 10vh 5vw;
-    border-top: 1px solid rgba(201,169,110,0.08);
-  }
-  .awards-row {
-    display: flex;
-    gap: 0;
-    align-items: stretch;
-  }
-  .award-item {
-    flex: 1;
-    padding: 3rem;
-    border-right: 1px solid rgba(201,169,110,0.08);
-    text-align: center;
-    transition: background 0.4s ease;
-    cursor: none;
-  }
-  .award-item:last-child { border-right: none; }
-  .award-item:hover { background: rgba(201,169,110,0.03); }
-  .award-year {
-    font-size: 0.65rem;
-    letter-spacing: 0.3em;
-    color: var(--gold);
-    text-transform: uppercase;
-    margin-bottom: 1rem;
-    opacity: 0.6;
-  }
-  .award-name {
-    font-family: 'Cormorant Garamond', serif;
-    font-size: 1.3rem;
-    font-weight: 300;
-    margin-bottom: 0.5rem;
-  }
-  .award-org {
-    font-size: 0.7rem;
-    color: var(--fog);
-    letter-spacing: 0.1em;
-  }
+        .about-img img {
+            width: 100%;
+            border-radius: 24px;
+            box-shadow: 0 25px 40px -15px rgba(0,0,0,0.6);
+            transition: transform 0.4s;
+        }
 
-  /* CTA SECTION */
-  .cta-section {
-    padding: 18vh 5vw;
-    text-align: center;
-    position: relative;
-    overflow: hidden;
-  }
-  .cta-bg {
-    position: absolute;
-    inset: 0;
-    background:
-      radial-gradient(ellipse 60% 60% at 50% 50%, rgba(201,169,110,0.07) 0%, transparent 65%),
-      var(--deep);
-  }
-  .cta-circle {
-    position: absolute;
-    top: 50%; left: 50%;
-    transform: translate(-50%, -50%);
-    width: 600px; height: 600px;
-    border: 1px solid rgba(201,169,110,0.06);
-    border-radius: 50%;
-    animation: pulse 6s ease-in-out infinite;
-  }
-  .cta-circle-2 {
-    width: 900px; height: 900px;
-    animation-delay: -3s;
-    border-color: rgba(201,169,110,0.04);
-  }
-  @keyframes pulse {
-    0%, 100% { transform: translate(-50%, -50%) scale(1); opacity: 0.5; }
-    50% { transform: translate(-50%, -50%) scale(1.05); opacity: 1; }
-  }
-  .cta-content { position: relative; z-index: 1; }
-  .cta-eyebrow {
-    font-size: 0.65rem;
-    letter-spacing: 0.4em;
-    text-transform: uppercase;
-    color: var(--gold);
-    margin-bottom: 2rem;
-    display: inline-flex;
-    align-items: center;
-    gap: 1rem;
-  }
-  .cta-eyebrow::before, .cta-eyebrow::after {
-    content: '';
-    width: 40px; height: 1px;
-    background: var(--gold);
-    opacity: 0.5;
-  }
-  .cta-title {
-    font-family: 'Cormorant Garamond', serif;
-    font-size: clamp(3rem, 6vw, 7rem);
-    font-weight: 300;
-    line-height: 1;
-    margin-bottom: 2rem;
-  }
-  .cta-title em { font-style: italic; color: var(--gold); }
-  .cta-sub {
-    color: rgba(245,242,236,0.45);
-    font-size: 0.85rem;
-    line-height: 2;
-    max-width: 500px;
-    margin: 0 auto 3.5rem;
-  }
-  .cta-actions {
-    display: flex;
-    gap: 1.5rem;
-    justify-content: center;
-    align-items: center;
-  }
+        .about-img img:hover {
+            transform: scale(1.02);
+        }
 
-  /* CONTACT STRIP */
-  .contact-strip {
-    padding: 8vh 5vw;
-    display: grid;
-    grid-template-columns: repeat(3, 1fr);
-    gap: 0;
-    border-top: 1px solid rgba(201,169,110,0.1);
-  }
-  .contact-item {
-    padding: 2rem 3rem;
-    border-right: 1px solid rgba(201,169,110,0.08);
-  }
-  .contact-item:last-child { border-right: none; }
-  .contact-label {
-    font-size: 0.6rem;
-    letter-spacing: 0.35em;
-    text-transform: uppercase;
-    color: var(--gold);
-    margin-bottom: 1rem;
-    opacity: 0.6;
-  }
-  .contact-value {
-    font-family: 'Cormorant Garamond', serif;
-    font-size: 1.3rem;
-    font-weight: 300;
-    color: var(--paper);
-    text-decoration: none;
-    transition: color 0.3s ease;
-  }
-  .contact-value:hover { color: var(--gold); }
+        /* services cards */
+        .services-grid {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(250px, 1fr));
+            gap: 35px;
+        }
 
-  /* FOOTER */
-  footer {
-    padding: 6vh 5vw 4vh;
-    border-top: 1px solid rgba(201,169,110,0.1);
-    background: rgba(0,0,0,0.3);
-  }
-  .footer-top {
-    display: flex;
-    justify-content: space-between;
-    align-items: flex-start;
-    margin-bottom: 4rem;
-  }
-  .footer-brand {}
-  .footer-logo {
-    font-family: 'Cormorant Garamond', serif;
-    font-size: 2.5rem;
-    font-weight: 300;
-    letter-spacing: 0.2em;
-    text-transform: uppercase;
-    color: var(--paper);
-    margin-bottom: 1rem;
-  }
-  .footer-logo span { color: var(--gold); }
-  .footer-tagline {
-    font-size: 0.7rem;
-    color: var(--fog);
-    letter-spacing: 0.15em;
-    max-width: 280px;
-    line-height: 1.8;
-  }
-  .footer-nav {
-    display: flex;
-    gap: 5rem;
-  }
-  .footer-col-title {
-    font-size: 0.6rem;
-    letter-spacing: 0.3em;
-    text-transform: uppercase;
-    color: var(--gold);
-    margin-bottom: 1.5rem;
-    opacity: 0.7;
-  }
-  .footer-links {
-    list-style: none;
-    display: flex;
-    flex-direction: column;
-    gap: 0.8rem;
-  }
-  .footer-links a {
-    color: rgba(245,242,236,0.4);
-    text-decoration: none;
-    font-size: 0.78rem;
-    transition: color 0.3s ease;
-    letter-spacing: 0.05em;
-  }
-  .footer-links a:hover { color: var(--gold); }
-  .footer-bottom {
-    display: flex;
-    justify-content: space-between;
-    align-items: center;
-    border-top: 1px solid rgba(201,169,110,0.08);
-    padding-top: 2rem;
-  }
-  .footer-copy {
-    font-size: 0.65rem;
-    color: rgba(245,242,236,0.25);
-    letter-spacing: 0.1em;
-  }
-  .footer-socials {
-    display: flex;
-    gap: 1.5rem;
-  }
-  .footer-socials a {
-    font-size: 0.65rem;
-    letter-spacing: 0.15em;
-    text-transform: uppercase;
-    color: rgba(245,242,236,0.3);
-    text-decoration: none;
-    transition: color 0.3s ease;
-  }
-  .footer-socials a:hover { color: var(--gold); }
+        .service-card {
+            background: rgba(30, 25, 45, 0.7);
+            backdrop-filter: blur(4px);
+            padding: 40px 24px;
+            border-radius: 32px;
+            transition: all 0.3s;
+            text-align: center;
+            border: 1px solid rgba(212, 175, 119, 0.2);
+        }
 
-  /* INTERSECTION OBSERVER ANIMATIONS */
-  .reveal {
-    opacity: 0;
-    transform: translateY(40px);
-    transition: opacity 0.9s cubic-bezier(0.25, 0.46, 0.45, 0.94), transform 0.9s cubic-bezier(0.25, 0.46, 0.45, 0.94);
-  }
-  .reveal.visible { opacity: 1; transform: none; }
-  .reveal-delay-1 { transition-delay: 0.1s; }
-  .reveal-delay-2 { transition-delay: 0.2s; }
-  .reveal-delay-3 { transition-delay: 0.3s; }
-  .reveal-delay-4 { transition-delay: 0.4s; }
+        .service-card i {
+            font-size: 3rem;
+            color: #d4af77;
+            margin-bottom: 20px;
+        }
 
-  /* NEWSLETTER */
-  .newsletter {
-    padding: 8vh 5vw;
-    background: rgba(201,169,110,0.04);
-    border-top: 1px solid rgba(201,169,110,0.08);
-    border-bottom: 1px solid rgba(201,169,110,0.08);
-    display: flex;
-    align-items: center;
-    justify-content: space-between;
-    gap: 4rem;
-  }
-  .newsletter-left {}
-  .newsletter-title {
-    font-family: 'Cormorant Garamond', serif;
-    font-size: 2rem;
-    font-weight: 300;
-    margin-bottom: 0.5rem;
-  }
-  .newsletter-title em { font-style: italic; color: var(--gold); }
-  .newsletter-sub {
-    font-size: 0.78rem;
-    color: var(--fog);
-    letter-spacing: 0.05em;
-  }
-  .newsletter-form {
-    display: flex;
-    gap: 0;
-    max-width: 480px;
-    width: 100%;
-  }
-  .newsletter-input {
-    flex: 1;
-    background: rgba(245,242,236,0.05);
-    border: 1px solid rgba(201,169,110,0.2);
-    border-right: none;
-    padding: 1rem 1.5rem;
-    color: var(--paper);
-    font-family: 'Raleway', sans-serif;
-    font-size: 0.78rem;
-    letter-spacing: 0.08em;
-    outline: none;
-    transition: border-color 0.3s ease;
-  }
-  .newsletter-input:focus { border-color: rgba(201,169,110,0.5); }
-  .newsletter-input::placeholder { color: rgba(245,242,236,0.25); }
-  .newsletter-btn {
-    background: var(--gold);
-    color: var(--ink);
-    border: none;
-    padding: 1rem 2rem;
-    font-family: 'Raleway', sans-serif;
-    font-size: 0.65rem;
-    font-weight: 500;
-    letter-spacing: 0.2em;
-    text-transform: uppercase;
-    cursor: none;
-    transition: background 0.3s ease;
-    white-space: nowrap;
-  }
-  .newsletter-btn:hover { background: var(--accent); }
+        .service-card h4 {
+            font-size: 1.6rem;
+            margin-bottom: 12px;
+        }
 
-  /* MOBILE RESPONSIVE */
-  @media (max-width: 768px) {
-    .nav-links { display: none; }
-    .about { grid-template-columns: 1fr; gap: 4rem; }
-    .services-header { flex-direction: column; gap: 2rem; }
-    .services-grid { grid-template-columns: 1fr; }
-    .portfolio-masonry { grid-template-columns: 1fr 1fr; }
-    .pf-item:nth-child(n) { grid-column: span 1; grid-row: span 3; }
-    .test-grid { grid-template-columns: 1fr; }
-    .team-grid { grid-template-columns: 1fr 1fr; }
-    .awards-row { flex-direction: column; }
-    .contact-strip { grid-template-columns: 1fr; }
-    .footer-top { flex-direction: column; gap: 3rem; }
-    .footer-nav { flex-direction: column; gap: 2rem; }
-    .newsletter { flex-direction: column; }
-    .cta-actions { flex-direction: column; }
-  }
-</style>
+        .service-card p {
+            color: #bfb8da;
+        }
+
+        .service-card:hover {
+            background: rgba(40, 33, 60, 0.9);
+            transform: translateY(-8px);
+            border-color: #d4af77;
+        }
+
+        /* Portfolio Grid */
+        .portfolio-grid {
+            display: grid;
+            grid-template-columns: repeat(auto-fill, minmax(340px, 1fr));
+            gap: 30px;
+        }
+
+        .portfolio-item {
+            border-radius: 24px;
+            overflow: hidden;
+            position: relative;
+            cursor: pointer;
+            transition: all 0.3s;
+            box-shadow: 0 12px 25px -8px rgba(0,0,0,0.5);
+        }
+
+        .portfolio-item img {
+            width: 100%;
+            height: 320px;
+            object-fit: cover;
+            transition: transform 0.6s cubic-bezier(0.2, 0.9, 0.4, 1.1);
+        }
+
+        .portfolio-overlay {
+            position: absolute;
+            bottom: 0;
+            left: 0;
+            right: 0;
+            background: linear-gradient(to top, #0b0712, transparent);
+            padding: 30px 20px 20px;
+            opacity: 0;
+            transition: 0.4s;
+        }
+
+        .portfolio-item:hover img {
+            transform: scale(1.05);
+        }
+
+        .portfolio-item:hover .portfolio-overlay {
+            opacity: 1;
+        }
+
+        .portfolio-overlay h4 {
+            font-size: 1.5rem;
+            margin-bottom: 5px;
+        }
+
+        /* Testimonials */
+        .testimonial-grid {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(300px, 1fr));
+            gap: 30px;
+        }
+
+        .testimonial-card {
+            background: #15101f;
+            padding: 32px;
+            border-radius: 28px;
+            border: 1px solid #2a2438;
+            transition: 0.2s;
+        }
+
+        .testimonial-card i.fa-quote-left {
+            font-size: 2rem;
+            color: #d4af77;
+            opacity: 0.6;
+            margin-bottom: 15px;
+            display: inline-block;
+        }
+
+        .testimonial-text {
+            font-style: italic;
+            line-height: 1.6;
+            margin: 15px 0;
+            color: #e1daf2;
+        }
+
+        .client-name {
+            font-weight: 700;
+            color: #d4af77;
+            margin-top: 12px;
+        }
+
+        /* Contact */
+        .contact-flex {
+            display: grid;
+            grid-template-columns: 1fr 1fr;
+            gap: 50px;
+            background: rgba(20, 15, 33, 0.6);
+            border-radius: 48px;
+            padding: 50px;
+            backdrop-filter: blur(5px);
+            border: 1px solid rgba(212, 175, 119, 0.3);
+        }
+
+        .contact-info h3 {
+            font-size: 2rem;
+            margin-bottom: 20px;
+        }
+
+        .contact-info p {
+            margin-bottom: 25px;
+            line-height: 1.6;
+        }
+
+        .contact-detail {
+            display: flex;
+            align-items: center;
+            gap: 15px;
+            margin-bottom: 20px;
+        }
+
+        .contact-detail i {
+            width: 40px;
+            height: 40px;
+            background: #d4af771a;
+            border-radius: 50%;
+            display: inline-flex;
+            align-items: center;
+            justify-content: center;
+            font-size: 1.2rem;
+            color: #d4af77;
+        }
+
+        .contact-form input, .contact-form textarea {
+            width: 100%;
+            background: #231f32;
+            border: 1px solid #3e3656;
+            padding: 15px 18px;
+            border-radius: 40px;
+            margin-bottom: 20px;
+            color: white;
+            font-family: 'Inter', sans-serif;
+            transition: 0.2s;
+        }
+
+        .contact-form input:focus, .contact-form textarea:focus {
+            outline: none;
+            border-color: #d4af77;
+            background: #2a253d;
+        }
+
+        .contact-form textarea {
+            border-radius: 24px;
+            resize: vertical;
+        }
+
+        .contact-form button {
+            background: #d4af77;
+            border: none;
+            padding: 14px 28px;
+            border-radius: 40px;
+            font-weight: 700;
+            color: #0b0712;
+            cursor: pointer;
+            width: 100%;
+            transition: 0.25s;
+        }
+
+        /* Footer */
+        footer {
+            background: #05030c;
+            padding: 50px 0 30px;
+            border-top: 1px solid #231e32;
+            text-align: center;
+        }
+
+        .footer-social a {
+            color: #cdc6e0;
+            font-size: 1.4rem;
+            margin: 0 15px;
+            transition: 0.2s;
+        }
+
+        .footer-social a:hover {
+            color: #d4af77;
+        }
+
+        /* Lightbox modal */
+        .lightbox {
+            position: fixed;
+            top: 0;
+            left: 0;
+            width: 100%;
+            height: 100%;
+            background: rgba(0,0,0,0.95);
+            backdrop-filter: blur(15px);
+            z-index: 2000;
+            display: none;
+            justify-content: center;
+            align-items: center;
+            cursor: pointer;
+        }
+
+        .lightbox.active {
+            display: flex;
+        }
+
+        .lightbox img {
+            max-width: 85vw;
+            max-height: 85vh;
+            border-radius: 24px;
+            box-shadow: 0 0 45px rgba(0,0,0,0.8);
+            border: 2px solid #d4af77;
+        }
+
+        .close-lightbox {
+            position: absolute;
+            top: 30px;
+            right: 40px;
+            font-size: 2.5rem;
+            color: #d4af77;
+            cursor: pointer;
+        }
+
+        /* Mobile */
+        @media (max-width: 992px) {
+            .hero-title { font-size: 3.5rem; }
+            .about-grid, .contact-flex { grid-template-columns: 1fr; }
+            .nav-links {
+                position: fixed;
+                top: 80px;
+                left: -100%;
+                width: 80%;
+                height: calc(100vh - 80px);
+                background: #0d0920e6;
+                backdrop-filter: blur(24px);
+                flex-direction: column;
+                align-items: center;
+                justify-content: center;
+                gap: 2rem;
+                transition: 0.3s;
+                border-radius: 0 24px 24px 0;
+            }
+            .nav-links.active {
+                left: 0;
+            }
+            .menu-btn {
+                display: block;
+            }
+            .section-title {
+                font-size: 2.2rem;
+            }
+        }
+
+        @media (max-width: 580px) {
+            .container { padding: 0 20px; }
+            .hero-title { font-size: 2.6rem; }
+            .btn-primary, .btn-outline { padding: 10px 24px; }
+        }
+    </style>
 </head>
 <body>
 
-<!-- Custom cursor -->
-<div class="cursor" id="cursor"></div>
-<div class="cursor-ring" id="cursorRing"></div>
-
-<!-- NAV -->
-<nav id="navbar">
-  <a href="#" class="nav-logo">Neb<span>u</span>la</a>
-  <ul class="nav-links">
-    <li><a href="#about">Studio</a></li>
-    <li><a href="#services">Services</a></li>
-    <li><a href="#portfolio">Work</a></li>
-    <li><a href="#team">Team</a></li>
-    <li><a href="#contact" class="nav-cta">Inquire</a></li>
-  </ul>
-</nav>
-
-<!-- HERO -->
-<section class="hero" id="home">
-  <div class="hero-bg"></div>
-  <div class="hero-grid"></div>
-  <div class="hero-line-deco"></div>
-  <div class="hero-orbit"></div>
-  <div class="hero-orbit hero-orbit-2"></div>
-
-  <div class="hero-content">
-    <div class="hero-eyebrow">Interior Design Studio · Est. 2012</div>
-    <h1 class="hero-title">
-      <span class="line">Where</span>
-      <span class="line">Space <em>Becomes</em></span>
-      <span class="line">Poetry</span>
-    </h1>
-    <p class="hero-sub">We craft immersive living environments that transcend the ordinary — where every material, every proportion, every light source is chosen with intention.</p>
-    <div class="hero-actions">
-      <a href="#portfolio" class="btn-primary">Explore Our Work</a>
-      <a href="#about" class="btn-ghost"><span class="arrow"></span> Our Story</a>
+<div class="navbar" id="navbar">
+    <div class="nav-container">
+        <a href="#" class="logo">✦ NEBULA</a>
+        <div class="menu-btn" id="menuBtn">
+            <i class="fas fa-bars"></i>
+        </div>
+        <ul class="nav-links" id="navLinks">
+            <li><a href="#home">Home</a></li>
+            <li><a href="#about">Studio</a></li>
+            <li><a href="#services">Services</a></li>
+            <li><a href="#portfolio">Portfolio</a></li>
+            <li><a href="#testimonials">Voices</a></li>
+            <li><a href="#contact">Contact</a></li>
+        </ul>
     </div>
-  </div>
-
-  <div class="hero-scroll-hint">Scroll</div>
-
-  <div class="hero-stats">
-    <div class="stat-item">
-      <div class="stat-num">240+</div>
-      <div class="stat-label">Projects Delivered</div>
-    </div>
-    <div class="stat-item">
-      <div class="stat-num">14</div>
-      <div class="stat-label">Design Awards</div>
-    </div>
-    <div class="stat-item">
-      <div class="stat-num">32</div>
-      <div class="stat-label">Global Cities</div>
-    </div>
-  </div>
-</section>
-
-<!-- MARQUEE -->
-<div class="marquee-strip">
-  <div class="marquee-track">
-    <span class="marquee-item">Residential Design <span class="marquee-dot">◆</span></span>
-    <span class="marquee-item">Commercial Interiors <span class="marquee-dot">◆</span></span>
-    <span class="marquee-item">Spatial Curation <span class="marquee-dot">◆</span></span>
-    <span class="marquee-item">Material Consultancy <span class="marquee-dot">◆</span></span>
-    <span class="marquee-item">Luxury Hospitality <span class="marquee-dot">◆</span></span>
-    <span class="marquee-item">Architectural Detailing <span class="marquee-dot">◆</span></span>
-    <span class="marquee-item">Bespoke Furniture <span class="marquee-dot">◆</span></span>
-    <span class="marquee-item">Art Direction <span class="marquee-dot">◆</span></span>
-    <span class="marquee-item">Residential Design <span class="marquee-dot">◆</span></span>
-    <span class="marquee-item">Commercial Interiors <span class="marquee-dot">◆</span></span>
-    <span class="marquee-item">Spatial Curation <span class="marquee-dot">◆</span></span>
-    <span class="marquee-item">Material Consultancy <span class="marquee-dot">◆</span></span>
-    <span class="marquee-item">Luxury Hospitality <span class="marquee-dot">◆</span></span>
-    <span class="marquee-item">Architectural Detailing <span class="marquee-dot">◆</span></span>
-    <span class="marquee-item">Bespoke Furniture <span class="marquee-dot">◆</span></span>
-    <span class="marquee-item">Art Direction <span class="marquee-dot">◆</span></span>
-  </div>
 </div>
 
-<!-- ABOUT -->
-<section class="about" id="about">
-  <div class="about-left reveal">
-    <div class="section-tag">Our Studio</div>
-    <h2 class="about-title">Design that <em>Breathes</em> with You</h2>
-    <p class="about-body">
-      At Nebula, we believe a space should be a living extension of its inhabitants — a choreography of light, texture, and proportion that tells a story unique to those who dwell within it.
-    </p>
-    <p class="about-body">
-      Founded in 2012 by Isabelle Marchetti, our studio has grown into a collective of 28 designers, architects, and artisans who share an obsession with craft and a reverence for the rare. We work at the intersection of architecture and emotion.
-    </p>
-    <div class="about-signature">Isabelle Marchetti</div>
-  </div>
-  <div class="about-right reveal reveal-delay-2">
-    <div class="about-img-wrap">
-      <div class="room-render">
-        <!-- SVG Room Illustration -->
-        <svg viewBox="0 0 400 500" fill="none" xmlns="http://www.w3.org/2000/svg">
-          <!-- Floor -->
-          <path d="M40 380 L200 320 L360 380 L360 460 L40 460 Z" fill="rgba(201,169,110,0.06)" stroke="rgba(201,169,110,0.15)" stroke-width="0.5"/>
-          <!-- Back wall -->
-          <path d="M40 120 L200 60 L360 120 L360 380 L200 320 L40 380 Z" fill="rgba(201,169,110,0.03)" stroke="rgba(201,169,110,0.1)" stroke-width="0.5"/>
-          <!-- Left wall -->
-          <rect x="40" y="120" width="2" height="260" fill="rgba(201,169,110,0.3)"/>
-          <!-- Right wall -->
-          <rect x="358" y="120" width="2" height="260" fill="rgba(201,169,110,0.3)"/>
-          <!-- Window back wall -->
-          <rect x="160" y="90" width="80" height="100" rx="2" fill="rgba(201,169,110,0.08)" stroke="rgba(201,169,110,0.25)" stroke-width="1"/>
-          <line x1="200" y1="90" x2="200" y2="190" stroke="rgba(201,169,110,0.2)" stroke-width="0.5"/>
-          <line x1="160" y1="140" x2="240" y2="140" stroke="rgba(201,169,110,0.2)" stroke-width="0.5"/>
-          <!-- Light rays from window -->
-          <path d="M160 190 L80 340 L130 340 L200 190Z" fill="rgba(201,169,110,0.03)"/>
-          <path d="M240 190 L320 340 L270 340 L200 190Z" fill="rgba(201,169,110,0.03)"/>
-          <!-- Sofa -->
-          <rect x="120" y="330" width="160" height="50" rx="4" fill="rgba(201,169,110,0.12)" stroke="rgba(201,169,110,0.2)" stroke-width="0.8"/>
-          <rect x="120" y="310" width="160" height="25" rx="4" fill="rgba(201,169,110,0.08)" stroke="rgba(201,169,110,0.15)" stroke-width="0.8"/>
-          <rect x="115" y="310" width="15" height="70" rx="3" fill="rgba(201,169,110,0.1)" stroke="rgba(201,169,110,0.2)" stroke-width="0.8"/>
-          <rect x="270" y="310" width="15" height="70" rx="3" fill="rgba(201,169,110,0.1)" stroke="rgba(201,169,110,0.2)" stroke-width="0.8"/>
-          <!-- Coffee table -->
-          <ellipse cx="200" cy="295" rx="45" ry="20" fill="rgba(201,169,110,0.08)" stroke="rgba(201,169,110,0.2)" stroke-width="0.8"/>
-          <line x1="180" y1="295" x2="180" y2="315" stroke="rgba(201,169,110,0.15)" stroke-width="1"/>
-          <line x1="220" y1="295" x2="220" y2="315" stroke="rgba(201,169,110,0.15)" stroke-width="1"/>
-          <!-- Floor lamp -->
-          <line x1="310" y1="200" x2="315" y2="355" stroke="rgba(201,169,110,0.35)" stroke-width="1.2"/>
-          <ellipse cx="308" cy="198" rx="20" ry="12" fill="none" stroke="rgba(201,169,110,0.3)" stroke-width="1"/>
-          <circle cx="308" cy="198" r="4" fill="rgba(201,169,110,0.6)"/>
-          <!-- Ceiling light -->
-          <circle cx="200" cy="65" r="3" fill="rgba(201,169,110,0.8)"/>
-          <path d="M200 65 L200 120" stroke="rgba(201,169,110,0.4)" stroke-width="0.8" stroke-dasharray="4 3"/>
-          <!-- Art on wall -->
-          <rect x="170" y="210" width="60" height="80" rx="1" fill="rgba(201,169,110,0.06)" stroke="rgba(201,169,110,0.2)" stroke-width="0.8"/>
-          <line x1="180" y1="230" x2="220" y2="270" stroke="rgba(201,169,110,0.15)" stroke-width="0.5"/>
-          <line x1="220" y1="230" x2="180" y2="270" stroke="rgba(201,169,110,0.15)" stroke-width="0.5"/>
-          <!-- Rug -->
-          <ellipse cx="200" cy="360" rx="80" ry="35" fill="none" stroke="rgba(201,169,110,0.12)" stroke-width="1.5"/>
-          <ellipse cx="200" cy="360" rx="65" ry="28" fill="none" stroke="rgba(201,169,110,0.07)" stroke-width="1"/>
-        </svg>
-      </div>
+<!-- Hero -->
+<section id="home" class="hero">
+    <div class="container hero-content">
+        <span style="color:#d4af77; letter-spacing:3px; font-weight:500;">INTERIOR ALCHEMY</span>
+        <h1 class="hero-title">Crafting Cosmic<br>Spaces, Earthly Warmth</h1>
+        <p class="hero-sub">Nebula Interiors — where galaxies of inspiration meet timeless elegance. Bespoke design that transcends the ordinary.</p>
+        <div class="btn-group">
+            <button class="btn-primary" onclick="document.getElementById('contact').scrollIntoView({behavior:'smooth'})">Start your journey</button>
+            <button class="btn-outline" onclick="document.getElementById('portfolio').scrollIntoView({behavior:'smooth'})">Explore cosmos</button>
+        </div>
     </div>
-    <div class="about-float-card">
-      <div class="num">12+</div>
-      <div class="label">Years of Excellence</div>
-    </div>
-  </div>
 </section>
 
-<!-- SERVICES -->
-<section class="services" id="services">
-  <div class="services-header reveal">
-    <h2 class="services-title">What We <em>Create</em> Together</h2>
-    <p class="services-intro">From initial concept to final reveal, we offer a complete spectrum of design services tailored to your vision and way of living.</p>
-  </div>
-  <div class="services-grid">
-    <div class="service-card reveal">
-      <div class="service-num">01</div>
-      <svg class="service-icon" viewBox="0 0 48 48" fill="none" xmlns="http://www.w3.org/2000/svg">
-        <rect x="6" y="6" width="36" height="36" rx="2" stroke="#c9a96e" stroke-width="1.2"/>
-        <line x1="6" y1="18" x2="42" y2="18" stroke="#c9a96e" stroke-width="0.8"/>
-        <line x1="18" y1="18" x2="18" y2="42" stroke="#c9a96e" stroke-width="0.8"/>
-        <rect x="22" y="24" width="14" height="12" rx="1" stroke="#c9a96e" stroke-width="0.8"/>
-        <circle cx="12" cy="12" r="3" stroke="#c9a96e" stroke-width="0.8"/>
-      </svg>
-      <h3 class="service-name">Residential Design</h3>
-      <p class="service-desc">Private homes that reflect the complexity and beauty of the lives lived within them. Every room a world unto itself.</p>
-      <div class="service-arrow">
-        <svg viewBox="0 0 14 14" fill="none"><path d="M2 7H12M12 7L7.5 2.5M12 7L7.5 11.5" stroke="#c9a96e" stroke-width="1.2" stroke-linecap="round"/></svg>
-      </div>
+<!-- About Section -->
+<section id="about">
+    <div class="container">
+        <div class="about-grid">
+            <div class="about-text">
+                <h3>Beyond the expected</h3>
+                <p>Founded by visionaries, Nebula curates interiors that breathe stardust and sophistication. Each design is a signature — blending celestial minimalism with organic textures. We don’t just decorate; we choreograph energy, light, and function into a seamless narrative.</p>
+                <p>With award-winning designers and a philosophy rooted in infinite creativity, we translate your story into spatial poetry. Recognized globally for pushing boundaries, we are the atelier for the connoisseur.</p>
+                <p><strong>✦ 200+ luxury projects | ✦ 15 design awards | ✦ 4 continents</strong></p>
+            </div>
+            <div class="about-img">
+                <img src="https://images.unsplash.com/photo-1600585154340-be6161a56a0c?w=700&h=500&fit=crop" alt="Nebula interior design studio">
+            </div>
+        </div>
     </div>
-    <div class="service-card reveal reveal-delay-1">
-      <div class="service-num">02</div>
-      <svg class="service-icon" viewBox="0 0 48 48" fill="none" xmlns="http://www.w3.org/2000/svg">
-        <path d="M8 40 L8 16 L24 8 L40 16 L40 40" stroke="#c9a96e" stroke-width="1.2" stroke-linecap="round"/>
-        <rect x="18" y="28" width="12" height="12" rx="1" stroke="#c9a96e" stroke-width="0.8"/>
-        <rect x="14" y="20" width="8" height="7" rx="1" stroke="#c9a96e" stroke-width="0.8"/>
-        <rect x="26" y="20" width="8" height="7" rx="1" stroke="#c9a96e" stroke-width="0.8"/>
-        <line x1="8" y1="40" x2="40" y2="40" stroke="#c9a96e" stroke-width="1.2" stroke-linecap="round"/>
-      </svg>
-      <h3 class="service-name">Commercial Spaces</h3>
-      <p class="service-desc">Offices, retail environments, and hospitality spaces where brand identity and human experience converge seamlessly.</p>
-      <div class="service-arrow">
-        <svg viewBox="0 0 14 14" fill="none"><path d="M2 7H12M12 7L7.5 2.5M12 7L7.5 11.5" stroke="#c9a96e" stroke-width="1.2" stroke-linecap="round"/></svg>
-      </div>
-    </div>
-    <div class="service-card reveal reveal-delay-2">
-      <div class="service-num">03</div>
-      <svg class="service-icon" viewBox="0 0 48 48" fill="none" xmlns="http://www.w3.org/2000/svg">
-        <circle cx="24" cy="24" r="16" stroke="#c9a96e" stroke-width="1.2"/>
-        <path d="M24 8 C24 8 30 16 30 24 C30 32 24 40 24 40 C24 40 18 32 18 24 C18 16 24 8 24 8Z" stroke="#c9a96e" stroke-width="0.8"/>
-        <line x1="8" y1="24" x2="40" y2="24" stroke="#c9a96e" stroke-width="0.8"/>
-        <circle cx="24" cy="24" r="3" fill="#c9a96e" opacity="0.5"/>
-      </svg>
-      <h3 class="service-name">Global Consultancy</h3>
-      <p class="service-desc">Advisory services for developers and collectors seeking curatorial intelligence and a discerning eye for elevated spaces.</p>
-      <div class="service-arrow">
-        <svg viewBox="0 0 14 14" fill="none"><path d="M2 7H12M12 7L7.5 2.5M12 7L7.5 11.5" stroke="#c9a96e" stroke-width="1.2" stroke-linecap="round"/></svg>
-      </div>
-    </div>
-    <div class="service-card reveal reveal-delay-3">
-      <div class="service-num">04</div>
-      <svg class="service-icon" viewBox="0 0 48 48" fill="none" xmlns="http://www.w3.org/2000/svg">
-        <rect x="10" y="14" width="28" height="22" rx="2" stroke="#c9a96e" stroke-width="1.2"/>
-        <path d="M10 22 L38 22" stroke="#c9a96e" stroke-width="0.8"/>
-        <path d="M10 30 L38 30" stroke="#c9a96e" stroke-width="0.8"/>
-        <path d="M20 14 L20 36" stroke="#c9a96e" stroke-width="0.8"/>
-        <circle cx="32" cy="10" r="6" fill="#0b0b0f" stroke="#c9a96e" stroke-width="1"/>
-        <path d="M29 10 L31 12 L35 8" stroke="#c9a96e" stroke-width="1" stroke-linecap="round"/>
-      </svg>
-      <h3 class="service-name">Material & FF&E</h3>
-      <p class="service-desc">Meticulous sourcing of furnishings, fixtures, and finishes — from emerging artisans to heritage ateliers across the globe.</p>
-      <div class="service-arrow">
-        <svg viewBox="0 0 14 14" fill="none"><path d="M2 7H12M12 7L7.5 2.5M12 7L7.5 11.5" stroke="#c9a96e" stroke-width="1.2" stroke-linecap="round"/></svg>
-      </div>
-    </div>
-    <div class="service-card reveal reveal-delay-1">
-      <div class="service-num">05</div>
-      <svg class="service-icon" viewBox="0 0 48 48" fill="none" xmlns="http://www.w3.org/2000/svg">
-        <path d="M24 6 L42 18 L42 42 L6 42 L6 18 Z" stroke="#c9a96e" stroke-width="1.2" stroke-linejoin="round"/>
-        <path d="M6 18 L24 6 L42 18" stroke="#c9a96e" stroke-width="0.8"/>
-        <rect x="18" y="28" width="12" height="14" rx="1" stroke="#c9a96e" stroke-width="0.8"/>
-        <circle cx="24" cy="21" r="4" stroke="#c9a96e" stroke-width="0.8"/>
-      </svg>
-      <h3 class="service-name">Hospitality & Hotels</h3>
-      <p class="service-desc">Boutique hotels, resorts, and restaurants where guests don't just stay — they are transported into a curated world.</p>
-      <div class="service-arrow">
-        <svg viewBox="0 0 14 14" fill="none"><path d="M2 7H12M12 7L7.5 2.5M12 7L7.5 11.5" stroke="#c9a96e" stroke-width="1.2" stroke-linecap="round"/></svg>
-      </div>
-    </div>
-    <div class="service-card reveal reveal-delay-2">
-      <div class="service-num">06</div>
-      <svg class="service-icon" viewBox="0 0 48 48" fill="none" xmlns="http://www.w3.org/2000/svg">
-        <path d="M12 36 C12 36 16 20 24 18 C32 16 36 36 36 36" stroke="#c9a96e" stroke-width="1.2" stroke-linecap="round"/>
-        <path d="M8 36 L40 36" stroke="#c9a96e" stroke-width="1.2" stroke-linecap="round"/>
-        <circle cx="24" cy="12" r="5" stroke="#c9a96e" stroke-width="1"/>
-        <path d="M20 14 L16 20" stroke="#c9a96e" stroke-width="0.8" stroke-linecap="round"/>
-        <path d="M28 14 L32 20" stroke="#c9a96e" stroke-width="0.8" stroke-linecap="round"/>
-      </svg>
-      <h3 class="service-name">Art Curation</h3>
-      <p class="service-desc">Partnering with galleries and private collectors, we integrate fine art and sculpture into architectural narratives with purpose.</p>
-      <div class="service-arrow">
-        <svg viewBox="0 0 14 14" fill="none"><path d="M2 7H12M12 7L7.5 2.5M12 7L7.5 11.5" stroke="#c9a96e" stroke-width="1.2" stroke-linecap="round"/></svg>
-      </div>
-    </div>
-  </div>
 </section>
 
-<!-- PORTFOLIO -->
-<section class="portfolio" id="portfolio">
-  <div class="portfolio-header reveal">
-    <div class="section-tag">Selected Work</div>
-    <h2 class="portfolio-title">Spaces We've <em>Shaped</em></h2>
-    <div class="filter-bar">
-      <button class="filter-btn active">All</button>
-      <button class="filter-btn">Residential</button>
-      <button class="filter-btn">Commercial</button>
-      <button class="filter-btn">Hospitality</button>
-      <button class="filter-btn">Retail</button>
+<!-- Services Section -->
+<section id="services">
+    <div class="container">
+        <h2 class="section-title">Stellar Services</h2>
+        <p class="section-sub">From concept to constellation — full spectrum interior experiences</p>
+        <div class="services-grid">
+            <div class="service-card"><i class="fas fa-drafting-compass"></i><h4>Cosmic Concept</h4><p>Vision-driven moodboards, space planning & 3D visualizations.</p></div>
+            <div class="service-card"><i class="fas fa-couch"></i><h4>Residential Galaxy</h4><p>Luxury apartments, penthouses, and bespoke homes.</p></div>
+            <div class="service-card"><i class="fas fa-building"></i><h4>Commercial Nebula</h4><p>Hotels, boutiques, offices with immersive identity.</p></div>
+            <div class="service-card"><i class="fas fa-leaf"></i><h4>Bio-Philic Design</h4><p>Harmony with nature, sustainable materials & wellness.</p></div>
+        </div>
     </div>
-  </div>
-  <div class="portfolio-masonry">
-    <div class="pf-item reveal">
-      <div class="pf-inner">
-        <div class="pf-visual room-1">
-          <div class="room-art">
-            <svg width="80%" height="80%" viewBox="0 0 300 400" fill="none">
-              <rect x="30" y="80" width="240" height="240" rx="3" fill="rgba(201,169,110,0.05)" stroke="rgba(201,169,110,0.15)" stroke-width="0.8"/>
-              <line x1="30" y1="200" x2="270" y2="200" stroke="rgba(201,169,110,0.08)" stroke-width="0.5"/>
-              <line x1="150" y1="80" x2="150" y2="320" stroke="rgba(201,169,110,0.08)" stroke-width="0.5"/>
-              <rect x="100" y="260" width="100" height="60" rx="2" fill="rgba(201,169,110,0.08)" stroke="rgba(201,169,110,0.2)" stroke-width="0.8"/>
-              <circle cx="150" cy="50" r="20" fill="none" stroke="rgba(201,169,110,0.3)" stroke-width="1"/>
-              <line x1="150" y1="30" x2="150" y2="80" stroke="rgba(201,169,110,0.3)" stroke-width="0.8" stroke-dasharray="3 2"/>
-            </svg>
-          </div>
-        </div>
-        <div class="pf-overlay">
-          <div class="pf-cat">Residential · Paris</div>
-          <div class="pf-name">Maison Lumière</div>
-        </div>
-      </div>
-    </div>
-    <div class="pf-item reveal reveal-delay-1">
-      <div class="pf-inner">
-        <div class="pf-visual room-2">
-          <div class="room-art">
-            <svg width="70%" height="70%" viewBox="0 0 300 200" fill="none">
-              <path d="M20 160 L150 40 L280 160" stroke="rgba(201,169,110,0.15)" stroke-width="1"/>
-              <rect x="80" y="100" width="140" height="60" rx="2" fill="rgba(201,169,110,0.06)" stroke="rgba(201,169,110,0.15)" stroke-width="0.8"/>
-              <circle cx="150" cy="80" r="30" fill="none" stroke="rgba(201,169,110,0.12)" stroke-width="0.8"/>
-            </svg>
-          </div>
-        </div>
-        <div class="pf-overlay">
-          <div class="pf-cat">Hospitality · Milan</div>
-          <div class="pf-name">Hotel Astrale</div>
-        </div>
-      </div>
-    </div>
-    <div class="pf-item reveal reveal-delay-2">
-      <div class="pf-inner">
-        <div class="pf-visual room-3">
-          <div class="room-art">
-            <svg width="75%" height="75%" viewBox="0 0 200 300" fill="none">
-              <rect x="20" y="20" width="160" height="260" rx="3" fill="rgba(201,169,110,0.04)" stroke="rgba(201,169,110,0.12)" stroke-width="0.8"/>
-              <rect x="40" y="80" width="120" height="80" rx="2" fill="rgba(201,169,110,0.07)" stroke="rgba(201,169,110,0.18)" stroke-width="0.8"/>
-              <line x1="100" y1="20" x2="100" y2="80" stroke="rgba(201,169,110,0.2)" stroke-width="0.8" stroke-dasharray="4 3"/>
-              <circle cx="100" cy="15" r="5" fill="rgba(201,169,110,0.5)"/>
-              <rect x="60" y="220" width="80" height="40" rx="2" fill="rgba(201,169,110,0.06)" stroke="rgba(201,169,110,0.15)" stroke-width="0.6"/>
-            </svg>
-          </div>
-        </div>
-        <div class="pf-overlay">
-          <div class="pf-cat">Commercial · NYC</div>
-          <div class="pf-name">Vela Offices</div>
-        </div>
-      </div>
-    </div>
-    <div class="pf-item reveal reveal-delay-1">
-      <div class="pf-inner">
-        <div class="pf-visual room-4">
-          <div class="room-art">
-            <svg width="80%" height="80%" viewBox="0 0 200 250" fill="none">
-              <path d="M40 200 L100 80 L160 200" fill="rgba(201,169,110,0.04)" stroke="rgba(201,169,110,0.15)" stroke-width="0.8"/>
-              <circle cx="100" cy="60" r="25" fill="none" stroke="rgba(201,169,110,0.15)" stroke-width="0.8"/>
-              <line x1="40" y1="200" x2="160" y2="200" stroke="rgba(201,169,110,0.2)" stroke-width="1"/>
-            </svg>
-          </div>
-        </div>
-        <div class="pf-overlay">
-          <div class="pf-cat">Retail · Tokyo</div>
-          <div class="pf-name">Kōen Atelier</div>
-        </div>
-      </div>
-    </div>
-    <div class="pf-item reveal reveal-delay-2">
-      <div class="pf-inner">
-        <div class="pf-visual room-5">
-          <div class="room-art">
-            <svg width="80%" height="80%" viewBox="0 0 280 280" fill="none">
-              <rect x="20" y="20" width="240" height="240" rx="4" fill="rgba(201,169,110,0.03)" stroke="rgba(201,169,110,0.1)" stroke-width="0.8"/>
-              <circle cx="140" cy="140" r="80" fill="none" stroke="rgba(201,169,110,0.1)" stroke-width="0.8"/>
-              <circle cx="140" cy="140" r="50" fill="none" stroke="rgba(201,169,110,0.08)" stroke-width="0.6"/>
-              <circle cx="140" cy="140" r="5" fill="rgba(201,169,110,0.4)"/>
-              <line x1="20" y1="140" x2="260" y2="140" stroke="rgba(201,169,110,0.06)" stroke-width="0.5"/>
-              <line x1="140" y1="20" x2="140" y2="260" stroke="rgba(201,169,110,0.06)" stroke-width="0.5"/>
-            </svg>
-          </div>
-        </div>
-        <div class="pf-overlay">
-          <div class="pf-cat">Residential · London</div>
-          <div class="pf-name">The Ellipse</div>
-        </div>
-      </div>
-    </div>
-    <div class="pf-item reveal reveal-delay-3">
-      <div class="pf-inner">
-        <div class="pf-visual room-6">
-          <div class="room-art">
-            <svg width="80%" height="70%" viewBox="0 0 320 200" fill="none">
-              <rect x="10" y="30" width="300" height="140" rx="3" fill="rgba(201,169,110,0.04)" stroke="rgba(201,169,110,0.12)" stroke-width="0.8"/>
-              <line x1="10" y1="100" x2="310" y2="100" stroke="rgba(201,169,110,0.08)" stroke-width="0.5"/>
-              <rect x="120" y="50" width="80" height="100" rx="2" fill="rgba(201,169,110,0.06)" stroke="rgba(201,169,110,0.15)" stroke-width="0.8"/>
-              <circle cx="45" cy="60" r="18" fill="none" stroke="rgba(201,169,110,0.15)" stroke-width="0.8"/>
-              <circle cx="275" cy="60" r="18" fill="none" stroke="rgba(201,169,110,0.15)" stroke-width="0.8"/>
-            </svg>
-          </div>
-        </div>
-        <div class="pf-overlay">
-          <div class="pf-cat">Hospitality · Dubai</div>
-          <div class="pf-name">Dusk Lounge</div>
-        </div>
-      </div>
-    </div>
-  </div>
 </section>
 
-<!-- PROCESS -->
-<section class="process" id="process">
-  <div class="section-tag reveal">Our Method</div>
-  <h2 class="process-title reveal">How We <em>Bring</em> Your Vision to Life</h2>
-  <div class="process-steps">
-    <div class="process-line"></div>
-    <div class="process-step reveal">
-      <div class="step-marker"><div class="step-dot">I</div></div>
-      <div class="step-content">
-        <div class="step-num-label">Phase One</div>
-        <h3 class="step-title">Discovery & Vision</h3>
-        <p class="step-desc">We begin with deep listening. Through extended conversations, site visits, and exploration of your lifestyle and aspirations, we map the invisible blueprint of your ideal space before a single line is drawn.</p>
-      </div>
+<!-- Portfolio Section -->
+<section id="portfolio">
+    <div class="container">
+        <h2 class="section-title">Celestial Portfolio</h2>
+        <p class="section-sub">Curated masterpieces that redefine interior architecture</p>
+        <div class="portfolio-grid" id="portfolioGrid">
+            <!-- dynamic js will generate but we can render static images using array -->
+        </div>
     </div>
-    <div class="process-step reveal reveal-delay-1">
-      <div class="step-marker"><div class="step-dot">II</div></div>
-      <div class="step-content">
-        <div class="step-num-label">Phase Two</div>
-        <h3 class="step-title">Concept Development</h3>
-        <p class="step-desc">Our designers craft a conceptual world — mood boards, material palettes, spatial arrangements, and a narrative that ties every element into a coherent, emotionally resonant whole. We present, refine, and align.</p>
-      </div>
-    </div>
-    <div class="process-step reveal reveal-delay-2">
-      <div class="step-marker"><div class="step-dot">III</div></div>
-      <div class="step-content">
-        <div class="step-num-label">Phase Three</div>
-        <h3 class="step-title">Design & Detailing</h3>
-        <p class="step-desc">Technical drawings, custom furniture specifications, lighting plans, and material schedules are developed in precise detail. We collaborate with architects, engineers, and artisans to ensure flawless execution.</p>
-      </div>
-    </div>
-    <div class="process-step reveal reveal-delay-1">
-      <div class="step-marker"><div class="step-dot">IV</div></div>
-      <div class="step-content">
-        <div class="step-num-label">Phase Four</div>
-        <h3 class="step-title">Procurement & Sourcing</h3>
-        <p class="step-desc">We manage the sourcing, commissioning, and logistics of all elements — from bespoke pieces made in small workshops in Portugal to lighting crafted by French artisans. Nothing is left to chance.</p>
-      </div>
-    </div>
-    <div class="process-step reveal reveal-delay-2">
-      <div class="step-marker"><div class="step-dot">V</div></div>
-      <div class="step-content">
-        <div class="step-num-label">Phase Five</div>
-        <h3 class="step-title">Installation & Reveal</h3>
-        <p class="step-desc">We oversee every moment of installation, dressing each space with care and precision. The reveal is not a handover — it's a ceremony. Your space, complete and breathing, ready to begin its story.</p>
-      </div>
-    </div>
-  </div>
 </section>
 
-<!-- TESTIMONIALS -->
-<section class="testimonials">
-  <div class="test-header reveal">
-    <div class="section-tag">Clients</div>
-    <h2 class="test-title">Words from Those <em>Who Live</em> in Our Work</h2>
-  </div>
-  <div class="test-grid">
-    <div class="test-card reveal">
-      <div class="test-quote-mark">"</div>
-      <p class="test-text">Nebula didn't just design our home — they designed a new way of living. Every morning I wake up and feel genuinely moved by the space around me.</p>
-      <div class="test-author">
-        <div class="test-avatar">S</div>
-        <div>
-          <div class="test-name">Sophia Reinhardt</div>
-          <div class="test-role">Private Collector · Berlin</div>
+<!-- Testimonials -->
+<section id="testimonials">
+    <div class="container">
+        <h2 class="section-title">Nebula Chronicles</h2>
+        <p class="section-sub">What our interstellar clients say</p>
+        <div class="testimonial-grid">
+            <div class="testimonial-card"><i class="fas fa-quote-left"></i><p class="testimonial-text">"Nebula transformed our loft into a sanctuary of calm and wonder. Every detail echoes elegance, from lighting to textures. Exceeds expectations!"</p><div class="client-name">— Helena M., Art Collector</div></div>
+            <div class="testimonial-card"><i class="fas fa-quote-left"></i><p class="testimonial-text">"The Nebula team brought ethereal beauty into our boutique hotel. Guests rave about the otherworldly ambience. A truly visionary studio."</p><div class="client-name">— Marcus V., Hotelier</div></div>
+            <div class="testimonial-card"><i class="fas fa-quote-left"></i><p class="testimonial-text">"We hired Nebula for our corporate HQ — the result is a breathtaking mix of innovation and comfort. Best investment ever."</p><div class="client-name">— Priya K., CEO</div></div>
         </div>
-      </div>
-      <div class="test-stars">★★★★★</div>
     </div>
-    <div class="test-card reveal reveal-delay-1">
-      <div class="test-quote-mark">"</div>
-      <p class="test-text">The attention to detail is unlike anything I've experienced. They sourced a century-old stone from a Tuscan quarry just for our fireplace surround. That is Nebula.</p>
-      <div class="test-author">
-        <div class="test-avatar">J</div>
-        <div>
-          <div class="test-name">James & Claire Worthington</div>
-          <div class="test-role">Homeowners · London</div>
-        </div>
-      </div>
-      <div class="test-stars">★★★★★</div>
-    </div>
-    <div class="test-card reveal reveal-delay-2">
-      <div class="test-quote-mark">"</div>
-      <p class="test-text">Our boutique hotel's occupancy increased by 40% in the year following Nebula's redesign. Guests write about the space as much as the service. That says everything.</p>
-      <div class="test-author">
-        <div class="test-avatar">M</div>
-        <div>
-          <div class="test-name">Marco Ferretti</div>
-          <div class="test-role">Hotel Director · Amalfi Coast</div>
-        </div>
-      </div>
-      <div class="test-stars">★★★★★</div>
-    </div>
-  </div>
 </section>
 
-<!-- TEAM -->
-<section class="team" id="team">
-  <div class="team-header reveal">
-    <h2 class="team-title">The <em>Minds</em> Behind the Spaces</h2>
-  </div>
-  <div class="team-grid">
-    <div class="team-card reveal">
-      <div class="team-img">
-        <div class="team-portrait">
-          <div class="team-portrait-bg tp1"></div>
-          <svg width="60%" height="60%" viewBox="0 0 100 120" fill="none" style="position:relative;z-index:1;">
-            <circle cx="50" cy="35" r="22" fill="rgba(201,169,110,0.15)" stroke="rgba(201,169,110,0.3)" stroke-width="0.8"/>
-            <path d="M12 110 C12 80 88 80 88 110" fill="rgba(201,169,110,0.1)" stroke="rgba(201,169,110,0.25)" stroke-width="0.8"/>
-            <circle cx="50" cy="35" r="8" fill="rgba(201,169,110,0.25)"/>
-          </svg>
+<!-- Contact Section -->
+<section id="contact">
+    <div class="container">
+        <div class="contact-flex">
+            <div class="contact-info">
+                <h3>Ignite your space</h3>
+                <p>Discuss your project with our principal designers. From visionary sketches to turnkey delivery, we craft unparalleled interiors.</p>
+                <div class="contact-detail"><i class="fas fa-map-marker-alt"></i> <span>1120 Galactic Avenue, NYC — Milan</span></div>
+                <div class="contact-detail"><i class="fas fa-phone-alt"></i> <span>+1 (212) 555 9980</span></div>
+                <div class="contact-detail"><i class="fas fa-envelope"></i> <span>studio@nebulainteriors.com</span></div>
+                <div class="contact-detail"><i class="fas fa-star-of-life"></i> <span>Consultation by appointment</span></div>
+            </div>
+            <div class="contact-form">
+                <form id="contactForm">
+                    <input type="text" placeholder="Full name" id="name" required>
+                    <input type="email" placeholder="Email address" id="email" required>
+                    <textarea rows="4" placeholder="Tell us about your dream space..." id="message" required></textarea>
+                    <button type="submit">Send celestial request <i class="fas fa-arrow-right"></i></button>
+                </form>
+            </div>
         </div>
-        <div class="team-img-overlay"></div>
-        <div class="team-social">
-          <div class="social-dot">in</div>
-          <div class="social-dot">ig</div>
-        </div>
-      </div>
-      <div class="team-name">Isabelle Marchetti</div>
-      <div class="team-role">Founder & Creative Director</div>
     </div>
-    <div class="team-card reveal reveal-delay-1">
-      <div class="team-img">
-        <div class="team-portrait">
-          <div class="team-portrait-bg tp2"></div>
-          <svg width="60%" height="60%" viewBox="0 0 100 120" fill="none" style="position:relative;z-index:1;">
-            <circle cx="50" cy="35" r="22" fill="rgba(201,169,110,0.12)" stroke="rgba(201,169,110,0.25)" stroke-width="0.8"/>
-            <path d="M12 110 C12 80 88 80 88 110" fill="rgba(201,169,110,0.08)" stroke="rgba(201,169,110,0.2)" stroke-width="0.8"/>
-            <circle cx="50" cy="35" r="8" fill="rgba(201,169,110,0.2)"/>
-          </svg>
-        </div>
-        <div class="team-img-overlay"></div>
-        <div class="team-social">
-          <div class="social-dot">in</div>
-          <div class="social-dot">ig</div>
-        </div>
-      </div>
-      <div class="team-name">Luca Benedetti</div>
-      <div class="team-role">Principal Architect</div>
-    </div>
-    <div class="team-card reveal reveal-delay-2">
-      <div class="team-img">
-        <div class="team-portrait">
-          <div class="team-portrait-bg tp3"></div>
-          <svg width="60%" height="60%" viewBox="0 0 100 120" fill="none" style="position:relative;z-index:1;">
-            <circle cx="50" cy="35" r="22" fill="rgba(201,169,110,0.1)" stroke="rgba(201,169,110,0.2)" stroke-width="0.8"/>
-            <path d="M12 110 C12 80 88 80 88 110" fill="rgba(201,169,110,0.07)" stroke="rgba(201,169,110,0.18)" stroke-width="0.8"/>
-            <circle cx="50" cy="35" r="8" fill="rgba(201,169,110,0.18)"/>
-          </svg>
-        </div>
-        <div class="team-img-overlay"></div>
-        <div class="team-social">
-          <div class="social-dot">in</div>
-          <div class="social-dot">ig</div>
-        </div>
-      </div>
-      <div class="team-name">Aiko Tanaka</div>
-      <div class="team-role">Senior Interior Designer</div>
-    </div>
-    <div class="team-card reveal reveal-delay-3">
-      <div class="team-img">
-        <div class="team-portrait">
-          <div class="team-portrait-bg tp4"></div>
-          <svg width="60%" height="60%" viewBox="0 0 100 120" fill="none" style="position:relative;z-index:1;">
-            <circle cx="50" cy="35" r="22" fill="rgba(201,169,110,0.13)" stroke="rgba(201,169,110,0.22)" stroke-width="0.8"/>
-            <path d="M12 110 C12 80 88 80 88 110" fill="rgba(201,169,110,0.09)" stroke="rgba(201,169,110,0.2)" stroke-width="0.8"/>
-            <circle cx="50" cy="35" r="8" fill="rgba(201,169,110,0.22)"/>
-          </svg>
-        </div>
-        <div class="team-img-overlay"></div>
-        <div class="team-social">
-          <div class="social-dot">in</div>
-          <div class="social-dot">ig</div>
-        </div>
-      </div>
-      <div class="team-name">Élise Dupont</div>
-      <div class="team-role">Art & Materials Director</div>
-    </div>
-  </div>
 </section>
 
-<!-- AWARDS -->
-<section class="awards reveal">
-  <div class="awards-row">
-    <div class="award-item">
-      <div class="award-year">2024</div>
-      <div class="award-name">Best Luxury Residential</div>
-      <div class="award-org">AD Design Awards</div>
-    </div>
-    <div class="award-item">
-      <div class="award-year">2023</div>
-      <div class="award-name">Studio of the Year</div>
-      <div class="award-org">Elle Décor International</div>
-    </div>
-    <div class="award-item">
-      <div class="award-year">2023</div>
-      <div class="award-name">Hospitality Design Excellence</div>
-      <div class="award-org">Frame Awards</div>
-    </div>
-    <div class="award-item">
-      <div class="award-year">2022</div>
-      <div class="award-name">Innovation in Materials</div>
-      <div class="award-org">Dezeen Awards</div>
-    </div>
-    <div class="award-item">
-      <div class="award-year">2021</div>
-      <div class="award-name">Top 50 Global Studios</div>
-      <div class="award-org">Wallpaper* Magazine</div>
-    </div>
-  </div>
-</section>
-
-<!-- NEWSLETTER -->
-<div class="newsletter reveal">
-  <div class="newsletter-left">
-    <h3 class="newsletter-title">Stay in the <em>Orbit</em></h3>
-    <p class="newsletter-sub">Inspiration, project reveals, and design intelligence — delivered seasonally.</p>
-  </div>
-  <div class="newsletter-form">
-    <input type="email" class="newsletter-input" placeholder="Your email address">
-    <button class="newsletter-btn">Subscribe</button>
-  </div>
-</div>
-
-<!-- CTA -->
-<section class="cta-section" id="contact">
-  <div class="cta-bg"></div>
-  <div class="cta-circle"></div>
-  <div class="cta-circle cta-circle-2"></div>
-  <div class="cta-content reveal">
-    <div class="cta-eyebrow">Begin Your Project</div>
-    <h2 class="cta-title">Let's Create Something<br><em>Extraordinary</em></h2>
-    <p class="cta-sub">Every great space begins with a conversation. Tell us about your vision, and we will tell you what's possible.</p>
-    <div class="cta-actions">
-      <a href="mailto:studio@nebula.design" class="btn-primary">Start a Conversation</a>
-      <a href="#portfolio" class="btn-ghost"><span class="arrow"></span> View More Work</a>
-    </div>
-  </div>
-</section>
-
-<!-- CONTACT STRIP -->
-<div class="contact-strip" id="contact-info">
-  <div class="contact-item">
-    <div class="contact-label">Studio Address</div>
-    <a href="#" class="contact-value">14 Rue du Faubourg, Paris</a>
-  </div>
-  <div class="contact-item">
-    <div class="contact-label">New Commissions</div>
-    <a href="mailto:studio@nebula.design" class="contact-value">studio@nebula.design</a>
-  </div>
-  <div class="contact-item">
-    <div class="contact-label">Press & Partnerships</div>
-    <a href="tel:+33142001234" class="contact-value">+33 1 42 00 12 34</a>
-  </div>
-</div>
-
-<!-- FOOTER -->
 <footer>
-  <div class="footer-top">
-    <div class="footer-brand">
-      <div class="footer-logo">Neb<span>u</span>la</div>
-      <p class="footer-tagline">A studio for those who believe that the spaces we inhabit shape who we become.</p>
+    <div class="container">
+        <div class="footer-social">
+            <a href="#"><i class="fab fa-instagram"></i></a>
+            <a href="#"><i class="fab fa-pinterest-p"></i></a>
+            <a href="#"><i class="fab fa-linkedin-in"></i></a>
+            <a href="#"><i class="fab fa-behance"></i></a>
+        </div>
+        <p style="margin-top: 35px; font-size: 0.85rem;">© 2025 NEBULA INTERIORS — Where the cosmos meets craftsmanship. All rights reserved.</p>
+        <p style="margin-top: 12px; font-size: 0.75rem;">✦ Bespoke design studio ✦</p>
     </div>
-    <div class="footer-nav">
-      <div class="footer-col">
-        <div class="footer-col-title">Studio</div>
-        <ul class="footer-links">
-          <li><a href="#about">Our Story</a></li>
-          <li><a href="#team">Team</a></li>
-          <li><a href="#">Approach</a></li>
-          <li><a href="#">Press</a></li>
-          <li><a href="#">Careers</a></li>
-        </ul>
-      </div>
-      <div class="footer-col">
-        <div class="footer-col-title">Services</div>
-        <ul class="footer-links">
-          <li><a href="#">Residential</a></li>
-          <li><a href="#">Commercial</a></li>
-          <li><a href="#">Hospitality</a></li>
-          <li><a href="#">Consultancy</a></li>
-          <li><a href="#">Art Curation</a></li>
-        </ul>
-      </div>
-      <div class="footer-col">
-        <div class="footer-col-title">Follow</div>
-        <ul class="footer-links">
-          <li><a href="#">Instagram</a></li>
-          <li><a href="#">Pinterest</a></li>
-          <li><a href="#">LinkedIn</a></li>
-          <li><a href="#">Houzz</a></li>
-          <li><a href="#">1stDibs</a></li>
-        </ul>
-      </div>
-    </div>
-  </div>
-  <div class="footer-bottom">
-    <div class="footer-copy">© 2026 Nebula Design Studio. All rights reserved.</div>
-    <div class="footer-socials">
-      <a href="#">Privacy</a>
-      <a href="#">Terms</a>
-      <a href="#">Sitemap</a>
-    </div>
-  </div>
 </footer>
 
+<!-- Lightbox Modal -->
+<div id="lightbox" class="lightbox">
+    <span class="close-lightbox">&times;</span>
+    <img id="lightboxImg" src="" alt="Enlarged view">
+</div>
+
 <script>
-  // Custom cursor
-  const cursor = document.getElementById('cursor');
-  const ring = document.getElementById('cursorRing');
-  let mx = -100, my = -100;
-  let rx = -100, ry = -100;
+    // Portfolio data (interior images)
+    const portfolioItems = [
+        { img: "https://images.unsplash.com/photo-1567016432779-094069958ea5?w=700&h=450&fit=crop", title: "Nebula Lounge", category: "Residential" },
+        { img: "https://images.unsplash.com/photo-1556911220-bff31c812dba?w=700&h=450&fit=crop", title: "Stellar Kitchen", category: "Modern" },
+        { img: "https://images.unsplash.com/photo-1566665797739-1674de7a421a?w=700&h=450&fit=crop", title: "Elysian Bedroom", category: "Master Suite" },
+        { img: "https://images.unsplash.com/photo-1497366754035-f2001dbb0d1c?w=700&h=450&fit=crop", title: "Orion Office", category: "Corporate" },
+        { img: "https://images.unsplash.com/photo-1552321554-5fefe8c9ef14?w=700&h=450&fit=crop", title: "Lunar Bath", category: "Spa" },
+        { img: "https://images.unsplash.com/photo-1582268611958-ebfd161ef9cf?w=700&h=450&fit=crop", title: "Zenith Terrace", category: "Outdoor" }
+    ];
 
-  document.addEventListener('mousemove', e => {
-    mx = e.clientX; my = e.clientY;
-    cursor.style.left = mx + 'px';
-    cursor.style.top = my + 'px';
-  });
+    function loadPortfolio() {
+        const container = document.getElementById('portfolioGrid');
+        if (!container) return;
+        container.innerHTML = '';
+        portfolioItems.forEach(item => {
+            const portfolioDiv = document.createElement('div');
+            portfolioDiv.className = 'portfolio-item';
+            portfolioDiv.setAttribute('data-img', item.img);
+            portfolioDiv.innerHTML = `
+                <img src="${item.img}" alt="${item.title}" loading="lazy">
+                <div class="portfolio-overlay">
+                    <h4>${item.title}</h4>
+                    <p>${item.category}</p>
+                </div>
+            `;
+            portfolioDiv.addEventListener('click', () => openLightbox(item.img));
+            container.appendChild(portfolioDiv);
+        });
+    }
 
-  function animateRing() {
-    rx += (mx - rx) * 0.12;
-    ry += (my - ry) * 0.12;
-    ring.style.left = rx + 'px';
-    ring.style.top = ry + 'px';
-    requestAnimationFrame(animateRing);
-  }
-  animateRing();
+    // Lightbox Logic
+    const lightbox = document.getElementById('lightbox');
+    const lightboxImg = document.getElementById('lightboxImg');
+    function openLightbox(imgSrc) {
+        lightboxImg.src = imgSrc;
+        lightbox.classList.add('active');
+        document.body.style.overflow = 'hidden';
+    }
+    function closeLightbox() {
+        lightbox.classList.remove('active');
+        document.body.style.overflow = '';
+    }
+    if(lightbox) {
+        lightbox.addEventListener('click', (e) => {
+            if(e.target === lightbox || e.target.classList.contains('close-lightbox')) closeLightbox();
+        });
+        document.addEventListener('keydown', (e) => {
+            if(e.key === 'Escape' && lightbox.classList.contains('active')) closeLightbox();
+        });
+    }
 
-  document.querySelectorAll('a, button, .service-card, .pf-item, .team-card, .award-item').forEach(el => {
-    el.addEventListener('mouseenter', () => {
-      cursor.style.width = '20px';
-      cursor.style.height = '20px';
-      ring.style.width = '60px';
-      ring.style.height = '60px';
+    // Mobile menu toggle
+    const menuBtn = document.getElementById('menuBtn');
+    const navLinks = document.getElementById('navLinks');
+    if(menuBtn) {
+        menuBtn.addEventListener('click', () => {
+            navLinks.classList.toggle('active');
+            const icon = menuBtn.querySelector('i');
+            if(icon.classList.contains('fa-bars')) {
+                icon.classList.remove('fa-bars');
+                icon.classList.add('fa-times');
+            } else {
+                icon.classList.remove('fa-times');
+                icon.classList.add('fa-bars');
+            }
+        });
+        // Close menu when clicking on any link
+        const links = document.querySelectorAll('.nav-links a');
+        links.forEach(link => {
+            link.addEventListener('click', () => {
+                navLinks.classList.remove('active');
+                const icon = menuBtn.querySelector('i');
+                if(icon.classList.contains('fa-times')) {
+                    icon.classList.remove('fa-times');
+                    icon.classList.add('fa-bars');
+                }
+            });
+        });
+    }
+
+    // Contact form submission
+    const contactForm = document.getElementById('contactForm');
+    if(contactForm) {
+        contactForm.addEventListener('submit', function(e) {
+            e.preventDefault();
+            const name = document.getElementById('name').value.trim();
+            const email = document.getElementById('email').value.trim();
+            const message = document.getElementById('message').value.trim();
+            if(name && email && message) {
+                alert(`✨ Thank you, ${name}! Your celestial vision has been received. Our design oracle will reply within 24h.`);
+                contactForm.reset();
+            } else {
+                alert('Please fill all fields to journey with us.');
+            }
+        });
+    }
+
+    // Sticky navbar shadow on scroll
+    window.addEventListener('scroll', () => {
+        const navbar = document.getElementById('navbar');
+        if(window.scrollY > 50) {
+            navbar.style.background = "rgba(11, 7, 18, 0.9)";
+            navbar.style.backdropFilter = "blur(18px)";
+        } else {
+            navbar.style.background = "rgba(11, 7, 18, 0.7)";
+        }
     });
-    el.addEventListener('mouseleave', () => {
-      cursor.style.width = '10px';
-      cursor.style.height = '10px';
-      ring.style.width = '38px';
-      ring.style.height = '38px';
+
+    // Initialize Portfolio
+    loadPortfolio();
+    
+    // Smooth scroll for all anchor links
+    document.querySelectorAll('a[href^="#"]').forEach(anchor => {
+        anchor.addEventListener('click', function(e) {
+            const target = document.querySelector(this.getAttribute('href'));
+            if(target) {
+                e.preventDefault();
+                target.scrollIntoView({ behavior: 'smooth', block: 'start' });
+            }
+        });
     });
-  });
-
-  // Nav scroll
-  const navbar = document.getElementById('navbar');
-  window.addEventListener('scroll', () => {
-    navbar.classList.toggle('scrolled', window.scrollY > 80);
-  });
-
-  // Intersection observer for reveals
-  const observer = new IntersectionObserver((entries) => {
-    entries.forEach(entry => {
-      if (entry.isIntersecting) {
-        entry.target.classList.add('visible');
-      }
-    });
-  }, { threshold: 0.1, rootMargin: '0px 0px -60px 0px' });
-
-  document.querySelectorAll('.reveal').forEach(el => observer.observe(el));
-
-  // Filter buttons
-  document.querySelectorAll('.filter-btn').forEach(btn => {
-    btn.addEventListener('click', function() {
-      document.querySelectorAll('.filter-btn').forEach(b => b.classList.remove('active'));
-      this.classList.add('active');
-    });
-  });
-
-  // Smooth scroll for nav links
-  document.querySelectorAll('a[href^="#"]').forEach(anchor => {
-    anchor.addEventListener('click', function(e) {
-      const target = document.querySelector(this.getAttribute('href'));
-      if (target) {
-        e.preventDefault();
-        target.scrollIntoView({ behavior: 'smooth', block: 'start' });
-      }
-    });
-  });
-
-  // Newsletter
-  const newsletterBtn = document.querySelector('.newsletter-btn');
-  const newsletterInput = document.querySelector('.newsletter-input');
-  if (newsletterBtn) {
-    newsletterBtn.addEventListener('click', () => {
-      if (newsletterInput.value.trim()) {
-        newsletterBtn.textContent = 'Thank You ✦';
-        newsletterBtn.style.background = '#8a7a5a';
-        newsletterInput.value = '';
-        setTimeout(() => {
-          newsletterBtn.textContent = 'Subscribe';
-          newsletterBtn.style.background = '';
-        }, 3000);
-      }
-    });
-  }
-
-  // Parallax on hero orbits
-  window.addEventListener('scroll', () => {
-    const scrolled = window.scrollY;
-    const orbits = document.querySelectorAll('.hero-orbit');
-    orbits.forEach((o, i) => {
-      o.style.transform = `translateY(${scrolled * (i === 0 ? 0.15 : 0.08)}px)`;
-    });
-  });
 </script>
 </body>
 </html>
