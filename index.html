@@ -2,36 +2,33 @@
 <html lang="en">
 <head>
   <meta charset="UTF-8">
-  <meta name="viewport" content="width=device-width, initial-scale=1.0, viewport-fit=cover">
-  <title>Kamaldeen Interiors | Luxury Interior Design</title>
-  <!-- Tailwind CSS v2 + Custom CSS for advanced animations -->
+  <meta name="viewport" content="width=device-width, initial-scale=1.0, viewport-fit=cover, user-scalable=yes">
+  <title>Nebula Interiors | Bespoke Interior Design</title>
+  <!-- Tailwind CSS v2 + custom responsive enhancements -->
   <link href="https://cdn.jsdelivr.net/npm/tailwindcss@2.2.19/dist/tailwind.min.css" rel="stylesheet">
-  <!-- Font Awesome 6 (free icons) -->
+  <!-- Font Awesome 6 -->
   <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0-beta3/css/all.min.css">
   <style>
-    /* ========== INTERNAL CUSTOM CSS + KEYFRAME ANIMATIONS ========== */
+    /* ========== CUSTOM CSS + RESPONSIVE ANIMATIONS ========== */
     * {
       scroll-behavior: smooth;
     }
-
     body {
       overflow-x: hidden;
       font-family: 'Inter', system-ui, -apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, Helvetica, sans-serif;
+      background: #fefaf5;
     }
-
-    /* custom scroll reveal / fade-in-up effect */
+    /* fade-up animation */
     .fade-up {
       opacity: 0;
       transform: translateY(35px);
-      transition: opacity 0.8s cubic-bezier(0.2, 0.9, 0.4, 1.1), transform 0.8s cubic-bezier(0.2, 0.9, 0.4, 1.1);
+      transition: opacity 0.7s cubic-bezier(0.2, 0.9, 0.4, 1.1), transform 0.7s cubic-bezier(0.2, 0.9, 0.4, 1.1);
     }
-
     .fade-up.appear {
       opacity: 1;
       transform: translateY(0);
     }
-
-    /* floating card animation */
+    /* floating animation */
     @keyframes float {
       0% { transform: translateY(0px); }
       50% { transform: translateY(-8px); }
@@ -40,8 +37,7 @@
     .float-animation {
       animation: float 4s ease-in-out infinite;
     }
-
-    /* glowing button pulse */
+    /* button glow */
     @keyframes pulseGlow {
       0% { box-shadow: 0 0 0 0 rgba(180, 83, 9, 0.4); }
       70% { box-shadow: 0 0 0 12px rgba(180, 83, 9, 0); }
@@ -50,12 +46,11 @@
     .btn-glow:hover {
       animation: pulseGlow 1.2s infinite;
     }
-
-    /* carousel custom styling */
+    /* carousel */
     .carousel-container {
       position: relative;
       overflow: hidden;
-      border-radius: 2rem;
+      border-radius: 1.5rem;
     }
     .carousel-track {
       display: flex;
@@ -63,54 +58,49 @@
     }
     .carousel-slide {
       flex: 0 0 100%;
-      position: relative;
     }
     .carousel-btn {
       background: rgba(255,255,255,0.85);
       backdrop-filter: blur(8px);
       transition: all 0.2s ease;
+      width: 2.5rem;
+      height: 2.5rem;
     }
     .carousel-btn:hover {
       background: white;
-      transform: scale(1.05);
+      transform: scale(1.08);
     }
     .dot-active {
-      background: #b45309;
-      width: 2rem;
+      background: #b45309 !important;
+      width: 1.8rem !important;
     }
-
-    /* background blob animation - warm tones */
+    /* background blobs */
     .blob-bg {
       position: absolute;
       width: 300px;
       height: 300px;
-      background: radial-gradient(circle, rgba(180,83,9,0.15) 0%, rgba(245,158,11,0.05) 100%);
+      background: radial-gradient(circle, rgba(180,83,9,0.12) 0%, rgba(245,158,11,0.04) 100%);
       border-radius: 60% 40% 30% 70% / 60% 30% 70% 40%;
       filter: blur(70px);
       z-index: -1;
-      animation: blobMove 14s infinite alternate;
+      animation: blobMove 16s infinite alternate;
     }
     @keyframes blobMove {
       0% { transform: translate(0, 0) scale(1); }
       100% { transform: translate(100px, 60px) scale(1.3); }
     }
-
-    /* custom scrollbar */
+    /* scrollbar */
     ::-webkit-scrollbar {
-      width: 8px;
+      width: 7px;
     }
     ::-webkit-scrollbar-track {
-      background: #f1f1f1;
+      background: #f1e7de;
     }
     ::-webkit-scrollbar-thumb {
       background: #b45309;
-      border-radius: 10px;
+      border-radius: 20px;
     }
-    ::-webkit-scrollbar-thumb:hover {
-      background: #92400e;
-    }
-
-    /* hover image scale */
+    /* image zoom */
     .img-hover-zoom {
       transition: transform 0.5s ease, filter 0.3s;
     }
@@ -118,263 +108,278 @@
       transform: scale(1.05);
       filter: brightness(1.02);
     }
-
-    /* interior warm gradient accents */
-    .warm-gradient {
-      background: linear-gradient(135deg, #fef3c7 0%, #ffedd5 100%);
+    /* responsive utilities */
+    @media (max-width: 640px) {
+      .carousel-btn {
+        width: 2rem;
+        height: 2rem;
+      }
+      .carousel-btn i {
+        font-size: 0.9rem;
+      }
+      .hero-title {
+        font-size: 2.5rem;
+        line-height: 1.2;
+      }
     }
-
+    @media (min-width: 768px) and (max-width: 1024px) {
+      .hero-title {
+        font-size: 4rem;
+      }
+    }
+    .warm-gradient {
+      background: linear-gradient(115deg, #fff1e0 0%, #ffe6d5 100%);
+    }
     section {
       scroll-margin-top: 80px;
     }
+    .lift-card {
+      transition: all 0.3s ease;
+    }
+    .lift-card:hover {
+      transform: translateY(-6px);
+    }
   </style>
 </head>
-<body class="bg-amber-50 text-gray-800">
+<body class="bg-gradient-to-br from-amber-50 via-white to-amber-50 text-gray-800">
 
-  <!-- floating blobs for artistic background -->
-  <div class="blob-bg top-20 left-10"></div>
-  <div class="blob-bg bottom-20 right-10" style="animation-delay: -5s; width: 400px; height: 400px;"></div>
+  <!-- background blobs -->
+  <div class="blob-bg top-20 left-5 opacity-70"></div>
+  <div class="blob-bg bottom-20 right-5" style="animation-delay: -7s; width: 400px; height: 400px;"></div>
 
-  <!-- ========== STICKY NAVIGATION ========== -->
+  <!-- STICKY NAVIGATION -->
   <header class="fixed w-full top-0 z-50 bg-white/85 backdrop-blur-lg shadow-md transition-all duration-300">
-    <nav class="container mx-auto px-6 py-4 flex flex-wrap justify-between items-center">
-      <div class="text-2xl font-extrabold bg-gradient-to-r from-amber-800 to-amber-600 bg-clip-text text-transparent">
-        ✦ KAMDÉEN INTERIORS
+    <nav class="container mx-auto px-5 md:px-8 py-3 md:py-4 flex flex-wrap justify-between items-center">
+      <div class="text-xl md:text-2xl font-extrabold bg-gradient-to-r from-amber-800 to-amber-600 bg-clip-text text-transparent">
+        ✦ NEBULA INTERIORS
       </div>
-      <div class="flex space-x-6 text-gray-700 font-medium">
-        <a href="#home" class="hover:text-amber-700 transition duration-300 transform hover:-translate-y-0.5 inline-block">Home</a>
-        <a href="#services" class="hover:text-amber-700 transition duration-300 transform hover:-translate-y-0.5 inline-block">Services</a>
-        <a href="#about" class="hover:text-amber-700 transition duration-300 transform hover:-translate-y-0.5 inline-block">About</a>
-        <a href="#contact" class="hover:text-amber-700 transition duration-300 transform hover:-translate-y-0.5 inline-block">Contact</a>
+      <div class="flex flex-wrap justify-center gap-4 md:gap-6 text-gray-700 font-medium text-sm md:text-base">
+        <a href="#home" class="hover:text-amber-700 transition duration-300 transform hover:-translate-y-0.5">Home</a>
+        <a href="#services" class="hover:text-amber-700 transition duration-300 transform hover:-translate-y-0.5">Services</a>
+        <a href="#about" class="hover:text-amber-700 transition duration-300 transform hover:-translate-y-0.5">About</a>
+        <a href="#contact" class="hover:text-amber-700 transition duration-300 transform hover:-translate-y-0.5">Contact</a>
       </div>
     </nav>
   </header>
 
-  <main class="pt-20">
-    <!-- ==================== INDEX / HOME SECTION ==================== -->
-    <section id="home" class="relative py-12 md:py-20 overflow-hidden">
-      <div class="container mx-auto px-6">
-        <!-- Hero intro -->
-        <div class="text-center max-w-3xl mx-auto mb-12 fade-up">
-          <span class="text-amber-600 font-semibold tracking-wide text-sm">KAMALDEEN MUHAMMAD — PRINCIPAL DESIGNER</span>
-          <h1 class="text-5xl md:text-7xl font-extrabold mt-4 bg-gradient-to-r from-amber-900 via-amber-800 to-yellow-700 bg-clip-text text-transparent">Sculpting Spaces, <br>Defining Elegance</h1>
-          <p class="text-gray-600 text-lg md:text-xl mt-6">Luxury interior design that blends warmth, functionality, and timeless beauty. Transform your home into a masterpiece.</p>
-          <div class="mt-8 flex justify-center gap-4">
-            <a href="#contact" class="px-8 py-3 bg-amber-700 text-white rounded-full font-semibold shadow-lg hover:bg-amber-800 transition transform hover:scale-105 btn-glow">Book Consultation <i class="fas fa-arrow-right ml-2"></i></a>
-            <a href="#services" class="px-8 py-3 border border-amber-300 rounded-full font-semibold hover:bg-amber-100 transition">View Portfolio</a>
+  <main class="pt-16 md:pt-20">
+    <!-- ==================== HOME SECTION ==================== -->
+    <section id="home" class="relative py-10 md:py-20 overflow-hidden">
+      <div class="container mx-auto px-5 md:px-8">
+        <div class="text-center max-w-3xl mx-auto mb-10 md:mb-16 fade-up">
+          <span class="text-amber-700 font-semibold tracking-wide text-sm">TIMELESS ELEGANCE</span>
+          <h1 class="hero-title text-4xl sm:text-5xl md:text-6xl lg:text-7xl font-extrabold mt-4 bg-gradient-to-r from-amber-900 via-amber-800 to-amber-700 bg-clip-text text-transparent leading-tight">Sculpting Spaces, <br class="hidden sm:block">Defining Elegance</h1>
+          <p class="text-gray-600 text-base md:text-xl mt-5 max-w-2xl mx-auto">Luxury interior design that blends warmth, functionality, and timeless beauty. Transform your home into a masterpiece.</p>
+          <div class="mt-8 flex flex-wrap justify-center gap-4">
+            <a href="#contact" class="px-6 md:px-8 py-2.5 md:py-3 bg-amber-700 text-white rounded-full font-semibold shadow-lg hover:bg-amber-800 transition transform hover:scale-105 btn-glow text-sm md:text-base">Book Consultation <i class="fas fa-arrow-right ml-2"></i></a>
+            <a href="#services" class="px-6 md:px-8 py-2.5 md:py-3 border border-amber-300 rounded-full font-semibold hover:bg-amber-100 transition text-sm md:text-base">View Portfolio</a>
           </div>
         </div>
 
-        <!-- IMAGE CAROUSEL (luxury interiors) -->
-        <div class="max-w-5xl mx-auto mt-12 fade-up">
-          <div class="carousel-container relative shadow-2xl">
-            <div class="carousel-track" id="carouselTrack">
-              <!-- slides injected via JS -->
-            </div>
-            <button id="prevBtn" class="carousel-btn absolute left-4 top-1/2 -translate-y-1/2 w-10 h-10 rounded-full flex items-center justify-center text-gray-800 z-10 shadow-md"><i class="fas fa-chevron-left text-xl"></i></button>
-            <button id="nextBtn" class="carousel-btn absolute right-4 top-1/2 -translate-y-1/2 w-10 h-10 rounded-full flex items-center justify-center text-gray-800 z-10 shadow-md"><i class="fas fa-chevron-right text-xl"></i></button>
-            <div class="absolute bottom-5 left-0 right-0 flex justify-center gap-2 z-10" id="carouselDots"></div>
+        <!-- IMAGE CAROUSEL -->
+        <div class="max-w-5xl mx-auto mt-6 md:mt-12 fade-up">
+          <div class="carousel-container relative shadow-2xl rounded-2xl md:rounded-3xl">
+            <div class="carousel-track" id="carouselTrack"></div>
+            <button id="prevBtn" class="carousel-btn absolute left-2 md:left-4 top-1/2 -translate-y-1/2 rounded-full flex items-center justify-center text-gray-800 z-10 shadow-md"><i class="fas fa-chevron-left text-sm md:text-xl"></i></button>
+            <button id="nextBtn" class="carousel-btn absolute right-2 md:right-4 top-1/2 -translate-y-1/2 rounded-full flex items-center justify-center text-gray-800 z-10 shadow-md"><i class="fas fa-chevron-right text-sm md:text-xl"></i></button>
+            <div class="absolute bottom-3 left-0 right-0 flex justify-center gap-1.5 md:gap-2 z-10" id="carouselDots"></div>
           </div>
         </div>
 
-        <!-- stats row to make page long & animated (interior style) -->
-        <div class="grid grid-cols-2 md:grid-cols-4 gap-8 mt-20 text-center">
-          <div class="bg-white p-6 rounded-2xl shadow-md hover:shadow-xl transition-all duration-300 transform hover:-translate-y-2 fade-up">
-            <i class="fas fa-couch text-4xl text-amber-600"></i>
-            <h3 class="text-3xl font-bold mt-3 counter" data-target="247">0</h3>
-            <p class="text-gray-500">Projects Completed</p>
+        <!-- STATS (responsive) -->
+        <div class="grid grid-cols-2 md:grid-cols-4 gap-5 md:gap-8 mt-16 md:mt-20 text-center">
+          <div class="bg-white p-5 md:p-6 rounded-2xl shadow-md hover:shadow-xl transition-all duration-300 transform hover:-translate-y-2 fade-up">
+            <i class="fas fa-couch text-3xl md:text-4xl text-amber-600"></i>
+            <h3 class="text-2xl md:text-3xl font-bold mt-3 counter" data-target="247">0</h3>
+            <p class="text-gray-500 text-sm md:text-base">Projects Completed</p>
           </div>
-          <div class="bg-white p-6 rounded-2xl shadow-md hover:shadow-xl transition-all duration-300 transform hover:-translate-y-2 fade-up">
-            <i class="fas fa-smile text-4xl text-amber-600"></i>
-            <h3 class="text-3xl font-bold mt-3 counter" data-target="198">0</h3>
-            <p class="text-gray-500">Happy Clients</p>
+          <div class="bg-white p-5 md:p-6 rounded-2xl shadow-md hover:shadow-xl transition-all duration-300 transform hover:-translate-y-2 fade-up">
+            <i class="fas fa-smile text-3xl md:text-4xl text-amber-600"></i>
+            <h3 class="text-2xl md:text-3xl font-bold mt-3 counter" data-target="198">0</h3>
+            <p class="text-gray-500 text-sm md:text-base">Happy Clients</p>
           </div>
-          <div class="bg-white p-6 rounded-2xl shadow-md hover:shadow-xl transition-all duration-300 transform hover:-translate-y-2 fade-up">
-            <i class="fas fa-award text-4xl text-amber-600"></i>
-            <h3 class="text-3xl font-bold mt-3 counter" data-target="32">0</h3>
-            <p class="text-gray-500">Design Awards</p>
+          <div class="bg-white p-5 md:p-6 rounded-2xl shadow-md hover:shadow-xl transition-all duration-300 transform hover:-translate-y-2 fade-up">
+            <i class="fas fa-award text-3xl md:text-4xl text-amber-600"></i>
+            <h3 class="text-2xl md:text-3xl font-bold mt-3 counter" data-target="32">0</h3>
+            <p class="text-gray-500 text-sm md:text-base">Design Awards</p>
           </div>
-          <div class="bg-white p-6 rounded-2xl shadow-md hover:shadow-xl transition-all duration-300 transform hover:-translate-y-2 fade-up">
-            <i class="fas fa-calendar-alt text-4xl text-amber-600"></i>
-            <h3 class="text-3xl font-bold mt-3 counter" data-target="12">0</h3>
-            <p class="text-gray-500">Years Experience</p>
+          <div class="bg-white p-5 md:p-6 rounded-2xl shadow-md hover:shadow-xl transition-all duration-300 transform hover:-translate-y-2 fade-up">
+            <i class="fas fa-calendar-alt text-3xl md:text-4xl text-amber-600"></i>
+            <h3 class="text-2xl md:text-3xl font-bold mt-3 counter" data-target="12">0</h3>
+            <p class="text-gray-500 text-sm md:text-base">Years Experience</p>
           </div>
         </div>
 
-        <!-- testimonial block (interior design client) -->
-        <div class="mt-20 bg-amber-100/40 p-8 rounded-3xl text-center fade-up">
-          <i class="fas fa-quote-left text-4xl text-amber-400 mb-4"></i>
-          <p class="text-xl italic max-w-3xl mx-auto text-gray-700">"Kamaldeen transformed our ordinary apartment into a sanctuary. Every detail, from lighting to textures, reflects pure artistry. Absolutely thrilled!"</p>
-          <div class="mt-6 flex justify-center gap-3 items-center">
-            <img src="https://randomuser.me/api/portraits/women/89.jpg" class="w-12 h-12 rounded-full border-2 border-amber-500" alt="client">
-            <div><strong>— Mrs. Adaeze Okafor</strong><br>Lekki, Lagos</div>
+        <!-- Testimonial -->
+        <div class="mt-16 md:mt-20 bg-amber-100/50 p-6 md:p-8 rounded-3xl text-center fade-up">
+          <i class="fas fa-quote-left text-3xl md:text-4xl text-amber-400 mb-3"></i>
+          <p class="text-lg md:text-xl italic max-w-3xl mx-auto text-gray-700">"Nebula Interiors transformed our ordinary apartment into a sanctuary. Every detail, from lighting to textures, reflects pure artistry."</p>
+          <div class="mt-5 flex justify-center gap-3 items-center">
+            <img src="https://randomuser.me/api/portraits/women/89.jpg" class="w-10 h-10 md:w-12 md:h-12 rounded-full border-2 border-amber-500" alt="client">
+            <div><strong>— Mrs. Adaeze Okafor</strong><br class="hidden sm:block"><span class="text-sm">Lekki, Lagos</span></div>
           </div>
         </div>
       </div>
     </section>
 
-    <!-- ==================== SERVICES PAGE ==================== -->
-    <section id="services" class="py-20 bg-white relative">
-      <div class="container mx-auto px-6">
-        <div class="text-center mb-16 fade-up">
-          <h2 class="text-4xl md:text-5xl font-bold">Our <span class="text-amber-700">Design Services</span></h2>
-          <div class="w-24 h-1 bg-amber-600 mx-auto mt-4 rounded-full"></div>
-          <p class="text-gray-600 max-w-2xl mx-auto mt-5">Bespoke interior solutions that reflect your personality and elevate your lifestyle — from concept to completion.</p>
+    <!-- ==================== SERVICES SECTION ==================== -->
+    <section id="services" class="py-16 md:py-24 bg-white relative">
+      <div class="container mx-auto px-5 md:px-8">
+        <div class="text-center mb-12 md:mb-20 fade-up">
+          <h2 class="text-3xl md:text-5xl font-bold">Our <span class="text-amber-700">Design Services</span></h2>
+          <div class="w-20 md:w-24 h-1 bg-amber-600 mx-auto mt-4 rounded-full"></div>
+          <p class="text-gray-600 max-w-2xl mx-auto mt-4 text-sm md:text-base">Bespoke interior solutions that reflect your personality — from concept to completion.</p>
         </div>
-        <div class="grid md:grid-cols-2 lg:grid-cols-3 gap-8">
-          <!-- service cards with images and animations (interior themed) -->
-          <div class="group bg-gray-50 rounded-2xl p-6 shadow-sm hover:shadow-2xl transition-all duration-500 hover:-translate-y-3 fade-up">
-            <div class="h-48 overflow-hidden rounded-xl"><img src="https://picsum.photos/id/106/400/300" alt="living room" class="w-full h-full object-cover img-hover-zoom"></div>
-            <i class="fas fa-home text-3xl text-amber-600 mt-5 block"></i>
-            <h3 class="text-2xl font-bold mt-3">Residential Design</h3>
-            <p class="text-gray-500 mt-2">Tailored interiors for apartments, villas & penthouses — cozy yet lavish.</p>
+        <div class="grid sm:grid-cols-2 lg:grid-cols-3 gap-6 md:gap-8">
+          <div class="group bg-gray-50 rounded-2xl p-5 md:p-6 shadow-sm hover:shadow-2xl transition-all duration-500 hover:-translate-y-3 fade-up">
+            <div class="h-44 md:h-48 overflow-hidden rounded-xl"><img src="https://picsum.photos/id/106/400/300" alt="residential" class="w-full h-full object-cover img-hover-zoom"></div>
+            <i class="fas fa-home text-2xl md:text-3xl text-amber-600 mt-4 block"></i>
+            <h3 class="text-xl md:text-2xl font-bold mt-2">Residential Design</h3>
+            <p class="text-gray-500 mt-2 text-sm md:text-base">Tailored interiors for apartments, villas & penthouses — cozy yet lavish.</p>
           </div>
-          <div class="group bg-gray-50 rounded-2xl p-6 shadow-sm hover:shadow-2xl transition-all duration-500 hover:-translate-y-3 fade-up">
-            <div class="h-48 overflow-hidden rounded-xl"><img src="https://picsum.photos/id/20/400/300" alt="office" class="w-full h-full object-cover img-hover-zoom"></div>
-            <i class="fas fa-building text-3xl text-amber-600 mt-5 block"></i>
-            <h3 class="text-2xl font-bold mt-3">Commercial Spaces</h3>
-            <p class="text-gray-500 mt-2">Offices, boutiques, hotels — functional elegance that impresses clients.</p>
+          <div class="group bg-gray-50 rounded-2xl p-5 md:p-6 shadow-sm hover:shadow-2xl transition-all duration-500 hover:-translate-y-3 fade-up">
+            <div class="h-44 md:h-48 overflow-hidden rounded-xl"><img src="https://picsum.photos/id/20/400/300" alt="commercial" class="w-full h-full object-cover img-hover-zoom"></div>
+            <i class="fas fa-building text-2xl md:text-3xl text-amber-600 mt-4 block"></i>
+            <h3 class="text-xl md:text-2xl font-bold mt-2">Commercial Spaces</h3>
+            <p class="text-gray-500 mt-2 text-sm md:text-base">Offices, boutiques, hotels — functional elegance that impresses.</p>
           </div>
-          <div class="group bg-gray-50 rounded-2xl p-6 shadow-sm hover:shadow-2xl transition-all duration-500 hover:-translate-y-3 fade-up">
-            <div class="h-48 overflow-hidden rounded-xl"><img src="https://picsum.photos/id/127/400/300" alt="kitchen" class="w-full h-full object-cover img-hover-zoom"></div>
-            <i class="fas fa-kitchen-set text-3xl text-amber-600 mt-5 block"></i>
-            <h3 class="text-2xl font-bold mt-3">Kitchen & Bath</h3>
-            <p class="text-gray-500 mt-2">Custom cabinetry, premium surfaces, ergonomic layouts.</p>
+          <div class="group bg-gray-50 rounded-2xl p-5 md:p-6 shadow-sm hover:shadow-2xl transition-all duration-500 hover:-translate-y-3 fade-up">
+            <div class="h-44 md:h-48 overflow-hidden rounded-xl"><img src="https://picsum.photos/id/127/400/300" alt="kitchen" class="w-full h-full object-cover img-hover-zoom"></div>
+            <i class="fas fa-kitchen-set text-2xl md:text-3xl text-amber-600 mt-4 block"></i>
+            <h3 class="text-xl md:text-2xl font-bold mt-2">Kitchen & Bath</h3>
+            <p class="text-gray-500 mt-2 text-sm md:text-base">Custom cabinetry, premium surfaces, ergonomic layouts.</p>
           </div>
-          <div class="group bg-gray-50 rounded-2xl p-6 shadow-sm hover:shadow-2xl transition-all duration-500 hover:-translate-y-3 fade-up">
-            <div class="h-48 overflow-hidden rounded-xl"><img src="https://picsum.photos/id/30/400/300" alt="lighting" class="w-full h-full object-cover img-hover-zoom"></div>
-            <i class="fas fa-lightbulb text-3xl text-amber-600 mt-5 block"></i>
-            <h3 class="text-2xl font-bold mt-3">Lighting Design</h3>
-            <p class="text-gray-500 mt-2">Ambient, task & accent lighting to sculpt mood and drama.</p>
+          <div class="group bg-gray-50 rounded-2xl p-5 md:p-6 shadow-sm hover:shadow-2xl transition-all duration-500 hover:-translate-y-3 fade-up">
+            <div class="h-44 md:h-48 overflow-hidden rounded-xl"><img src="https://picsum.photos/id/30/400/300" alt="lighting" class="w-full h-full object-cover img-hover-zoom"></div>
+            <i class="fas fa-lightbulb text-2xl md:text-3xl text-amber-600 mt-4 block"></i>
+            <h3 class="text-xl md:text-2xl font-bold mt-2">Lighting Design</h3>
+            <p class="text-gray-500 mt-2 text-sm md:text-base">Ambient & accent lighting to sculpt mood and drama.</p>
           </div>
-          <div class="group bg-gray-50 rounded-2xl p-6 shadow-sm hover:shadow-2xl transition-all duration-500 hover:-translate-y-3 fade-up">
-            <div class="h-48 overflow-hidden rounded-xl"><img src="https://picsum.photos/id/32/400/300" alt="furniture" class="w-full h-full object-cover img-hover-zoom"></div>
-            <i class="fas fa-chair text-3xl text-amber-600 mt-5 block"></i>
-            <h3 class="text-2xl font-bold mt-3">Custom Furniture</h3>
-            <p class="text-gray-500 mt-2">Unique pieces handcrafted to complement your space.</p>
+          <div class="group bg-gray-50 rounded-2xl p-5 md:p-6 shadow-sm hover:shadow-2xl transition-all duration-500 hover:-translate-y-3 fade-up">
+            <div class="h-44 md:h-48 overflow-hidden rounded-xl"><img src="https://picsum.photos/id/32/400/300" alt="furniture" class="w-full h-full object-cover img-hover-zoom"></div>
+            <i class="fas fa-chair text-2xl md:text-3xl text-amber-600 mt-4 block"></i>
+            <h3 class="text-xl md:text-2xl font-bold mt-2">Custom Furniture</h3>
+            <p class="text-gray-500 mt-2 text-sm md:text-base">Unique pieces handcrafted to complement your space.</p>
           </div>
-          <div class="group bg-gray-50 rounded-2xl p-6 shadow-sm hover:shadow-2xl transition-all duration-500 hover:-translate-y-3 fade-up">
-            <div class="h-48 overflow-hidden rounded-xl"><img src="https://picsum.photos/id/39/400/300" alt="consultation" class="w-full h-full object-cover img-hover-zoom"></div>
-            <i class="fas fa-comments text-3xl text-amber-600 mt-5 block"></i>
-            <h3 class="text-2xl font-bold mt-3">Design Consultation</h3>
-            <p class="text-gray-500 mt-2">Expert advice, mood boards, material selection & project management.</p>
+          <div class="group bg-gray-50 rounded-2xl p-5 md:p-6 shadow-sm hover:shadow-2xl transition-all duration-500 hover:-translate-y-3 fade-up">
+            <div class="h-44 md:h-48 overflow-hidden rounded-xl"><img src="https://picsum.photos/id/39/400/300" alt="consultation" class="w-full h-full object-cover img-hover-zoom"></div>
+            <i class="fas fa-comments text-2xl md:text-3xl text-amber-600 mt-4 block"></i>
+            <h3 class="text-xl md:text-2xl font-bold mt-2">Design Consultation</h3>
+            <p class="text-gray-500 mt-2 text-sm md:text-base">Expert advice, mood boards, material selection & project management.</p>
           </div>
         </div>
-        <!-- extra CTA for interior -->
-        <div class="mt-20 warm-gradient rounded-3xl p-8 flex flex-wrap justify-between items-center fade-up">
-          <div><h3 class="text-2xl font-bold">Dreaming of a unique space?</h3><p>Let’s bring your vision to life with a complimentary first consultation.</p></div>
-          <a href="#contact" class="bg-amber-700 text-white px-8 py-3 rounded-full font-semibold shadow hover:bg-amber-800 transition">Request a quote <i class="fas fa-arrow-right ml-2"></i></a>
+        <!-- CTA -->
+        <div class="mt-16 md:mt-24 warm-gradient rounded-3xl p-6 md:p-8 flex flex-wrap justify-between items-center gap-5 fade-up">
+          <div><h3 class="text-xl md:text-2xl font-bold">Dreaming of a unique space?</h3><p class="text-gray-700">Let’s bring your vision to life with a complimentary first consultation.</p></div>
+          <a href="#contact" class="bg-amber-700 text-white px-6 md:px-8 py-2.5 md:py-3 rounded-full font-semibold shadow hover:bg-amber-800 transition text-sm md:text-base">Request a quote <i class="fas fa-arrow-right ml-2"></i></a>
         </div>
       </div>
     </section>
 
-    <!-- ==================== ABOUT PAGE (Kamaldeen Muhammad featured) ==================== -->
-    <section id="about" class="py-20 bg-amber-50/50">
-      <div class="container mx-auto px-6">
-        <div class="grid lg:grid-cols-2 gap-12 items-center">
+    <!-- ==================== ABOUT (Nebula Studio) ==================== -->
+    <section id="about" class="py-16 md:py-24 bg-amber-50/40">
+      <div class="container mx-auto px-5 md:px-8">
+        <div class="grid lg:grid-cols-2 gap-10 md:gap-14 items-center">
           <div class="fade-up">
-            <span class="text-amber-700 font-semibold">MEET THE DESIGNER</span>
-            <h2 class="text-4xl md:text-5xl font-bold mt-2">Kamaldeen <span class="text-amber-700">Muhammad</span></h2>
-            <p class="text-gray-600 text-lg mt-6 leading-relaxed">With over 12 years of international design experience, Kamaldeen Muhammad has curated exquisite interiors for discerning clients across Africa, Europe, and the Middle East. His philosophy combines cultural richness, sustainable materials, and modern minimalism. Each project is a narrative — blending the client’s personality with architectural poetry.</p>
-            <div class="mt-8 flex gap-4 flex-wrap">
-              <div><i class="fas fa-check-circle text-amber-600"></i> Certified Interior Architect</div>
-              <div><i class="fas fa-check-circle text-amber-600"></i> Published in "Luxe Design Quarterly"</div>
-              <div><i class="fas fa-check-circle text-amber-600"></i> 100+ bespoke residencies</div>
+            <span class="text-amber-700 font-semibold">OUR PHILOSOPHY</span>
+            <h2 class="text-3xl md:text-5xl font-bold mt-2">Nebula <span class="text-amber-700">Interiors</span></h2>
+            <p class="text-gray-600 text-base md:text-lg mt-5 leading-relaxed">With over a decade of excellence, Nebula Interiors has redefined luxury living through bespoke design. Our approach marries cultural richness, sustainable materials, and modern minimalism. Every project becomes a narrative — blending the client's personality with architectural poetry. We don’t just design spaces; we craft experiences that resonate for a lifetime.</p>
+            <div class="mt-7 flex flex-wrap gap-4 text-sm md:text-base">
+              <div><i class="fas fa-check-circle text-amber-600"></i> Award-Winning Team</div>
+              <div><i class="fas fa-check-circle text-amber-600"></i> Sustainable & Local Craftsmanship</div>
+              <div><i class="fas fa-check-circle text-amber-600"></i> 100+ Bespoke Residencies</div>
             </div>
           </div>
           <div class="relative fade-up">
-            <img src="https://randomuser.me/api/portraits/men/46.jpg" alt="Kamaldeen Muhammad portrait" class="rounded-3xl shadow-2xl img-hover-zoom w-full object-cover border-4 border-amber-200">
-            <div class="absolute -bottom-6 -left-6 bg-amber-700 rounded-full p-4 shadow-xl float-animation"><i class="fas fa-pencil-ruler text-white text-2xl"></i></div>
+            <img src="https://picsum.photos/id/146/600/500" alt="Nebula studio interior" class="rounded-3xl shadow-2xl img-hover-zoom w-full object-cover border-4 border-amber-200">
+            <div class="absolute -bottom-4 -left-4 md:-bottom-6 md:-left-6 bg-amber-700 rounded-full p-3 md:p-4 shadow-xl float-animation"><i class="fas fa-pencil-ruler text-white text-xl md:text-2xl"></i></div>
           </div>
         </div>
-        <!-- Team + design ethos (long page) -->
-        <div class="mt-24 text-center fade-up">
-          <h3 class="text-3xl font-bold">Design Ethos & Collaborators</h3>
-          <div class="grid md:grid-cols-3 gap-10 mt-12">
-            <div class="bg-white p-6 rounded-2xl transition-all duration-300 hover:scale-105 shadow">
-              <i class="fas fa-leaf text-4xl text-amber-600"></i>
-              <h4 class="text-xl font-bold mt-4">Sustainable First</h4>
-              <p class="text-gray-600">Eco-conscious materials, low-VOC finishes, and upcycled art.</p>
+        <!-- Design ethos -->
+        <div class="mt-20 md:mt-28 text-center fade-up">
+          <h3 class="text-2xl md:text-3xl font-bold">Design Ethos</h3>
+          <div class="grid sm:grid-cols-2 md:grid-cols-3 gap-6 md:gap-10 mt-10">
+            <div class="bg-white p-6 rounded-2xl transition-all duration-300 hover:scale-105 shadow lift-card">
+              <i class="fas fa-leaf text-3xl md:text-4xl text-amber-600"></i>
+              <h4 class="text-lg md:text-xl font-bold mt-3">Sustainable First</h4>
+              <p class="text-gray-600 text-sm">Eco-conscious materials, low-VOC finishes, and upcycled art.</p>
             </div>
-            <div class="bg-white p-6 rounded-2xl transition-all duration-300 hover:scale-105 shadow">
-              <i class="fas fa-hand-sparkles text-4xl text-amber-600"></i>
-              <h4 class="text-xl font-bold mt-4">Bespoke Craftsmanship</h4>
-              <p class="text-gray-600">Collaboration with local artisans & international ateliers.</p>
+            <div class="bg-white p-6 rounded-2xl transition-all duration-300 hover:scale-105 shadow lift-card">
+              <i class="fas fa-hand-sparkles text-3xl md:text-4xl text-amber-600"></i>
+              <h4 class="text-lg md:text-xl font-bold mt-3">Bespoke Craftsmanship</h4>
+              <p class="text-gray-600 text-sm">Collaboration with local artisans & international ateliers.</p>
             </div>
-            <div class="bg-white p-6 rounded-2xl transition-all duration-300 hover:scale-105 shadow">
-              <i class="fas fa-crown text-4xl text-amber-600"></i>
-              <h4 class="text-xl font-bold mt-4">Timeless Luxury</h4>
-              <p class="text-gray-600">Classic elements with contemporary edge — never trend-driven.</p>
+            <div class="bg-white p-6 rounded-2xl transition-all duration-300 hover:scale-105 shadow lift-card">
+              <i class="fas fa-crown text-3xl md:text-4xl text-amber-600"></i>
+              <h4 class="text-lg md:text-xl font-bold mt-3">Timeless Luxury</h4>
+              <p class="text-gray-600 text-sm">Classic elements with contemporary edge — never trend-driven.</p>
             </div>
           </div>
         </div>
-        <!-- long timeline / achievements -->
-        <div class="mt-16 grid md:grid-cols-2 gap-8 bg-white rounded-2xl p-8 shadow-md fade-up">
-          <div><i class="fas fa-trophy text-4xl text-amber-500"></i><h3 class="text-2xl font-bold mt-2">A' Design Award 2023</h3><p>Gold winner in Interior Space & Exhibition Design category.</p></div>
-          <div><i class="fas fa-globe-africa text-4xl text-amber-500"></i><h3 class="text-2xl font-bold mt-2">Projects across 9 countries</h3><p>From Lagos to London, Dubai to Cape Town — global footprint.</p></div>
+        <!-- Achievements -->
+        <div class="mt-12 md:mt-16 grid md:grid-cols-2 gap-6 md:gap-8 bg-white rounded-2xl p-6 md:p-8 shadow-md fade-up">
+          <div><i class="fas fa-trophy text-3xl md:text-4xl text-amber-500"></i><h3 class="text-xl md:text-2xl font-bold mt-2">A' Design Award 2023</h3><p>Gold winner in Interior Space & Exhibition Design category.</p></div>
+          <div><i class="fas fa-globe-africa text-3xl md:text-4xl text-amber-500"></i><h3 class="text-xl md:text-2xl font-bold mt-2">Projects across 9 countries</h3><p>From Lagos to London, Dubai to Cape Town — global footprint.</p></div>
         </div>
       </div>
     </section>
 
-    <!-- ==================== CONTACT PAGE (direct details: Kamaldeen Muhammad, email, phone) ==================== -->
-    <section id="contact" class="py-20 bg-white">
-      <div class="container mx-auto px-6">
-        <div class="text-center mb-16 fade-up">
-          <h2 class="text-4xl md:text-5xl font-bold">Let’s Create <span class="text-amber-700">Your Dream Space</span></h2>
-          <p class="text-gray-500 max-w-2xl mx-auto mt-4">Reach out directly to Kamaldeen Muhammad — your vision deserves a personal touch. We'll respond within 24 hours.</p>
+    <!-- ==================== CONTACT (Nebula branding, with specified email/phone) ==================== -->
+    <section id="contact" class="py-16 md:py-24 bg-white">
+      <div class="container mx-auto px-5 md:px-8">
+        <div class="text-center mb-12 md:mb-16 fade-up">
+          <h2 class="text-3xl md:text-5xl font-bold">Let’s Create <span class="text-amber-700">Your Dream Space</span></h2>
+          <p class="text-gray-500 max-w-2xl mx-auto mt-4 text-sm md:text-base">Reach out to our design team — we’ll turn your vision into reality.</p>
         </div>
-        <div class="grid lg:grid-cols-2 gap-12">
-          <div class="bg-amber-50 p-8 rounded-2xl shadow-lg fade-up">
+        <div class="grid lg:grid-cols-2 gap-10 md:gap-14">
+          <div class="bg-amber-50/80 p-6 md:p-8 rounded-2xl shadow-lg fade-up">
             <form id="contactForm">
-              <div class="mb-5"><label class="block font-medium">Full name</label><input type="text" id="name" class="w-full mt-1 p-3 border border-gray-300 rounded-xl focus:ring-2 focus:ring-amber-500 outline-none" placeholder="Your name" required></div>
-              <div class="mb-5"><label class="block font-medium">Email address</label><input type="email" id="email" class="w-full mt-1 p-3 border border-gray-300 rounded-xl focus:ring-2 focus:ring-amber-500" placeholder="hello@example.com" required></div>
-              <div class="mb-5"><label class="block font-medium">Message / Project idea</label><textarea id="message" rows="4" class="w-full mt-1 p-3 border border-gray-300 rounded-xl" placeholder="Tell us about your space, style preferences, or timeline..."></textarea></div>
-              <button type="submit" class="bg-amber-700 w-full py-3 rounded-xl text-white font-bold hover:bg-amber-800 transition transform hover:scale-[1.02]">Send Inquiry <i class="fas fa-paper-plane ml-2"></i></button>
+              <div class="mb-5"><label class="block font-medium">Full name *</label><input type="text" id="name" class="w-full mt-1 p-3 border border-gray-300 rounded-xl focus:ring-2 focus:ring-amber-500 outline-none" placeholder="Your name" required></div>
+              <div class="mb-5"><label class="block font-medium">Email address *</label><input type="email" id="email" class="w-full mt-1 p-3 border border-gray-300 rounded-xl focus:ring-2 focus:ring-amber-500" placeholder="hello@example.com" required></div>
+              <div class="mb-5"><label class="block font-medium">Message / Project idea *</label><textarea id="message" rows="4" class="w-full mt-1 p-3 border border-gray-300 rounded-xl" placeholder="Tell us about your space, style preferences, or timeline..."></textarea></div>
+              <button type="submit" class="bg-amber-700 w-full py-3 rounded-xl text-white font-bold hover:bg-amber-800 transition transform hover:scale-[1.01]">Send Inquiry <i class="fas fa-paper-plane ml-2"></i></button>
               <p id="formFeedback" class="text-sm mt-3 text-center text-green-700"></p>
             </form>
           </div>
           <div class="space-y-6 fade-up">
-            <div class="flex items-start gap-4"><i class="fas fa-user-circle text-2xl text-amber-700 mt-1"></i><div><h3 class="font-bold">Principal Designer</h3><p>Kamaldeen Muhammad</p></div></div>
-            <div class="flex items-start gap-4"><i class="fas fa-envelope text-2xl text-amber-700"></i><div><h3 class="font-bold">Email (Direct)</h3><p class="break-all">opemuhammad35@gmail.com</p></div></div>
-            <div class="flex items-start gap-4"><i class="fas fa-phone-alt text-2xl text-amber-700"></i><div><h3 class="font-bold">WhatsApp / Call</h3><p>+235 8140 295116</p></div></div>
-            <div class="flex items-start gap-4"><i class="fas fa-map-marker-alt text-2xl text-amber-700"></i><div><h3 class="font-bold">Studio Location</h3><p>15B Wuse Design District, Abuja, Nigeria (by appointment only)</p></div></div>
-            <!-- map placeholder -->
-            <div class="rounded-2xl overflow-hidden shadow-md mt-6">
-              <iframe class="w-full h-56" src="https://maps.google.com/maps?q=Abuja,Nigeria&t=&z=12&ie=UTF8&iwloc=&output=embed" allowfullscreen="" loading="lazy"></iframe>
+            <div class="flex items-start gap-4"><i class="fas fa-building text-2xl text-amber-700 mt-1"></i><div><h3 class="font-bold text-lg">Nebula Studio</h3><p>Luxury Interior Design Atelier</p></div></div>
+            <div class="flex items-start gap-4"><i class="fas fa-envelope text-2xl text-amber-700"></i><div><h3 class="font-bold text-lg">Email (Direct)</h3><p class="break-all">opemuhammad35@gmail.com</p></div></div>
+            <div class="flex items-start gap-4"><i class="fas fa-phone-alt text-2xl text-amber-700"></i><div><h3 class="font-bold text-lg">WhatsApp / Call</h3><p class="text-lg font-mono">+234 814 029 5116</p></div></div>
+            <div class="flex items-start gap-4"><i class="fas fa-map-marker-alt text-2xl text-amber-700"></i><div><h3 class="font-bold text-lg">Studio Location</h3><p>15B Wuse Design District, Abuja, Nigeria (by appointment)</p></div></div>
+            <!-- Map embed -->
+            <div class="rounded-2xl overflow-hidden shadow-md mt-5 h-48 md:h-56">
+              <iframe class="w-full h-full" src="https://maps.google.com/maps?q=Abuja,Nigeria&t=&z=12&ie=UTF8&iwloc=&output=embed" allowfullscreen="" loading="lazy"></iframe>
             </div>
-            <!-- social charm -->
             <div class="flex gap-6 justify-center mt-6">
-              <a href="#" class="text-amber-600 text-2xl hover:scale-125 transition"><i class="fab fa-instagram"></i></a>
-              <a href="#" class="text-amber-600 text-2xl hover:scale-125 transition"><i class="fab fa-pinterest"></i></a>
-              <a href="#" class="text-amber-600 text-2xl hover:scale-125 transition"><i class="fab fa-linkedin-in"></i></a>
+              <a href="#" class="text-amber-600 text-2xl hover:scale-110 transition"><i class="fab fa-instagram"></i></a>
+              <a href="#" class="text-amber-600 text-2xl hover:scale-110 transition"><i class="fab fa-pinterest"></i></a>
+              <a href="#" class="text-amber-600 text-2xl hover:scale-110 transition"><i class="fab fa-linkedin-in"></i></a>
             </div>
           </div>
         </div>
-        <!-- extra section (design inspiration) -->
-        <div class="mt-20 text-center p-8 bg-amber-100 rounded-3xl fade-up">
-          <h3 class="text-2xl font-bold">“Design is not just how it looks, but how it lives.” – Kamaldeen Muhammad</h3>
-          <div class="flex justify-center gap-4 mt-6 text-amber-700"><i class="fas fa-star"></i><i class="fas fa-star"></i><i class="fas fa-star"></i><i class="fas fa-star"></i><i class="fas fa-star"></i></div>
+        <div class="mt-16 md:mt-20 text-center p-6 md:p-8 bg-amber-100 rounded-3xl fade-up">
+          <h3 class="text-xl md:text-2xl font-bold">“Design is not just how it looks, but how it lives.” – Nebula Interiors</h3>
+          <div class="flex justify-center gap-2 mt-4 text-amber-700"><i class="fas fa-star"></i><i class="fas fa-star"></i><i class="fas fa-star"></i><i class="fas fa-star"></i><i class="fas fa-star"></i></div>
         </div>
       </div>
     </section>
 
-    <!-- FOOTER -->
-    <footer class="bg-gray-900 text-gray-300 py-12 mt-10">
-      <div class="container mx-auto px-6 text-center">
-        <p>© 2025 Kamaldeen Muhammad Interiors — Crafting Timeless Elegance. All rights reserved.</p>
-        <p class="text-sm mt-2">opemuhammad35@gmail.com | +2358140295116</p>
+    <!-- FOOTER with specified contact -->
+    <footer class="bg-gray-900 text-gray-300 py-8 md:py-12 mt-8">
+      <div class="container mx-auto px-5 md:px-8 text-center">
+        <p>© 2025 Nebula Interiors — Crafting Timeless Elegance.</p>
+        <p class="text-sm mt-2 break-all">opemuhammad35@gmail.com | +234 814 029 5116</p>
       </div>
     </footer>
   </main>
 
   <script>
-    // ==================== ALL JAVASCRIPT IN ONE FILE ====================
-    // 1. CAROUSEL (luxury interior images)
+    // ========== CAROUSEL (FULLY FUNCTIONAL) ==========
     const images = [
-      "https://picsum.photos/id/106/1200/600",   // cozy living
-      "https://picsum.photos/id/169/1200/600",  // sunlit room
-      "https://picsum.photos/id/55/1200/600",   // modern decor
-      "https://picsum.photos/id/128/1200/600"   // elegant bedroom
+      "https://picsum.photos/id/106/1200/600",
+      "https://picsum.photos/id/169/1200/600",
+      "https://picsum.photos/id/55/1200/600",
+      "https://picsum.photos/id/128/1200/600"
     ];
     let currentIndex = 0;
     let autoInterval;
@@ -388,43 +393,34 @@
       images.forEach((imgSrc, idx) => {
         const slideDiv = document.createElement('div');
         slideDiv.className = 'carousel-slide';
-        slideDiv.innerHTML = `<img src="${imgSrc}" class="w-full h-64 md:h-96 object-cover" alt="interior design ${idx+1}">`;
+        slideDiv.innerHTML = `<img src="${imgSrc}" class="w-full h-56 sm:h-72 md:h-96 object-cover" alt="interior design ${idx+1}">`;
         track.appendChild(slideDiv);
       });
       updateDots();
       updateCarousel();
     }
-    function updateCarousel() {
-      if (track) track.style.transform = `translateX(-${currentIndex * 100}%)`;
-      updateDotsActive();
-    }
+    function updateCarousel() { if(track) track.style.transform = `translateX(-${currentIndex * 100}%)`; updateDotsActive(); }
     function updateDots() {
       dotsContainer.innerHTML = '';
       images.forEach((_, idx) => {
         const dot = document.createElement('button');
-        dot.classList.add('w-3', 'h-3', 'rounded-full', 'bg-white/70', 'transition-all', 'duration-300', 'mx-1');
-        if (idx === currentIndex) dot.classList.add('dot-active', 'bg-amber-600', 'w-6');
-        dot.addEventListener('click', () => {
-          currentIndex = idx;
-          updateCarousel();
-          resetAutoPlay();
-        });
+        dot.classList.add('w-2.5', 'h-2.5', 'rounded-full', 'bg-white/70', 'transition-all', 'duration-300', 'mx-0.5', 'md:mx-1');
+        if (idx === currentIndex) dot.classList.add('dot-active', 'bg-amber-600', 'w-5', 'md:w-6');
+        dot.addEventListener('click', () => { currentIndex = idx; updateCarousel(); resetAutoPlay(); });
         dotsContainer.appendChild(dot);
       });
     }
     function updateDotsActive() {
       const dots = dotsContainer.children;
       for (let i = 0; i < dots.length; i++) {
-        dots[i].classList.remove('dot-active', 'bg-amber-600', 'w-6');
-        dots[i].classList.add('w-3', 'bg-white/70');
-        if (i === currentIndex) {
-          dots[i].classList.add('dot-active', 'bg-amber-600', 'w-6');
-        }
+        dots[i].classList.remove('dot-active', 'bg-amber-600', 'w-5', 'md:w-6');
+        dots[i].classList.add('w-2.5', 'h-2.5', 'bg-white/70');
+        if (i === currentIndex) dots[i].classList.add('dot-active', 'bg-amber-600', 'w-5', 'md:w-6');
       }
     }
     function nextSlide() { currentIndex = (currentIndex + 1) % images.length; updateCarousel(); resetAutoPlay(); }
     function prevSlide() { currentIndex = (currentIndex - 1 + images.length) % images.length; updateCarousel(); resetAutoPlay(); }
-    function startAutoPlay() { autoInterval = setInterval(() => { nextSlide(); }, 5500); }
+    function startAutoPlay() { autoInterval = setInterval(() => nextSlide(), 5500); }
     function resetAutoPlay() { clearInterval(autoInterval); startAutoPlay(); }
     if (prevBtn && nextBtn) {
       prevBtn.addEventListener('click', prevSlide);
@@ -433,19 +429,14 @@
     buildCarousel();
     startAutoPlay();
 
-    // 2. SCROLL REVEAL (Intersection Observer for fade-up animations)
+    // Scroll reveal
     const fadeElements = document.querySelectorAll('.fade-up');
     const observer = new IntersectionObserver((entries) => {
-      entries.forEach(entry => {
-        if (entry.isIntersecting) {
-          entry.target.classList.add('appear');
-          observer.unobserve(entry.target);
-        }
-      });
+      entries.forEach(entry => { if(entry.isIntersecting) { entry.target.classList.add('appear'); observer.unobserve(entry.target); } });
     }, { threshold: 0.2 });
     fadeElements.forEach(el => observer.observe(el));
 
-    // 3. COUNTER ANIMATION (for stats)
+    // Counters
     const counters = document.querySelectorAll('.counter');
     const startCounters = () => {
       counters.forEach(counter => {
@@ -453,63 +444,50 @@
           const target = parseInt(counter.getAttribute('data-target'));
           let current = parseInt(counter.innerText);
           const increment = target / 45;
-          if (current < target) {
-            current = Math.min(Math.ceil(current + increment), target);
-            counter.innerText = current;
-            setTimeout(updateCount, 20);
-          } else counter.innerText = target;
+          if (current < target) { current = Math.min(Math.ceil(current + increment), target); counter.innerText = current; setTimeout(updateCount, 20); }
+          else counter.innerText = target;
         };
         updateCount();
       });
     };
     const statsObserver = new IntersectionObserver((entries) => {
-      entries.forEach(entry => {
-        if (entry.isIntersecting) {
-          startCounters();
-          statsObserver.unobserve(entry.target);
-        }
-      });
-    }, { threshold: 0.5 });
+      entries.forEach(entry => { if(entry.isIntersecting) { startCounters(); statsObserver.unobserve(entry.target); } });
+    }, { threshold: 0.4 });
     const statsContainer = document.querySelector('#home .grid'); 
     if(statsContainer) statsObserver.observe(statsContainer);
 
-    // 4. Contact form handling with feedback
+    // Contact form
     const contactForm = document.getElementById('contactForm');
     const feedback = document.getElementById('formFeedback');
-    if (contactForm) {
+    if(contactForm) {
       contactForm.addEventListener('submit', (e) => {
         e.preventDefault();
         const name = document.getElementById('name').value.trim();
         const email = document.getElementById('email').value.trim();
         const msg = document.getElementById('message').value.trim();
         if(name && email && msg) {
-          feedback.innerHTML = '<span class="text-green-700"><i class="fas fa-check-circle"></i> Thank you! Kamaldeen will personally respond soon.</span>';
+          feedback.innerHTML = '<span class="text-green-700"><i class="fas fa-check-circle"></i> Thank you! Our team will respond within 24h.</span>';
           contactForm.reset();
           setTimeout(() => feedback.innerHTML = '', 5000);
-        } else {
-          feedback.innerHTML = '<span class="text-red-500">Please fill all fields.</span>';
-        }
+        } else { feedback.innerHTML = '<span class="text-red-500">Please fill all fields.</span>'; }
       });
     }
 
-    // 5. Smooth nav + offset for sticky header
+    // Smooth navigation
     const navLinks = document.querySelectorAll('nav a');
     navLinks.forEach(link => {
       link.addEventListener('click', function(e) {
         e.preventDefault();
         const targetId = this.getAttribute('href').substring(1);
         const targetElem = document.getElementById(targetId);
-        if (targetElem) {
-          const offsetTop = targetElem.offsetTop - 80;
-          window.scrollTo({ top: offsetTop, behavior: 'smooth' });
-        }
+        if(targetElem) { window.scrollTo({ top: targetElem.offsetTop - 75, behavior: 'smooth' }); }
       });
     });
 
-    // 6. Navbar background change on scroll
+    // Navbar background scroll effect
     window.addEventListener('scroll', () => {
       const header = document.querySelector('header');
-      if (window.scrollY > 20) header.classList.add('shadow-lg', 'bg-white/95');
+      if(window.scrollY > 20) header.classList.add('shadow-lg', 'bg-white/95');
       else header.classList.remove('shadow-lg', 'bg-white/95');
     });
   </script>
