@@ -1,178 +1,511 @@
 <!DOCTYPE html>
 <html lang="en">
 <head>
-    <meta charset="UTF-8">
-    <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Studio Nova | Interior Design</title>
-    <link href="https://fonts.googleapis.com/css2?family=Inter:opsz,wght@14..32,300;400;500;600;700&family=Playfair+Display:wght@400;500;600;700&display=swap" rel="stylesheet">
-    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0-beta3/css/all.min.css">
-    <style>
-        * { margin:0; padding:0; box-sizing:border-box; }
-        body { font-family:'Inter',sans-serif; background:#fff; color:#1E1E1E; line-height:1.5; transition:background 0.2s,color 0.2s; }
-        body.dark { background:#121212; color:#E5E5E5; }
-        body.dark .navbar, body.dark footer { background:#0F0F0F; border-color:#2C2C2C; }
-        body.dark .service-card, body.dark .testimonial-card, body.dark .process-step { background:#1E1E1E; border-color:#2C2C2C; }
-        .container { max-width:1280px; margin:0 auto; padding:0 2rem; }
-        h1,h2,h3,.logo { font-family:'Playfair Display',serif; font-weight:500; }
-        h1 { font-size:3.5rem; letter-spacing:-0.02em; }
-        h2 { font-size:2.2rem; margin-bottom:1rem; }
-        .section-tag { text-transform:uppercase; letter-spacing:3px; font-size:0.8rem; color:#C8A86A; font-weight:600; }
-        .btn-primary, .btn-outline { display:inline-block; padding:0.8rem 2rem; border-radius:0; font-weight:500; text-decoration:none; transition:0.2s; cursor:pointer; }
-        .btn-primary { background:#1E1E1E; color:#fff; border:1px solid #1E1E1E; }
-        body.dark .btn-primary { background:#E5E5E5; color:#121212; border-color:#E5E5E5; }
-        .btn-primary:hover { background:#C8A86A; border-color:#C8A86A; color:#1E1E1E; }
-        .btn-outline { border:1px solid #1E1E1E; color:#1E1E1E; background:transparent; }
-        body.dark .btn-outline { border-color:#E5E5E5; color:#E5E5E5; }
-        .btn-outline:hover { background:#1E1E1E; color:#fff; }
-        .navbar { position:fixed; top:0; width:100%; background:rgba(255,255,255,0.96); backdrop-filter:blur(10px); z-index:1000; border-bottom:1px solid #E2E2E2; }
-        body.dark .navbar { background:rgba(18,18,18,0.96); border-color:#2C2C2C; }
-        .nav-container { display:flex; justify-content:space-between; align-items:center; padding:1.2rem 2rem; max-width:1400px; margin:0 auto; }
-        .logo { font-size:1.5rem; font-weight:600; letter-spacing:2px; text-decoration:none; color:#1E1E1E; }
-        body.dark .logo { color:#E5E5E5; }
-        .nav-links { display:flex; gap:2rem; list-style:none; }
-        .nav-links a { text-decoration:none; color:#1E1E1E; font-weight:500; }
-        body.dark .nav-links a { color:#E5E5E5; }
-        .nav-links a.active { color:#C8A86A; }
-        .hamburger { display:none; flex-direction:column; cursor:pointer; gap:5px; }
-        .hamburger span { width:25px; height:2px; background:#1E1E1E; }
-        body.dark .hamburger span { background:#E5E5E5; }
-        .hero { height:90vh; background:linear-gradient(rgba(0,0,0,0.35),rgba(0,0,0,0.35)), url('https://images.unsplash.com/photo-1600607687939-ce8a6c25118c?w=1600&auto=format') center/cover; display:flex; align-items:center; margin-top:70px; }
-        .hero-content { max-width:700px; margin-left:10%; color:#fff; }
-        .hero-content h1 { font-size:4rem; margin:1rem 0; }
-        .grid-2col { display:grid; grid-template-columns:1fr 1fr; gap:4rem; align-items:center; margin:5rem 0; }
-        .services-grid { display:grid; grid-template-columns:repeat(3,1fr); gap:2rem; margin:3rem 0; }
-        .service-card, .testimonial-card, .process-step { padding:2rem; background:#fff; border:1px solid #E2E2E2; text-align:center; border-radius:12px; }
-        .service-card i, .process-step i { font-size:2.5rem; color:#C8A86A; margin-bottom:1rem; }
-        .testimonial-card { text-align:left; }
-        .testimonial-card i { color:#C8A86A; font-size:2rem; margin-bottom:1rem; }
-        .stats-grid { display:grid; grid-template-columns:repeat(4,1fr); gap:2rem; text-align:center; margin:4rem 0; }
-        .stat-number { font-size:3rem; font-weight:700; color:#C8A86A; }
-        .process-steps { display:grid; grid-template-columns:repeat(4,1fr); gap:2rem; margin:3rem 0; }
-        .image-gallery { display:grid; grid-template-columns:repeat(3,1fr); gap:1.5rem; margin:3rem 0; }
-        .image-gallery img { width:100%; height:300px; object-fit:cover; border-radius:12px; transition:0.3s; }
-        .image-gallery img:hover { transform:scale(1.02); }
-        .cta-section { background:#F5F3F0; text-align:center; padding:5rem 2rem; margin:4rem 0; border-radius:24px; }
-        body.dark .cta-section { background:#1E1E1E; }
-        footer { background:#F5F3F0; padding:3rem 2rem 1rem; margin-top:4rem; border-top:1px solid #E2E2E2; }
-        .footer-container { display:grid; grid-template-columns:repeat(auto-fit, minmax(200px,1fr)); gap:2rem; max-width:1200px; margin:auto; }
-        .theme-toggle { position:fixed; bottom:2rem; right:2rem; background:#1E1E1E; color:#fff; width:48px; height:48px; border-radius:50%; display:flex; align-items:center; justify-content:center; cursor:pointer; z-index:1000; }
-        @media (max-width:768px) {
-            .nav-links { display:none; flex-direction:column; background:rgba(255,255,255,0.98); position:absolute; top:70px; left:0; width:100%; padding:1rem; text-align:center; }
-            body.dark .nav-links { background:rgba(18,18,18,0.98); }
-            .nav-links.active { display:flex; }
-            .hamburger { display:flex; }
-            .grid-2col, .services-grid, .stats-grid, .process-steps, .image-gallery { grid-template-columns:1fr; }
-            h1 { font-size:2.5rem; }
-            .hero-content { margin:0 1rem; text-align:center; }
-        }
-    </style>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0, viewport-fit=cover">
+  <title>Nebula Studio | Creative Digital Agency</title>
+  <!-- Tailwind CSS v2 + Custom CSS for advanced animations -->
+  <link href="https://cdn.jsdelivr.net/npm/tailwindcss@2.2.19/dist/tailwind.min.css" rel="stylesheet">
+  <!-- Font Awesome 6 (free icons) -->
+  <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0-beta3/css/all.min.css">
+  <style>
+    /* ========== INTERNAL CUSTOM CSS + KEYFRAME ANIMATIONS ========== */
+    * {
+      scroll-behavior: smooth;
+    }
+
+    body {
+      overflow-x: hidden;
+      font-family: 'Inter', system-ui, -apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, Helvetica, sans-serif;
+    }
+
+    /* custom scroll reveal / fade-in-up effect */
+    .fade-up {
+      opacity: 0;
+      transform: translateY(35px);
+      transition: opacity 0.8s cubic-bezier(0.2, 0.9, 0.4, 1.1), transform 0.8s cubic-bezier(0.2, 0.9, 0.4, 1.1);
+    }
+
+    .fade-up.appear {
+      opacity: 1;
+      transform: translateY(0);
+    }
+
+    /* floating card animation */
+    @keyframes float {
+      0% { transform: translateY(0px); }
+      50% { transform: translateY(-8px); }
+      100% { transform: translateY(0px); }
+    }
+    .float-animation {
+      animation: float 4s ease-in-out infinite;
+    }
+
+    /* glowing button pulse */
+    @keyframes pulseGlow {
+      0% { box-shadow: 0 0 0 0 rgba(99, 102, 241, 0.4); }
+      70% { box-shadow: 0 0 0 12px rgba(99, 102, 241, 0); }
+      100% { box-shadow: 0 0 0 0 rgba(99, 102, 241, 0); }
+    }
+    .btn-glow:hover {
+      animation: pulseGlow 1.2s infinite;
+    }
+
+    /* carousel custom styling */
+    .carousel-container {
+      position: relative;
+      overflow: hidden;
+      border-radius: 2rem;
+    }
+    .carousel-track {
+      display: flex;
+      transition: transform 0.5s ease-in-out;
+    }
+    .carousel-slide {
+      flex: 0 0 100%;
+      position: relative;
+    }
+    .carousel-btn {
+      background: rgba(255,255,255,0.75);
+      backdrop-filter: blur(8px);
+      transition: all 0.2s ease;
+    }
+    .carousel-btn:hover {
+      background: white;
+      transform: scale(1.05);
+    }
+    .dot-active {
+      background: #4f46e5;
+      width: 2rem;
+    }
+
+    /* background blob animation */
+    .blob-bg {
+      position: absolute;
+      width: 300px;
+      height: 300px;
+      background: radial-gradient(circle, rgba(79,70,229,0.2) 0%, rgba(129,140,248,0.05) 100%);
+      border-radius: 60% 40% 30% 70% / 60% 30% 70% 40%;
+      filter: blur(70px);
+      z-index: -1;
+      animation: blobMove 14s infinite alternate;
+    }
+    @keyframes blobMove {
+      0% { transform: translate(0, 0) scale(1); }
+      100% { transform: translate(100px, 60px) scale(1.3); }
+    }
+
+    /* custom scrollbar */
+    ::-webkit-scrollbar {
+      width: 8px;
+    }
+    ::-webkit-scrollbar-track {
+      background: #f1f1f1;
+    }
+    ::-webkit-scrollbar-thumb {
+      background: #888;
+      border-radius: 10px;
+    }
+    ::-webkit-scrollbar-thumb:hover {
+      background: #4f46e5;
+    }
+
+    /* hover image scale */
+    .img-hover-zoom {
+      transition: transform 0.5s ease, filter 0.3s;
+    }
+    .img-hover-zoom:hover {
+      transform: scale(1.05);
+      filter: brightness(1.02);
+    }
+
+    /* smooth section spacing */
+    section {
+      scroll-margin-top: 80px;
+    }
+  </style>
 </head>
-<body>
-    <div class="theme-toggle" id="themeToggle"><i class="fas fa-moon"></i></div>
-    <nav class="navbar">
-        <div class="nav-container">
-            <a href="index.html" class="logo">STUDIO NOVA</a>
-            <ul class="nav-links" id="navLinks">
-                <li><a href="index.html" class="active">Home</a></li>
-                <li><a href="about.html">About</a></li>
-                <li><a href="services.html">Services</a></li>
-                <li><a href="portfolio.html">Portfolio</a></li>
-                <li><a href="contact.html">Contact</a></li>
-            </ul>
-            <div class="hamburger" id="hamburger"><span></span><span></span><span></span></div>
-        </div>
+<body class="bg-gray-50 text-gray-800">
+
+  <!-- floating blobs for artistic background -->
+  <div class="blob-bg top-20 left-10"></div>
+  <div class="blob-bg bottom-20 right-10" style="animation-delay: -5s; width: 400px; height: 400px;"></div>
+
+  <!-- ========== STICKY NAVIGATION ========== -->
+  <header class="fixed w-full top-0 z-50 bg-white/80 backdrop-blur-lg shadow-md transition-all duration-300">
+    <nav class="container mx-auto px-6 py-4 flex flex-wrap justify-between items-center">
+      <div class="text-2xl font-extrabold bg-gradient-to-r from-indigo-600 to-purple-600 bg-clip-text text-transparent">
+        ✦ NEBULA
+      </div>
+      <div class="flex space-x-6 text-gray-700 font-medium">
+        <a href="#home" class="hover:text-indigo-600 transition duration-300 transform hover:-translate-y-0.5 inline-block">Home</a>
+        <a href="#services" class="hover:text-indigo-600 transition duration-300 transform hover:-translate-y-0.5 inline-block">Services</a>
+        <a href="#about" class="hover:text-indigo-600 transition duration-300 transform hover:-translate-y-0.5 inline-block">About</a>
+        <a href="#contact" class="hover:text-indigo-600 transition duration-300 transform hover:-translate-y-0.5 inline-block">Contact</a>
+      </div>
     </nav>
+  </header>
 
-    <main>
-        <section class="hero">
-            <div class="hero-content">
-                <span class="section-tag">EST. 2025</span>
-                <h1>We design spaces that define how you live</h1>
-                <p>Architecture · Interiors · Objects</p>
-                <a href="contact.html" class="btn-primary">Start a project <i class="fas fa-arrow-right"></i></a>
-            </div>
-        </section>
-
-        <section class="container">
-            <div class="grid-2col">
-                <div>
-                    <span class="section-tag">Philosophy</span>
-                    <h2>Beyond aesthetics, we create lasting connection</h2>
-                    <p>Every line, every material, every shadow is considered. Our work is not about decoration—it's about crafting environments that respond to the way you live today and tomorrow.</p>
-                    <p>Based in New York and working globally, we collaborate with artisans, architects, and you to realise spaces of quiet luxury.</p>
-                    <a href="about.html" class="btn-outline">Read more <i class="fas fa-arrow-right"></i></a>
-                </div>
-                <div><img src="https://images.unsplash.com/photo-1600607687939-ce8a6c25118c?w=800&auto=format" style="width:100%; border-radius:12px;"></div>
-            </div>
-        </section>
-
-        <section class="container">
-            <div style="text-align:center;"><span class="section-tag">What we do</span><h2>Core expertise</h2></div>
-            <div class="services-grid">
-                <div class="service-card"><i class="fas fa-home"></i><h3>Residential</h3><p>Private residences, apartments, penthouses — tailored to your rhythm of life.</p></div>
-                <div class="service-card"><i class="fas fa-building"></i><h3>Commercial</h3><p>Hotels, boutiques, offices — spaces that tell your brand's story.</p></div>
-                <div class="service-card"><i class="fas fa-pen-ruler"></i><h3>Consultation</h3><p>Design direction, material curation, and project management.</p></div>
-            </div>
-        </section>
-
-        <section class="container">
-            <div class="stats-grid">
-                <div><div class="stat-number">150+</div><p>Projects completed</p></div>
-                <div><div class="stat-number">12</div><p>Design awards</p></div>
-                <div><div class="stat-number">45+</div><p>Team members</p></div>
-                <div><div class="stat-number">8</div><p>Countries</p></div>
-            </div>
-        </section>
-
-        <section class="container">
-            <div style="text-align:center;"><span class="section-tag">How we work</span><h2>Our creative process</h2></div>
-            <div class="process-steps">
-                <div class="process-step"><i class="fas fa-comments"></i><h3>01. Discovery</h3><p>We listen to your vision, needs, and lifestyle.</p></div>
-                <div class="process-step"><i class="fas fa-drafting-compass"></i><h3>02. Concept</h3><p>Mood boards, sketches, and spatial planning.</p></div>
-                <div class="process-step"><i class="fas fa-cubes"></i><h3>03. Execution</h3><p>Procurement, construction, and installation.</p></div>
-                <div class="process-step"><i class="fas fa-camera-retro"></i><h3>04. Reveal</h3><p>Final styling and handover.</p></div>
-            </div>
-        </section>
-
-        <section class="container">
-            <div style="text-align:center;"><h2>Recent projects</h2></div>
-            <div class="image-gallery">
-                <img src="https://images.unsplash.com/photo-1600210492486-724fe5c67fb0?w=600" alt="Project 1">
-                <img src="https://images.unsplash.com/photo-1551882547-ff40c63fe5fa?w=600" alt="Project 2">
-                <img src="https://images.unsplash.com/photo-1560185009-dddeb820c7c1?w=600" alt="Project 3">
-                <img src="https://images.unsplash.com/photo-1600607687920-4e2a5a7f3b5f?w=600" alt="Project 4">
-                <img src="https://images.unsplash.com/photo-1497366754035-f200968a6e72?w=600" alt="Project 5">
-                <img src="https://images.unsplash.com/photo-1581091226033-d5c48150dbaa?w=600" alt="Project 6">
-            </div>
-        </section>
-
-        <section class="container">
-            <div style="text-align:center;"><span class="section-tag">Testimonials</span><h2>What our clients say</h2></div>
-            <div class="services-grid" style="grid-template-columns:repeat(2,1fr);">
-                <div class="testimonial-card"><i class="fas fa-quote-left"></i><p>“Studio Nova transformed our loft into a serene sanctuary. Every detail is perfect.”</p><strong>— Sarah & Mark</strong></div>
-                <div class="testimonial-card"><i class="fas fa-quote-left"></i><p>“The team’s attention to light and material is unparalleled. Best decision we made.”</p><strong>— Elena R.</strong></div>
-                <div class="testimonial-card"><i class="fas fa-quote-left"></i><p>“They listened, then delivered beyond expectations. A true partnership.”</p><strong>— James K.</strong></div>
-                <div class="testimonial-card"><i class="fas fa-quote-left"></i><p>“Our hotel lobby became the heart of the building. Guests keep complimenting.”</p><strong>— The Soho Hotel</strong></div>
-            </div>
-        </section>
-
-        <section class="cta-section container">
-            <h2>Let's create something timeless.</h2>
-            <p>Book a complimentary discovery call.</p>
-            <a href="contact.html" class="btn-primary">Inquire now</a>
-        </section>
-    </main>
-
-    <footer>
-        <div class="footer-container">
-            <div><h3>STUDIO NOVA</h3><p>Interior architecture & design</p></div>
-            <div><h4>Contact</h4><p>hello@studionova.com<br>+1 (212) 555-0987</p></div>
-            <div><h4>Studio</h4><p>410 W 13th St, New York, NY 10014</p></div>
-            <div><h4>Social</h4><div class="social-icons"><a href="#"><i class="fab fa-instagram"></i></a> <a href="#"><i class="fab fa-linkedin-in"></i></a> <a href="#"><i class="fab fa-pinterest-p"></i></a></div></div>
+  <main class="pt-20">
+    <!-- ==================== INDEX / HOME SECTION ==================== -->
+    <section id="home" class="relative py-12 md:py-20 overflow-hidden">
+      <div class="container mx-auto px-6">
+        <!-- Hero intro -->
+        <div class="text-center max-w-3xl mx-auto mb-12 fade-up">
+          <span class="text-indigo-500 font-semibold tracking-wide text-sm">INNOVATION MEETS CRAFT</span>
+          <h1 class="text-5xl md:text-7xl font-extrabold mt-4 bg-gradient-to-r from-gray-900 via-indigo-800 to-purple-700 bg-clip-text text-transparent">We Build Digital <br> Masterpieces</h1>
+          <p class="text-gray-600 text-lg md:text-xl mt-6">Cutting-edge solutions, immersive experiences & powerful brands — crafted with passion and precision.</p>
+          <div class="mt-8 flex justify-center gap-4">
+            <a href="#contact" class="px-8 py-3 bg-indigo-600 text-white rounded-full font-semibold shadow-lg hover:bg-indigo-700 transition transform hover:scale-105 btn-glow">Start Project <i class="fas fa-arrow-right ml-2"></i></a>
+            <a href="#services" class="px-8 py-3 border border-indigo-300 rounded-full font-semibold hover:bg-indigo-50 transition">Explore Work</a>
+          </div>
         </div>
-        <div style="text-align:center; margin-top:2rem; padding-top:1rem; border-top:1px solid #ddd;">&copy; 2026 Studio Nova — All rights reserved</div>
-    </footer>
 
-    <script src="script.js"></script>
+        <!-- IMAGE CAROUSEL (fully functional, autoplay + controls) -->
+        <div class="max-w-5xl mx-auto mt-12 fade-up">
+          <div class="carousel-container relative shadow-2xl">
+            <div class="carousel-track" id="carouselTrack">
+              <!-- slides will be injected by JS, but we predefine images array -->
+            </div>
+            <!-- prev/next -->
+            <button id="prevBtn" class="carousel-btn absolute left-4 top-1/2 -translate-y-1/2 w-10 h-10 rounded-full flex items-center justify-center text-gray-800 z-10 shadow-md"><i class="fas fa-chevron-left text-xl"></i></button>
+            <button id="nextBtn" class="carousel-btn absolute right-4 top-1/2 -translate-y-1/2 w-10 h-10 rounded-full flex items-center justify-center text-gray-800 z-10 shadow-md"><i class="fas fa-chevron-right text-xl"></i></button>
+            <!-- dots container -->
+            <div class="absolute bottom-5 left-0 right-0 flex justify-center gap-2 z-10" id="carouselDots"></div>
+          </div>
+        </div>
+
+        <!-- stats row to make page long & animated -->
+        <div class="grid grid-cols-2 md:grid-cols-4 gap-8 mt-20 text-center">
+          <div class="bg-white p-6 rounded-2xl shadow-md hover:shadow-xl transition-all duration-300 transform hover:-translate-y-2 fade-up">
+            <i class="fas fa-trophy text-4xl text-indigo-500"></i>
+            <h3 class="text-3xl font-bold mt-3 counter" data-target="128">0</h3>
+            <p class="text-gray-500">Awards Won</p>
+          </div>
+          <div class="bg-white p-6 rounded-2xl shadow-md hover:shadow-xl transition-all duration-300 transform hover:-translate-y-2 fade-up">
+            <i class="fas fa-users text-4xl text-indigo-500"></i>
+            <h3 class="text-3xl font-bold mt-3 counter" data-target="450">0</h3>
+            <p class="text-gray-500">Happy Clients</p>
+          </div>
+          <div class="bg-white p-6 rounded-2xl shadow-md hover:shadow-xl transition-all duration-300 transform hover:-translate-y-2 fade-up">
+            <i class="fas fa-code-branch text-4xl text-indigo-500"></i>
+            <h3 class="text-3xl font-bold mt-3 counter" data-target="860">0</h3>
+            <p class="text-gray-500">Projects Done</p>
+          </div>
+          <div class="bg-white p-6 rounded-2xl shadow-md hover:shadow-xl transition-all duration-300 transform hover:-translate-y-2 fade-up">
+            <i class="fas fa-globe text-4xl text-indigo-500"></i>
+            <h3 class="text-3xl font-bold mt-3 counter" data-target="32">0</h3>
+            <p class="text-gray-500">Countries</p>
+          </div>
+        </div>
+
+        <!-- Extra testimonial block (long content) -->
+        <div class="mt-20 bg-indigo-50/40 p-8 rounded-3xl text-center fade-up">
+          <i class="fas fa-quote-left text-4xl text-indigo-300 mb-4"></i>
+          <p class="text-xl italic max-w-3xl mx-auto text-gray-700">"Nebula transformed our digital identity — the team's creativity & execution are unmatched. Our conversion rates skyrocketed!"</p>
+          <div class="mt-6 flex justify-center gap-3 items-center">
+            <img src="https://randomuser.me/api/portraits/women/68.jpg" class="w-12 h-12 rounded-full border-2 border-indigo-400" alt="testimonial">
+            <div><strong>— Sophia Chen</strong><br>CEO, LuminaX</div>
+          </div>
+        </div>
+      </div>
+    </section>
+
+    <!-- ==================== SERVICES PAGE ==================== -->
+    <section id="services" class="py-20 bg-white relative">
+      <div class="container mx-auto px-6">
+        <div class="text-center mb-16 fade-up">
+          <h2 class="text-4xl md:text-5xl font-bold">Our <span class="text-indigo-600">Services</span></h2>
+          <div class="w-24 h-1 bg-indigo-500 mx-auto mt-4 rounded-full"></div>
+          <p class="text-gray-600 max-w-2xl mx-auto mt-5">End-to-end digital solutions tailored to skyrocket your business. We blend strategy, design, and technology.</p>
+        </div>
+        <div class="grid md:grid-cols-2 lg:grid-cols-3 gap-8">
+          <!-- service cards with images and animations -->
+          <div class="group bg-gray-50 rounded-2xl p-6 shadow-sm hover:shadow-2xl transition-all duration-500 hover:-translate-y-3 fade-up">
+            <div class="h-48 overflow-hidden rounded-xl"><img src="https://picsum.photos/id/20/400/300" alt="web dev" class="w-full h-full object-cover img-hover-zoom"></div>
+            <i class="fas fa-laptop-code text-3xl text-indigo-500 mt-5 block"></i>
+            <h3 class="text-2xl font-bold mt-3">Web Development</h3>
+            <p class="text-gray-500 mt-2">React, Vue, full-stack apps, eCommerce platforms & blazing-fast performance.</p>
+          </div>
+          <div class="group bg-gray-50 rounded-2xl p-6 shadow-sm hover:shadow-2xl transition-all duration-500 hover:-translate-y-3 fade-up">
+            <div class="h-48 overflow-hidden rounded-xl"><img src="https://picsum.photos/id/26/400/300" alt="ui design" class="w-full h-full object-cover img-hover-zoom"></div>
+            <i class="fas fa-palette text-3xl text-indigo-500 mt-5 block"></i>
+            <h3 class="text-2xl font-bold mt-3">UI/UX Design</h3>
+            <p class="text-gray-500 mt-2">Beautiful, intuitive interfaces with user-centered design & interactive prototypes.</p>
+          </div>
+          <div class="group bg-gray-50 rounded-2xl p-6 shadow-sm hover:shadow-2xl transition-all duration-500 hover:-translate-y-3 fade-up">
+            <div class="h-48 overflow-hidden rounded-xl"><img src="https://picsum.photos/id/1/400/300" alt="seo" class="w-full h-full object-cover img-hover-zoom"></div>
+            <i class="fas fa-chart-line text-3xl text-indigo-500 mt-5 block"></i>
+            <h3 class="text-2xl font-bold mt-3">SEO & Marketing</h3>
+            <p class="text-gray-500 mt-2">Data-driven strategies to dominate search rankings & organic growth.</p>
+          </div>
+          <div class="group bg-gray-50 rounded-2xl p-6 shadow-sm hover:shadow-2xl transition-all duration-500 hover:-translate-y-3 fade-up">
+            <div class="h-48 overflow-hidden rounded-xl"><img src="https://picsum.photos/id/42/400/300" alt="mobile" class="w-full h-full object-cover img-hover-zoom"></div>
+            <i class="fas fa-mobile-alt text-3xl text-indigo-500 mt-5 block"></i>
+            <h3 class="text-2xl font-bold mt-3">Mobile Apps</h3>
+            <p class="text-gray-500 mt-2">iOS & Android native apps, cross-platform Flutter & React Native.</p>
+          </div>
+          <div class="group bg-gray-50 rounded-2xl p-6 shadow-sm hover:shadow-2xl transition-all duration-500 hover:-translate-y-3 fade-up">
+            <div class="h-48 overflow-hidden rounded-xl"><img src="https://picsum.photos/id/0/400/300" alt="branding" class="w-full h-full object-cover img-hover-zoom"></div>
+            <i class="fas fa-bullhorn text-3xl text-indigo-500 mt-5 block"></i>
+            <h3 class="text-2xl font-bold mt-3">Brand Strategy</h3>
+            <p class="text-gray-500 mt-2">Identity, storytelling & positioning that resonates with your audience.</p>
+          </div>
+          <div class="group bg-gray-50 rounded-2xl p-6 shadow-sm hover:shadow-2xl transition-all duration-500 hover:-translate-y-3 fade-up">
+            <div class="h-48 overflow-hidden rounded-xl"><img src="https://picsum.photos/id/91/400/300" alt="cloud" class="w-full h-full object-cover img-hover-zoom"></div>
+            <i class="fas fa-cloud-upload-alt text-3xl text-indigo-500 mt-5 block"></i>
+            <h3 class="text-2xl font-bold mt-3">Cloud Solutions</h3>
+            <p class="text-gray-500 mt-2">Scalable AWS, Azure deployment & DevOps pipelines for modern infra.</p>
+          </div>
+        </div>
+        <!-- extra call-to-action block to ensure long page -->
+        <div class="mt-20 bg-gradient-to-r from-indigo-50 to-purple-50 rounded-3xl p-8 flex flex-wrap justify-between items-center fade-up">
+          <div><h3 class="text-2xl font-bold">Need a customized plan?</h3><p>Let's discuss your unique vision and elevate your brand.</p></div>
+          <a href="#contact" class="bg-indigo-600 text-white px-8 py-3 rounded-full font-semibold shadow hover:bg-indigo-700 transition">Get in touch <i class="fas fa-arrow-right ml-2"></i></a>
+        </div>
+      </div>
+    </section>
+
+    <!-- ==================== ABOUT PAGE ==================== -->
+    <section id="about" class="py-20 bg-gray-50">
+      <div class="container mx-auto px-6">
+        <div class="grid lg:grid-cols-2 gap-12 items-center">
+          <div class="fade-up">
+            <span class="text-indigo-500 font-semibold">OUR STORY</span>
+            <h2 class="text-4xl md:text-5xl font-bold mt-2">Where creativity meets <span class="text-indigo-600">technology</span></h2>
+            <p class="text-gray-600 text-lg mt-6 leading-relaxed">Founded in 2018, Nebula has grown from a small design collective to a full-fledged digital powerhouse. We've partnered with 450+ brands across the globe, delivering impactful, future-ready digital ecosystems. Our team believes in fearless innovation, transparency, and pixel-perfect execution.</p>
+            <div class="mt-8 flex gap-4 flex-wrap">
+              <div><i class="fas fa-check-circle text-indigo-500"></i> 100+ Experts</div>
+              <div><i class="fas fa-check-circle text-indigo-500"></i> 24/7 Support</div>
+              <div><i class="fas fa-check-circle text-indigo-500"></i> Agile Process</div>
+            </div>
+          </div>
+          <div class="relative fade-up">
+            <img src="https://picsum.photos/id/155/600/500" alt="about team" class="rounded-3xl shadow-2xl img-hover-zoom w-full object-cover">
+            <div class="absolute -bottom-6 -left-6 bg-indigo-600 rounded-full p-4 shadow-xl float-animation"><i class="fas fa-play text-white text-2xl"></i></div>
+          </div>
+        </div>
+        <!-- Team section with images & fun facts - making about page long -->
+        <div class="mt-24 text-center fade-up">
+          <h3 class="text-3xl font-bold">Meet the Visionaries</h3>
+          <div class="grid md:grid-cols-3 gap-10 mt-12">
+            <div class="bg-white p-6 rounded-2xl transition-all duration-300 hover:scale-105">
+              <img src="https://randomuser.me/api/portraits/men/32.jpg" class="w-32 h-32 rounded-full mx-auto border-4 border-indigo-200" alt="team">
+              <h4 class="text-xl font-bold mt-4">Marcus Rivera</h4>
+              <p class="text-indigo-500">CEO & Creative Director</p>
+            </div>
+            <div class="bg-white p-6 rounded-2xl transition-all duration-300 hover:scale-105">
+              <img src="https://randomuser.me/api/portraits/women/44.jpg" class="w-32 h-32 rounded-full mx-auto border-4 border-indigo-200" alt="team">
+              <h4 class="text-xl font-bold mt-4">Dr. Emily Zhao</h4>
+              <p class="text-indigo-500">Head of AI & Innovation</p>
+            </div>
+            <div class="bg-white p-6 rounded-2xl transition-all duration-300 hover:scale-105">
+              <img src="https://randomuser.me/api/portraits/men/75.jpg" class="w-32 h-32 rounded-full mx-auto border-4 border-indigo-200" alt="team">
+              <h4 class="text-xl font-bold mt-4">David Okafor</h4>
+              <p class="text-indigo-500">Lead Architect</p>
+            </div>
+          </div>
+        </div>
+        <!-- long timeline or achievements -->
+        <div class="mt-16 grid md:grid-cols-2 gap-8 bg-white rounded-2xl p-8 shadow-md fade-up">
+          <div><i class="fas fa-medal text-4xl text-indigo-400"></i><h3 class="text-2xl font-bold mt-2">2024 Innovation Award</h3><p>Recognized as top creative tech agency by DesignRush.</p></div>
+          <div><i class="fas fa-chart-simple text-4xl text-indigo-400"></i><h3 class="text-2xl font-bold mt-2">Clients in 32+ countries</h3><p>Global footprint delivering scalable solutions.</p></div>
+        </div>
+      </div>
+    </section>
+
+    <!-- ==================== CONTACT PAGE ==================== -->
+    <section id="contact" class="py-20 bg-white">
+      <div class="container mx-auto px-6">
+        <div class="text-center mb-16 fade-up">
+          <h2 class="text-4xl md:text-5xl font-bold">Let’s <span class="text-indigo-600">Connect</span></h2>
+          <p class="text-gray-500 max-w-2xl mx-auto mt-4">Got a project? We’d love to hear from you. Send a message and our team will get back within 24h.</p>
+        </div>
+        <div class="grid lg:grid-cols-2 gap-12">
+          <div class="bg-gray-50 p-8 rounded-2xl shadow-lg fade-up">
+            <form id="contactForm">
+              <div class="mb-5"><label class="block font-medium">Full name</label><input type="text" id="name" class="w-full mt-1 p-3 border border-gray-300 rounded-xl focus:ring-2 focus:ring-indigo-400 outline-none" placeholder="John Carter" required></div>
+              <div class="mb-5"><label class="block font-medium">Email address</label><input type="email" id="email" class="w-full mt-1 p-3 border border-gray-300 rounded-xl focus:ring-2 focus:ring-indigo-400" placeholder="hello@nebula.com" required></div>
+              <div class="mb-5"><label class="block font-medium">Message</label><textarea id="message" rows="4" class="w-full mt-1 p-3 border border-gray-300 rounded-xl" placeholder="Tell us about your idea..."></textarea></div>
+              <button type="submit" class="bg-indigo-600 w-full py-3 rounded-xl text-white font-bold hover:bg-indigo-700 transition transform hover:scale-[1.02]">Send Message <i class="fas fa-paper-plane ml-2"></i></button>
+              <p id="formFeedback" class="text-sm mt-3 text-center text-green-600"></p>
+            </form>
+          </div>
+          <div class="space-y-6 fade-up">
+            <div class="flex items-start gap-4"><i class="fas fa-map-marker-alt text-2xl text-indigo-500 mt-1"></i><div><h3 class="font-bold">Visit our studio</h3><p>123 Creative Avenue, Silicon Valley, CA 94025</p></div></div>
+            <div class="flex items-start gap-4"><i class="fas fa-phone-alt text-2xl text-indigo-500"></i><div><h3 class="font-bold">Call us</h3><p>+1 (800) 456-7890</p></div></div>
+            <div class="flex items-start gap-4"><i class="fas fa-envelope text-2xl text-indigo-500"></i><div><h3 class="font-bold">Email</h3><p>studio@nebulastudio.com</p></div></div>
+            <!-- google maps embed (static preview) -->
+            <div class="rounded-2xl overflow-hidden shadow-md mt-6">
+              <iframe class="w-full h-56" src="https://maps.google.com/maps?q=San%20Francisco&t=&z=13&ie=UTF8&iwloc=&output=embed" allowfullscreen="" loading="lazy"></iframe>
+            </div>
+          </div>
+        </div>
+        <!-- extra social / newsletter (long contact page) -->
+        <div class="mt-20 text-center p-8 bg-indigo-50 rounded-3xl fade-up">
+          <h3 class="text-2xl font-bold">Follow our journey</h3>
+          <div class="flex justify-center gap-6 mt-4 text-3xl">
+            <a href="#" class="hover:text-indigo-600 transition-all hover:scale-125 inline-block"><i class="fab fa-twitter"></i></a>
+            <a href="#" class="hover:text-indigo-600 transition-all hover:scale-125 inline-block"><i class="fab fa-instagram"></i></a>
+            <a href="#" class="hover:text-indigo-600 transition-all hover:scale-125 inline-block"><i class="fab fa-linkedin-in"></i></a>
+            <a href="#" class="hover:text-indigo-600 transition-all hover:scale-125 inline-block"><i class="fab fa-github"></i></a>
+          </div>
+        </div>
+      </div>
+    </section>
+
+    <!-- FOOTER -->
+    <footer class="bg-gray-900 text-gray-300 py-12 mt-10">
+      <div class="container mx-auto px-6 text-center"><p>© 2025 Nebula Studio — Where Ideas Take Flight. All rights reserved.</p></div>
+    </footer>
+  </main>
+
+  <script>
+    // ==================== ALL JAVASCRIPT IN ONE FILE ====================
+    // 1. CAROUSEL FUNCTIONALITY (fully interactive)
+    const images = [
+      "https://picsum.photos/id/10/1200/600",   // forest
+      "https://picsum.photos/id/15/1200/600",   // leaves
+      "https://picsum.photos/id/22/1200/600",   // coffee
+      "https://picsum.photos/id/96/1200/600"    // mountain
+    ];
+    let currentIndex = 0;
+    let autoInterval;
+    const track = document.getElementById('carouselTrack');
+    const prevBtn = document.getElementById('prevBtn');
+    const nextBtn = document.getElementById('nextBtn');
+    const dotsContainer = document.getElementById('carouselDots');
+
+    function buildCarousel() {
+      track.innerHTML = '';
+      images.forEach((imgSrc, idx) => {
+        const slideDiv = document.createElement('div');
+        slideDiv.className = 'carousel-slide';
+        slideDiv.innerHTML = `<img src="${imgSrc}" class="w-full h-64 md:h-96 object-cover" alt="slide ${idx+1}">`;
+        track.appendChild(slideDiv);
+      });
+      updateDots();
+      updateCarousel();
+    }
+    function updateCarousel() {
+      if (track) track.style.transform = `translateX(-${currentIndex * 100}%)`;
+      updateDotsActive();
+    }
+    function updateDots() {
+      dotsContainer.innerHTML = '';
+      images.forEach((_, idx) => {
+        const dot = document.createElement('button');
+        dot.classList.add('w-3', 'h-3', 'rounded-full', 'bg-white/60', 'transition-all', 'duration-300', 'mx-1');
+        if (idx === currentIndex) dot.classList.add('dot-active', 'bg-indigo-500', 'w-6');
+        dot.addEventListener('click', () => {
+          currentIndex = idx;
+          updateCarousel();
+          resetAutoPlay();
+        });
+        dotsContainer.appendChild(dot);
+      });
+    }
+    function updateDotsActive() {
+      const dots = dotsContainer.children;
+      for (let i = 0; i < dots.length; i++) {
+        dots[i].classList.remove('dot-active', 'bg-indigo-500', 'w-6');
+        dots[i].classList.add('w-3', 'bg-white/60');
+        if (i === currentIndex) {
+          dots[i].classList.add('dot-active', 'bg-indigo-500', 'w-6');
+        }
+      }
+    }
+    function nextSlide() { currentIndex = (currentIndex + 1) % images.length; updateCarousel(); resetAutoPlay(); }
+    function prevSlide() { currentIndex = (currentIndex - 1 + images.length) % images.length; updateCarousel(); resetAutoPlay(); }
+    function startAutoPlay() { autoInterval = setInterval(() => { nextSlide(); }, 5000); }
+    function resetAutoPlay() { clearInterval(autoInterval); startAutoPlay(); }
+    if (prevBtn && nextBtn) {
+      prevBtn.addEventListener('click', prevSlide);
+      nextBtn.addEventListener('click', nextSlide);
+    }
+    buildCarousel();
+    startAutoPlay();
+
+    // 2. SCROLL REVEAL (Intersection Observer for fade-up animations)
+    const fadeElements = document.querySelectorAll('.fade-up');
+    const observer = new IntersectionObserver((entries) => {
+      entries.forEach(entry => {
+        if (entry.isIntersecting) {
+          entry.target.classList.add('appear');
+          observer.unobserve(entry.target);
+        }
+      });
+    }, { threshold: 0.2 });
+    fadeElements.forEach(el => observer.observe(el));
+
+    // 3. COUNTER ANIMATION (for stats)
+    const counters = document.querySelectorAll('.counter');
+    const startCounters = () => {
+      counters.forEach(counter => {
+        const updateCount = () => {
+          const target = parseInt(counter.getAttribute('data-target'));
+          let current = parseInt(counter.innerText);
+          const increment = target / 50;
+          if (current < target) {
+            current = Math.min(Math.ceil(current + increment), target);
+            counter.innerText = current;
+            setTimeout(updateCount, 20);
+          } else counter.innerText = target;
+        };
+        updateCount();
+      });
+    };
+    // trigger counters when about section or home stats visible
+    const statsObserver = new IntersectionObserver((entries) => {
+      entries.forEach(entry => {
+        if (entry.isIntersecting) {
+          startCounters();
+          statsObserver.unobserve(entry.target);
+        }
+      });
+    }, { threshold: 0.5 });
+    const statsContainer = document.querySelector('#home .grid'); 
+    if(statsContainer) statsObserver.observe(statsContainer);
+
+    // 4. Contact form handling (simple validation, alert)
+    const contactForm = document.getElementById('contactForm');
+    const feedback = document.getElementById('formFeedback');
+    if (contactForm) {
+      contactForm.addEventListener('submit', (e) => {
+        e.preventDefault();
+        const name = document.getElementById('name').value.trim();
+        const email = document.getElementById('email').value.trim();
+        const msg = document.getElementById('message').value.trim();
+        if(name && email && msg) {
+          feedback.innerHTML = '<span class="text-green-600"><i class="fas fa-check-circle"></i> Thank you! We’ll reach out soon.</span>';
+          contactForm.reset();
+          setTimeout(() => feedback.innerHTML = '', 4000);
+        } else {
+          feedback.innerHTML = '<span class="text-red-500">Please fill all fields.</span>';
+        }
+      });
+    }
+
+    // 5. Additional hover + smooth nav active highlight and scroll offset
+    const navLinks = document.querySelectorAll('nav a');
+    navLinks.forEach(link => {
+      link.addEventListener('click', function(e) {
+        e.preventDefault();
+        const targetId = this.getAttribute('href').substring(1);
+        const targetElem = document.getElementById(targetId);
+        if (targetElem) {
+          const offsetTop = targetElem.offsetTop - 80;
+          window.scrollTo({ top: offsetTop, behavior: 'smooth' });
+        }
+      });
+    });
+
+    // 6. tiny parallax/blur effect for glass navbar on scroll
+    window.addEventListener('scroll', () => {
+      const header = document.querySelector('header');
+      if (window.scrollY > 20) header.classList.add('shadow-lg', 'bg-white/90');
+      else header.classList.remove('shadow-lg', 'bg-white/90');
+    });
+  </script>
 </body>
 </html>
