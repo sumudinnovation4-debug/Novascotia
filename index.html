@@ -14,7 +14,7 @@
   <link href="https://fonts.googleapis.com/css2?family=Inter:opsz,wght@14..32,300;400;500;600;700&family=Playfair+Display:ital,wght@0,500;0,600;0,700;1,500&display=swap" rel="stylesheet">
   
   <style>
-    /* ========== INTERNAL CUSTOM CSS (enhances Tailwind, adds job-winning polish) ========== */
+    /* ========== INTERNAL CUSTOM CSS ========== */
     * {
       scroll-behavior: smooth;
     }
@@ -27,7 +27,7 @@
       font-family: 'Playfair Display', serif;
     }
     
-    /* Modern glassmorphism navbar override (works with Tailwind) */
+    /* Glassmorphism navbar */
     .glass-nav {
       background: rgba(255, 250, 245, 0.85);
       backdrop-filter: blur(14px);
@@ -84,7 +84,7 @@
       100% { background-position: 0% 50%; }
     }
     
-    /* Button primary (Tailwind override but safe) */
+    /* Button primary */
     .btn-primary {
       background: #b45309;
       transition: all 0.25s;
@@ -237,6 +237,8 @@
     }
     @media (max-width: 640px) {
       .carousel-btn { width: 36px; height: 36px; }
+      /* increase touch area for hamburger */
+      #mobileMenuBtn { padding: 8px; }
     }
   </style>
 </head>
@@ -262,24 +264,25 @@
         <a href="#about" class="hover:text-amber-700 transition">Studio</a>
         <a href="#contact" class="hover:text-amber-700 transition">Contact</a>
       </div>
-      <button id="mobileMenuBtn" class="md:hidden text-2xl text-amber-800"><i class="fas fa-bars"></i></button>
+      <button id="mobileMenuBtn" class="md:hidden text-2xl text-amber-800 focus:outline-none active:scale-95 transition" aria-label="Menu"><i class="fas fa-bars"></i></button>
     </nav>
-    <div id="mobileMenu" class="hidden md:hidden bg-white/95 backdrop-blur-lg px-6 pb-5 flex flex-col gap-4 text-center border-t border-amber-100">
-      <a href="#home" class="py-2 hover:text-amber-700">Home</a>
-      <a href="#services" class="py-2 hover:text-amber-700">Services</a>
-      <a href="#work" class="py-2 hover:text-amber-700">Portfolio</a>
-      <a href="#about" class="py-2 hover:text-amber-700">Studio</a>
-      <a href="#contact" class="py-2 hover:text-amber-700">Contact</a>
+    <!-- mobile menu panel - hidden by default, toggles on click -->
+    <div id="mobileMenu" class="hidden md:hidden bg-white/95 backdrop-blur-lg px-6 pb-5 pt-2 flex flex-col gap-4 text-center text-gray-800 font-medium border-t border-amber-100 shadow-lg">
+      <a href="#home" class="py-2 hover:text-amber-700 transition">Home</a>
+      <a href="#services" class="py-2 hover:text-amber-700 transition">Services</a>
+      <a href="#work" class="py-2 hover:text-amber-700 transition">Portfolio</a>
+      <a href="#about" class="py-2 hover:text-amber-700 transition">Studio</a>
+      <a href="#contact" class="py-2 hover:text-amber-700 transition">Contact</a>
     </div>
   </header>
 
   <main>
-    <!-- HERO SECTION modern split -->
+    <!-- HERO SECTION (no "Since 2013") -->
     <section id="home" class="relative pt-28 md:pt-36 pb-16 md:pb-24 overflow-hidden">
       <div class="container mx-auto px-6 md:px-10">
         <div class="grid lg:grid-cols-2 gap-12 items-center">
           <div class="reveal-up">
-            <span class="text-amber-700 font-semibold tracking-wider text-sm uppercase border-l-4 border-amber-600 pl-3">Since 2013 — Design Atelier</span>
+            <span class="text-amber-700 font-semibold tracking-wider text-sm uppercase border-l-4 border-amber-600 pl-3">Design Atelier — Bespoke Interiors</span>
             <h1 class="text-5xl md:text-7xl lg:text-8xl font-bold mt-6 leading-[1.15]"><span class="animated-gradient">Sculpting Spaces,</span><br>Defining Elegance</h1>
             <p class="text-gray-600 text-lg md:text-xl mt-6 max-w-lg">Luxury interior design that blends warmth, functionality, and timeless beauty. Transform your home into a narrative.</p>
             <div class="flex flex-wrap gap-5 mt-10">
@@ -303,38 +306,37 @@
           <div class="bg-white/70 backdrop-blur-sm p-6 rounded-2xl text-center shadow-sm"><i class="fas fa-couch text-3xl text-amber-600"></i><h3 class="text-3xl font-bold mt-2 counter" data-target="247">0</h3><p class="text-gray-500">Completed</p></div>
           <div class="bg-white/70 backdrop-blur-sm p-6 rounded-2xl text-center shadow-sm"><i class="fas fa-smile text-3xl text-amber-600"></i><h3 class="text-3xl font-bold mt-2 counter" data-target="198">0</h3><p class="text-gray-500">Happy Clients</p></div>
           <div class="bg-white/70 backdrop-blur-sm p-6 rounded-2xl text-center shadow-sm"><i class="fas fa-award text-3xl text-amber-600"></i><h3 class="text-3xl font-bold mt-2 counter" data-target="32">0</h3><p class="text-gray-500">Design Awards</p></div>
-          <div class="bg-white/70 backdrop-blur-sm p-6 rounded-2xl text-center shadow-sm"><i class="fas fa-calendar-alt text-3xl text-amber-600"></i><h3 class="text-3xl font-bold mt-2 counter" data-target="12">0</h3><p class="text-gray-500">Years</p></div>
+          <div class="bg-white/70 backdrop-blur-sm p-6 rounded-2xl text-center shadow-sm"><i class="fas fa-calendar-alt text-3xl text-amber-600"></i><h3 class="text-3xl font-bold mt-2 counter" data-target="12">0</h3><p class="text-gray-500">Years Excellence</p></div>
         </div>
-        <!-- testimonial (elegant) -->
-        <div class="mt-16 bg-amber-100/50 p-6 md:p-8 rounded-3xl text-center reveal-up"><i class="fas fa-quote-left text-4xl text-amber-400 mb-3"></i><p class="text-lg md:text-xl italic max-w-3xl mx-auto">“Nebula Interiors transformed our ordinary apartment into a sanctuary. Every detail, from lighting to textures, reflects pure artistry.”</p><div class="mt-5 flex justify-center gap-3 items-center"><img src="https://randomuser.me/api/portraits/women/89.jpg" class="w-12 h-12 rounded-full border-2 border-amber-500"><div><strong>— Mrs. Adaeze Okafor</strong><br><span class="text-sm">Lekki, Lagos</span></div></div></div>
+        <!-- testimonial -->
+        <div class="mt-16 bg-amber-100/50 p-6 md:p-8 rounded-3xl text-center reveal-up"><i class="fas fa-quote-left text-4xl text-amber-400 mb-3"></i><p class="text-lg md:text-xl italic max-w-3xl mx-auto">“Nebula Interiors transformed our ordinary apartment into a sanctuary. Every detail, from lighting to textures, reflects pure artistry.”</p><div class="mt-5 flex justify-center gap-3 items-center"><img src="https://randomuser.me/api/portraits/women/89.jpg" class="w-12 h-12 rounded-full border-2 border-amber-500" alt="client"><div><strong>— Mrs. Adaeze Okafor</strong><br><span class="text-sm">Lekki, Lagos</span></div></div></div>
       </div>
     </section>
 
-    <!-- SERVICES SECTION (enhanced with modern cards) -->
+    <!-- SERVICES SECTION -->
     <section id="services" class="py-20 md:py-28 bg-white relative">
       <div class="container mx-auto px-6 md:px-10">
         <div class="text-center max-w-2xl mx-auto reveal-up"><h2 class="text-4xl md:text-5xl font-bold">Curated <span class="text-amber-700">Design Services</span></h2><div class="w-24 h-1 bg-amber-600 mx-auto my-4 rounded-full"></div><p class="text-gray-600">Tailored experiences — from concept to installation.</p></div>
         <div class="grid sm:grid-cols-2 lg:grid-cols-3 gap-8 mt-16">
-          <div class="bg-white rounded-2xl p-6 shadow-md hover:shadow-2xl transition-all duration-500 hover:-translate-y-2 reveal-up"><div class="h-52 overflow-hidden rounded-xl"><img src="https://images.unsplash.com/photo-1616486338812-3eada8b1d7a6?w=600&h=400&fit=crop" class="w-full h-full object-cover img-zoom"></div><i class="fas fa-home text-3xl text-amber-600 mt-5 block"></i><h3 class="text-2xl font-bold mt-2">Residential Identity</h3><p class="text-gray-500">Bespoke villas & penthouses that reflect soul.</p></div>
-          <div class="bg-white rounded-2xl p-6 shadow-md hover:shadow-2xl transition-all duration-500 hover:-translate-y-2 reveal-up"><div class="h-52 overflow-hidden rounded-xl"><img src="https://images.unsplash.com/photo-1497366754035-f200968a6e72?w=600&h=400&fit=crop" class="w-full h-full object-cover img-zoom"></div><i class="fas fa-building text-3xl text-amber-600 mt-5 block"></i><h3 class="text-2xl font-bold mt-2">Commercial Elegance</h3><p class="text-gray-500">Boutiques, hotels, offices — immersive branding.</p></div>
-          <div class="bg-white rounded-2xl p-6 shadow-md hover:shadow-2xl transition-all duration-500 hover:-translate-y-2 reveal-up"><div class="h-52 overflow-hidden rounded-xl"><img src="https://images.unsplash.com/photo-1556911220-bff31c812dba?w=600&h=400&fit=crop" class="w-full h-full object-cover img-zoom"></div><i class="fas fa-kitchen-set text-3xl text-amber-600 mt-5 block"></i><h3 class="text-2xl font-bold mt-2">Kitchen & Bath Atelier</h3><p class="text-gray-500">Sculptural cabinetry, natural stone, smart ergonomics.</p></div>
-          <div class="bg-white rounded-2xl p-6 shadow-md hover:shadow-2xl transition-all duration-500 hover:-translate-y-2 reveal-up"><div class="h-52 overflow-hidden rounded-xl"><img src="https://images.unsplash.com/photo-1567016432779-094069958ea5?w=600&h=400&fit=crop" class="w-full h-full object-cover img-zoom"></div><i class="fas fa-lightbulb text-3xl text-amber-600 mt-5 block"></i><h3 class="text-2xl font-bold mt-2">Luminous Design</h3><p class="text-gray-500">Layered lighting to shape mood and drama.</p></div>
-          <div class="bg-white rounded-2xl p-6 shadow-md hover:shadow-2xl transition-all duration-500 hover:-translate-y-2 reveal-up"><div class="h-52 overflow-hidden rounded-xl"><img src="https://images.unsplash.com/photo-1616486029423-aaa4789e8c9a?w=600&h=400&fit=crop" class="w-full h-full object-cover img-zoom"></div><i class="fas fa-chair text-3xl text-amber-600 mt-5 block"></i><h3 class="text-2xl font-bold mt-2">Custom Collections</h3><p class="text-gray-500">Handcrafted pieces, local artisanship.</p></div>
-          <div class="bg-white rounded-2xl p-6 shadow-md hover:shadow-2xl transition-all duration-500 hover:-translate-y-2 reveal-up"><div class="h-52 overflow-hidden rounded-xl"><img src="https://images.unsplash.com/photo-1545235617-7a424c1a60cc?w=600&h=400&fit=crop" class="w-full h-full object-cover img-zoom"></div><i class="fas fa-comments text-3xl text-amber-600 mt-5 block"></i><h3 class="text-2xl font-bold mt-2">Strategic Consulting</h3><p class="text-gray-500">Mood boards, material curation & project direction.</p></div>
+          <div class="bg-white rounded-2xl p-6 shadow-md hover:shadow-2xl transition-all duration-500 hover:-translate-y-2 reveal-up"><div class="h-52 overflow-hidden rounded-xl"><img src="https://images.unsplash.com/photo-1616486338812-3eada8b1d7a6?w=600&h=400&fit=crop" class="w-full h-full object-cover img-zoom" alt="Residential"></div><i class="fas fa-home text-3xl text-amber-600 mt-5 block"></i><h3 class="text-2xl font-bold mt-2">Residential Identity</h3><p class="text-gray-500">Bespoke villas & penthouses that reflect soul.</p></div>
+          <div class="bg-white rounded-2xl p-6 shadow-md hover:shadow-2xl transition-all duration-500 hover:-translate-y-2 reveal-up"><div class="h-52 overflow-hidden rounded-xl"><img src="https://images.unsplash.com/photo-1497366754035-f200968a6e72?w=600&h=400&fit=crop" class="w-full h-full object-cover img-zoom" alt="Commercial"></div><i class="fas fa-building text-3xl text-amber-600 mt-5 block"></i><h3 class="text-2xl font-bold mt-2">Commercial Elegance</h3><p class="text-gray-500">Boutiques, hotels, offices — immersive branding.</p></div>
+          <div class="bg-white rounded-2xl p-6 shadow-md hover:shadow-2xl transition-all duration-500 hover:-translate-y-2 reveal-up"><div class="h-52 overflow-hidden rounded-xl"><img src="https://images.unsplash.com/photo-1556911220-bff31c812dba?w=600&h=400&fit=crop" class="w-full h-full object-cover img-zoom" alt="Kitchen"></div><i class="fas fa-kitchen-set text-3xl text-amber-600 mt-5 block"></i><h3 class="text-2xl font-bold mt-2">Kitchen & Bath Atelier</h3><p class="text-gray-500">Sculptural cabinetry, natural stone, smart ergonomics.</p></div>
+          <div class="bg-white rounded-2xl p-6 shadow-md hover:shadow-2xl transition-all duration-500 hover:-translate-y-2 reveal-up"><div class="h-52 overflow-hidden rounded-xl"><img src="https://images.unsplash.com/photo-1567016432779-094069958ea5?w=600&h=400&fit=crop" class="w-full h-full object-cover img-zoom" alt="Lighting"></div><i class="fas fa-lightbulb text-3xl text-amber-600 mt-5 block"></i><h3 class="text-2xl font-bold mt-2">Luminous Design</h3><p class="text-gray-500">Layered lighting to shape mood and drama.</p></div>
+          <div class="bg-white rounded-2xl p-6 shadow-md hover:shadow-2xl transition-all duration-500 hover:-translate-y-2 reveal-up"><div class="h-52 overflow-hidden rounded-xl"><img src="https://images.unsplash.com/photo-1616486029423-aaa4789e8c9a?w=600&h=400&fit=crop" class="w-full h-full object-cover img-zoom" alt="Furniture"></div><i class="fas fa-chair text-3xl text-amber-600 mt-5 block"></i><h3 class="text-2xl font-bold mt-2">Custom Collections</h3><p class="text-gray-500">Handcrafted pieces, local artisanship.</p></div>
+          <div class="bg-white rounded-2xl p-6 shadow-md hover:shadow-2xl transition-all duration-500 hover:-translate-y-2 reveal-up"><div class="h-52 overflow-hidden rounded-xl"><img src="https://images.unsplash.com/photo-1545235617-7a424c1a60cc?w=600&h=400&fit=crop" class="w-full h-full object-cover img-zoom" alt="Consult"></div><i class="fas fa-comments text-3xl text-amber-600 mt-5 block"></i><h3 class="text-2xl font-bold mt-2">Strategic Consulting</h3><p class="text-gray-500">Mood boards, material curation & project direction.</p></div>
         </div>
-        <!-- CTA banner -->
         <div class="mt-16 bg-gradient-to-r from-amber-100 to-orange-100 rounded-3xl p-6 md:p-8 flex flex-wrap justify-between items-center gap-5 reveal-up"><div><h3 class="text-xl md:text-2xl font-bold">Dreaming of a unique space?</h3><p class="text-gray-700">Let’s bring your vision to life with a complimentary first consultation.</p></div><a href="#contact" class="bg-amber-700 text-white px-6 md:px-8 py-3 rounded-full font-semibold shadow-md hover:bg-amber-800 transition">Request a quote <i class="fas fa-arrow-right ml-2"></i></a></div>
       </div>
     </section>
 
-    <!-- PORTFOLIO MASONRY (new section) -->
+    <!-- PORTFOLIO MASONRY -->
     <section id="work" class="py-20 bg-amber-50/40">
       <div class="container mx-auto px-6 md:px-10">
         <div class="text-center reveal-up"><h2 class="text-4xl md:text-5xl font-bold">Featured <span class="text-amber-700">Narratives</span></h2><div class="w-24 h-1 bg-amber-600 mx-auto my-3"></div><p class="text-gray-600 max-w-2xl mx-auto">Real projects, real emotion — each signature reflects our design ethos.</p></div>
         <div class="grid md:grid-cols-3 gap-6 mt-14">
-          <div class="project-card reveal-up"><img src="https://images.unsplash.com/photo-1600585154340-be6161a56a0c?w=600&h=500&fit=crop" class="w-full h-80 object-cover"><div class="project-overlay"><span class="text-white font-semibold text-lg">Minimalist Penthouse • Lagos</span></div></div>
-          <div class="project-card reveal-up"><img src="https://images.unsplash.com/photo-1618221195710-dd6b41faaea6?w=600&h=500&fit=crop" class="w-full h-80 object-cover"><div class="project-overlay"><span class="text-white font-semibold text-lg">Earthy Modern Villa • Abuja</span></div></div>
-          <div class="project-card reveal-up"><img src="https://images.unsplash.com/photo-1586023492125-27b2c045efd7?w=600&h=500&fit=crop" class="w-full h-80 object-cover"><div class="project-overlay"><span class="text-white font-semibold text-lg">Boutique Hotel • Cape Town</span></div></div>
+          <div class="project-card reveal-up"><img src="https://images.unsplash.com/photo-1600585154340-be6161a56a0c?w=600&h=500&fit=crop" class="w-full h-80 object-cover" alt="Penthouse"><div class="project-overlay"><span class="text-white font-semibold text-lg">Minimalist Penthouse • Lagos</span></div></div>
+          <div class="project-card reveal-up"><img src="https://images.unsplash.com/photo-1618221195710-dd6b41faaea6?w=600&h=500&fit=crop" class="w-full h-80 object-cover" alt="Villa"><div class="project-overlay"><span class="text-white font-semibold text-lg">Earthy Modern Villa • Abuja</span></div></div>
+          <div class="project-card reveal-up"><img src="https://images.unsplash.com/photo-1586023492125-27b2c045efd7?w=600&h=500&fit=crop" class="w-full h-80 object-cover" alt="Hotel"><div class="project-overlay"><span class="text-white font-semibold text-lg">Boutique Hotel • Cape Town</span></div></div>
         </div>
       </div>
     </section>
@@ -344,13 +346,13 @@
       <div class="container mx-auto px-6 md:px-10">
         <div class="grid lg:grid-cols-2 gap-14 items-center">
           <div class="reveal-up"><span class="text-amber-700 font-semibold tracking-wide">OUR MANIFESTO</span><h2 class="text-4xl md:text-5xl font-bold mt-2">Nebula <span class="text-amber-700">Interiors</span></h2><p class="text-gray-600 text-lg mt-6 leading-relaxed">With over a decade of excellence, Nebula Interiors has redefined luxury living through bespoke design. Our approach marries cultural richness, sustainable materials, and modern minimalism. Every project becomes a narrative — blending the client's personality with architectural poetry.</p><div class="flex flex-wrap gap-5 mt-8"><div><i class="fas fa-check-circle text-amber-600"></i> Award-Winning Team</div><div><i class="fas fa-check-circle text-amber-600"></i> Sustainable & Local Craftsmanship</div><div><i class="fas fa-check-circle text-amber-600"></i> 100+ Bespoke Residencies</div></div></div>
-          <div class="relative reveal-up"><img src="https://images.unsplash.com/photo-1616486338812-3eada8b1d7a6?w=700&h=600&fit=crop" class="rounded-3xl shadow-2xl border-4 border-amber-200 img-zoom w-full object-cover"><div class="absolute -bottom-5 -left-5 bg-amber-700 rounded-full p-4 shadow-xl float-animation"><i class="fas fa-pencil-ruler text-white text-2xl"></i></div></div>
+          <div class="relative reveal-up"><img src="https://images.unsplash.com/photo-1616486338812-3eada8b1d7a6?w=700&h=600&fit=crop" class="rounded-3xl shadow-2xl border-4 border-amber-200 img-zoom w-full object-cover" alt="Studio"><div class="absolute -bottom-5 -left-5 bg-amber-700 rounded-full p-4 shadow-xl"><i class="fas fa-pencil-ruler text-white text-2xl"></i></div></div>
         </div>
         <div class="grid sm:grid-cols-3 gap-6 mt-20 reveal-up"><div class="bg-amber-50 p-6 rounded-2xl text-center"><i class="fas fa-leaf text-4xl text-amber-600"></i><h4 class="text-xl font-bold mt-2">Sustainable First</h4><p>Eco materials, low-VOC, upcycled art</p></div><div class="bg-amber-50 p-6 rounded-2xl text-center"><i class="fas fa-hand-sparkles text-4xl text-amber-600"></i><h4 class="text-xl font-bold mt-2">Bespoke Craftsmanship</h4><p>Local & international ateliers</p></div><div class="bg-amber-50 p-6 rounded-2xl text-center"><i class="fas fa-crown text-4xl text-amber-600"></i><h4 class="text-xl font-bold mt-2">Timeless Luxury</h4><p>Never trend-driven, always soulful</p></div></div>
       </div>
     </section>
 
-    <!-- CONTACT with the exact email/phone -->
+    <!-- CONTACT with exact email/phone -->
     <section id="contact" class="py-24 bg-gradient-to-b from-white to-amber-50/30">
       <div class="container mx-auto px-6 md:px-10">
         <div class="text-center reveal-up"><h2 class="text-4xl md:text-5xl font-bold">Begin Your <span class="text-amber-700">Journey</span></h2><p class="text-gray-500 mt-3">Let’s collaborate to create a space that resonates</p></div>
@@ -369,7 +371,7 @@
             <div class="flex gap-5"><i class="fas fa-envelope text-3xl text-amber-700"></i><div><h3 class="font-bold text-xl">Direct Email</h3><p class="break-all">opemuhammad35@gmail.com</p></div></div>
             <div class="flex gap-5"><i class="fas fa-phone-alt text-3xl text-amber-700"></i><div><h3 class="font-bold text-xl">WhatsApp / Call</h3><p class="text-xl font-mono">+234 814 029 5116</p></div></div>
             <div class="flex gap-5"><i class="fas fa-map-marker-alt text-3xl text-amber-700"></i><div><h3 class="font-bold text-xl">Studio Location</h3><p>15B Wuse Design District, Abuja, Nigeria</p></div></div>
-            <div class="rounded-2xl overflow-hidden h-56 shadow-lg"><iframe class="w-full h-full" src="https://maps.google.com/maps?q=Abuja,Nigeria&t=&z=12&ie=UTF8&iwloc=&output=embed" loading="lazy"></iframe></div>
+            <div class="rounded-2xl overflow-hidden h-56 shadow-lg"><iframe class="w-full h-full" src="https://maps.google.com/maps?q=Abuja,Nigeria&t=&z=12&ie=UTF8&iwloc=&output=embed" loading="lazy" title="Map"></iframe></div>
             <div class="flex gap-6 justify-center"><a href="#" class="text-amber-600 text-2xl hover:scale-110 transition"><i class="fab fa-instagram"></i></a><a href="#" class="text-amber-600 text-2xl hover:scale-110"><i class="fab fa-pinterest"></i></a><a href="#" class="text-amber-600 text-2xl hover:scale-110"><i class="fab fa-linkedin-in"></i></a></div>
           </div>
         </div>
@@ -378,11 +380,16 @@
     </section>
   </main>
 
-  <footer class="bg-gray-900 text-gray-400 py-10 text-center"><p>© 2025 Nebula Interiors — Crafting Timeless Elegance.</p><p class="text-sm mt-2">opemuhammad35@gmail.com | +234 814 029 5116</p></footer>
+  <!-- FOOTER with developer credit: Kamaldeen Muhammad -->
+  <footer class="bg-gray-900 text-gray-400 py-10 text-center">
+    <p>© 2025 Nebula Interiors — Crafting Timeless Elegance.</p>
+    <p class="text-sm mt-2 break-all">opemuhammad35@gmail.com | +234 814 029 5116</p>
+    <p class="text-xs mt-3 text-amber-400/70">Designed & developed with passion by <span class="font-medium text-amber-300">Kamaldeen Muhammad</span></p>
+  </footer>
   <div class="back-to-top" id="backToTop"><i class="fas fa-arrow-up"></i></div>
 
   <script>
-    // Carousel data and logic
+    // Carousel logic
     const slides = [
       "https://images.unsplash.com/photo-1618221195710-dd6b41faaea6?w=1200&h=600&fit=crop",
       "https://images.unsplash.com/photo-1586023492125-27b2c045efd7?w=1200&h=600&fit=crop",
@@ -451,36 +458,46 @@
     window.addEventListener('scroll', () => { if(window.scrollY > 400) backBtn.classList.add('show'); else backBtn.classList.remove('show'); document.querySelector('header').classList.toggle('shadow-xl', window.scrollY > 20); });
     backBtn.addEventListener('click', () => window.scrollTo({ top:0, behavior:'smooth' }));
 
-    // Mobile menu
+    // Mobile menu: toggle and close on link click (Android friendly)
     const mobBtn = document.getElementById('mobileMenuBtn');
     const mobMenu = document.getElementById('mobileMenu');
-    if(mobBtn) mobBtn.addEventListener('click', () => mobMenu.classList.toggle('hidden'));
-    document.querySelectorAll('a[href^="#"]').forEach(anchor => { anchor.addEventListener('click', function(e) { const hash = this.getAttribute('href'); if(hash === "#") return; const targetEl = document.querySelector(hash); if(targetEl) { e.preventDefault(); window.scrollTo({ top: targetEl.offsetTop - 80, behavior: 'smooth' }); if(!mobMenu.classList.contains('hidden')) mobMenu.classList.add('hidden'); } }); });
+    if(mobBtn && mobMenu) {
+      mobBtn.addEventListener('click', (e) => {
+        e.stopPropagation();
+        mobMenu.classList.toggle('hidden');
+      });
+      // close when clicking a link inside mobile menu
+      const mobileLinks = mobMenu.querySelectorAll('a');
+      mobileLinks.forEach(link => {
+        link.addEventListener('click', () => {
+          mobMenu.classList.add('hidden');
+        });
+      });
+      // optional: close if user taps outside? not needed but good UX on Android
+      document.addEventListener('click', function(event) {
+        if (!mobMenu.contains(event.target) && !mobBtn.contains(event.target) && !mobMenu.classList.contains('hidden')) {
+          mobMenu.classList.add('hidden');
+        }
+      });
+    }
+
+    // smooth scroll for all anchor links
+    document.querySelectorAll('a[href^="#"]').forEach(anchor => {
+      anchor.addEventListener('click', function(e) {
+        const hash = this.getAttribute('href');
+        if(hash === "#" || !hash) return;
+        const targetEl = document.querySelector(hash);
+        if(targetEl) {
+          e.preventDefault();
+          window.scrollTo({ top: targetEl.offsetTop - 80, behavior: 'smooth' });
+          if(mobMenu && !mobMenu.classList.contains('hidden')) mobMenu.classList.add('hidden');
+        }
+      });
+    });
 
     // custom cursor movement
     const cursor = document.getElementById('customCursor');
     if(cursor) document.addEventListener('mousemove', (e) => { cursor.style.left = e.clientX + 'px'; cursor.style.top = e.clientY + 'px'; });
   </script>
-
-  <!-- ========== HUMAN-LIKE DETAILED NOTE (what I changed/added) ========== -->
-  <details style="position: fixed; bottom: 10px; left: 10px; background: #fef3e2; border-radius: 12px; padding: 8px 12px; font-size: 12px; z-index: 999; font-family: monospace; border:1px solid #b45309; cursor: pointer; opacity:0.75; backdrop-filter: blur(4px);">
-    <summary style="font-weight:bold; color:#b45309;">📝 Designer’s changelog (click)</summary>
-    <div style="margin-top: 8px; max-width: 280px; color:#2d2a24;">
-      <strong>✨ What I modernized from your original file:</strong><br>
-      • <strong>Framework integration:</strong> Kept Tailwind v2 as main utility framework, but added rich internal CSS for glassmorphism, custom cursor, floating shapes, and reveal animations – feels custom, not template.<br>
-      • <strong>New hero layout:</strong> Split into grid (text left, carousel right) – more contemporary and balanced. Added animated gradient text “Sculpting Spaces”.<br>
-      • <strong>Carousel upgrade:</strong> Full‑bleed modern images (Unsplash) + smooth autoplay, better dots, and backdrop‑blur buttons.<br>
-      • <strong>Added a “Portfolio” section</strong> with overlay hover cards (masonry style) – originally missing. Shows real project context.<br>
-      • <strong>Floating label contact form</strong> – premium UX.<br>
-      • <strong>Custom cursor</strong> (desktop) & floating blobs for depth – makes the site feel artisanal.<br>
-      • <strong>Back‑to‑top button + sticky nav blur effect</strong> – subtle but professional.<br>
-      • <strong>All animations (reveal‑up, reveal‑scale)</strong> are scroll‑triggered, smooth, non‑intrusive.<br>
-      • <strong>Improved responsive behavior</strong> – tested on mobile/tablet, carousel buttons adapt.<br>
-      • <strong>Updated fonts:</strong> Playfair Display for headings + Inter for body – more elegant and readable.<br>
-      • <strong>Kept your exact email and phone number</strong> (opemuhammad35@gmail.com, +2348140295116) unchanged.<br>
-      • <strong>No AI slop</strong> – every CSS animation has unique timings, hover effects feel hand‑tuned. The code is self‑contained, one file, ready to deploy.<br>
-      <span style="color:#b45309;">🎯 This level of detail and custom polish is what lands jobs – shows you care about micro‑interactions and design systems.</span>
-    </div>
-  </details>
 </body>
 </html>
